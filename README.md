@@ -37,7 +37,7 @@ But we can add things to this app to make SVG editing easier... or not, if we on
 Right now, a placeholder svg is hardcoded in the file to show the basics of how this works, but we can use both C#, and JavaScript to do interesting stuff before, and while the logo is rendered. 
 This creates a possible graphics pipeline that looks like this:
 
-```
+```mermaid
 flowchart LR
     A[Persisted SVG logo] --> B[C# preprocessor]
     B --> C[JavaScript preprocessor]

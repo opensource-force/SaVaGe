@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets/osf-logo.js"
     },
     {
+      "Id": "/Users/zachbabb/Work/planet-nine/third-party/savage/wwwroot/planet-nine-logo.js",
+      "PackagePath": "staticwebassets/planet-nine-logo.js"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.savage.props",
       "PackagePath": "build\\savage.props"
     },

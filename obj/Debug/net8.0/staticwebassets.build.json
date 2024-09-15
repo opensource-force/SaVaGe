@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GJhZL5TpVVw+I4X68dMmgE4bKK2hth1WlstsEURRKp0=",
+  "Hash": "zmpme06da13rVWUbdttwirZ345dYab+yGgq2d2WhmTw=",
   "Source": "savage",
   "BasePath": "_content/savage",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/osf-logo.js"
+    },
+    {
+      "Identity": "/Users/zachbabb/Work/planet-nine/third-party/savage/wwwroot/planet-nine-logo.js",
+      "SourceId": "savage",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/zachbabb/Work/planet-nine/third-party/savage/wwwroot/",
+      "BasePath": "_content/savage",
+      "RelativePath": "planet-nine-logo.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/planet-nine-logo.js"
     }
   ]
 }

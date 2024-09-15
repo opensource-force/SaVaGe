@@ -27,3 +27,4 @@
 /Users/zachbabb/Work/planet-nine/third-party/savage/obj/Debug/net8.0/savage.pdb
 /Users/zachbabb/Work/planet-nine/third-party/savage/obj/Debug/net8.0/savage.genruntimeconfig.cache
 /Users/zachbabb/Work/planet-nine/third-party/savage/obj/Debug/net8.0/ref/savage.dll
+/Users/zachbabb/Work/planet-nine/third-party/savage/obj/Debug/net8.0/savage.sourcelink.json

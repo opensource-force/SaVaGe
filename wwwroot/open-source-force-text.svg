@@ -1,0 +1,40 @@
+  <defs>
+    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C0C0C0" />
+      <stop offset="50%" stop-color="#FFF" />
+      <stop offset="100%" stop-color="#C0C0C0" />
+      <animate attributeName="x1" values="-100%;0%;100%" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="0%;100%;200%" dur="3s" repeatCount="indefinite" />
+    </linearGradient>
+  </defs>
+  
+  <text x="30" y="200" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="url(#silverGradient)" stroke="#A9A9A9" stroke-width="1" opacity="0">
+    OPEN
+    <animate
+      attributeName="opacity"
+      values="0;1"
+      begin="0.3s"
+      dur="0.2s" 
+      fill="freeze" />
+  </text>
+
+  <text x="90" y="200" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="url(#silverGradient)" stroke="#A9A9A9" stroke-width="1" opacity="0">
+    SOURCE
+    <animate
+      attributeName="opacity"
+      values="0;1"
+      begin="2.2s"
+      dur="0.2s" 
+      fill="freeze" />
+  </text>
+
+  <text x="160" y="200" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="url(#silverGradient)" stroke="#A9A9A9" stroke-width="1" opacity="0">
+    FORCE
+    <animate
+      attributeName="opacity"
+      values="0;1"
+      begin="4.2s"
+      dur="0.2s" 
+      fill="freeze" />
+  </text>
+

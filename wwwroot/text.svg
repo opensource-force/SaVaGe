@@ -1,0 +1,4 @@
+<text x="{{textX}}" y="{{textY}}" text-anchor="middle" font-family="Arial" font-size="{{fontSize}}">
+    {{text}}
+    {{animations}}
+</text>

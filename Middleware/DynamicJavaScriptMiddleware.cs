@@ -18,7 +18,7 @@ public class DynamicJavaScriptMiddleware
         {
             context.Response.ContentType = "application/javascript";
 	    string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
-	    string modifiedContent = ModifyJavaScriptContent(jsContent);
+	    string modifiedContent = await ModifyJavaScriptContent(jsContent);
 	    await context.Response.WriteAsync(modifiedContent);
 	    return;
         }
@@ -42,11 +42,25 @@ public class DynamicJavaScriptMiddleware
         return "console.log('This is a dynamic JavaScript response!');";
     }
 
-    private string ModifyJavaScriptContent(string content)
+    private async Task<string> ModifyJavaScriptContent(string content)
     {
-        string xContent = content.Replace("{{vX}}", "15");
-        string yContent= xContent.Replace("{{vY}}", "30");
-        return yContent.Replace("{{interval}}", "33");
+        //string xContent = content.Replace("{{vX}}", "15");
+        //string yContent= xContent.Replace("{{vY}}", "30");
+        //return yContent.Replace("{{interval}}", "33");
+        Lightning lightning = new Lightning();
+
+        string bolt = await lightning.Bolt(_env, 60, 30, 30, 200, 4, 0);
+        string bolt2 = await lightning.Bolt(_env, 120, 30, 100, 200, 6, 2);
+        string bolt3 = await lightning.Bolt(_env, 250, 30, 160, 200, 5, 4);
+
+        content = content.Replace("{{lightningBolt1}}", bolt);
+        content = content.Replace("{{lightningBolt2}}", bolt2);
+        content = content.Replace("{{lightningBolt3}}", bolt3);
+
+        OpenSourceForce openSourceForce = new OpenSourceForce();
+        string openSourceForceText = await openSourceForce.Text(_env);
+        
+        return content.Replace("{{openSourceForceText}}", openSourceForceText);
     }
 }
 

@@ -1,24 +1,4 @@
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
-}
-
-
-
-
-
-
-/*using savage.Components;
+using savage.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,10 +18,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// The fact that this exists makes me feel good we're not the first to try
+app.UseDynamicJavaScript();
+
 app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-app.Run();*/
+app.Run();

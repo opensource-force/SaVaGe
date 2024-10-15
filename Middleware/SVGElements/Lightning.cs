@@ -19,9 +19,32 @@ public class RandomGenerator
 
 public class Lightning
 {
-    public async Task<string> Bolt(IWebHostEnvironment env, int startX, int startY, int endX, int endY, int jags, int delay) 
+    private readonly IWebHostEnvironment _env;
+    private readonly Lazy<Task> _initializationTask;
+    private string svg;
+    private string originalSVG;
+
+    public Lightning(IWebHostEnvironment env)  
     {
-         string svg = await ReadFileFromWebRootAsync(env, "lightning.svg");
+        _env = env;
+        _initializationTask = new Lazy<Task>(() => DoInitializeAsync());
+    }
+
+    public async Task InitializeAsync() 
+    {
+        await _initializationTask.Value;
+    }
+
+    public async Task DoInitializeAsync() 
+    {
+        svg = await ReadFileFromWebRootAsync(_env, "lightning.svg"); 
+        originalSVG = svg;
+    }
+
+    public string Bolt(int startX, int startY, int endX, int endY, int jags, int delay) 
+    {
+         svg = originalSVG;
+
          string path = $"M{startX} {startY}";
 
          svg = svg.Replace("{{delay}}", $"{delay}");
@@ -47,6 +70,10 @@ public class Lightning
          }
 
          path = $"{path} L{endX} {endY}";
+
+         string randomId = $"{RandomGenerator.GetRandomNumber(1, 100000)}";        
+         svg = svg.Replace("{{randomId}}", randomId);
+
          return svg.Replace("{{boltPath}}", path);
     }
 
@@ -54,15 +81,13 @@ public class Lightning
 
     public async Task<string> ReadFileFromWebRootAsync(IWebHostEnvironment env, string fileName)
     {
-        string filePath = Path.Combine(env.WebRootPath, fileName);
-        if (!File.Exists(filePath))
-        {
-            throw new FileNotFoundException($"The file {fileName} was not found in wwwroot.");
-        }
-        string file = await File.ReadAllTextAsync(filePath);
-        string randomId = $"{RandomGenerator.GetRandomNumber(1, 100000)}";
-        
-        return file.Replace("{{randomId}}", randomId);
+         string filePath = Path.Combine(env.WebRootPath, fileName);
+         if (!File.Exists(filePath))
+         {
+             throw new FileNotFoundException($"The file {fileName} was not found in wwwroot.");
+         }
+         string file = await File.ReadAllTextAsync(filePath);
+         return file;
     }
 
 }

@@ -47,20 +47,27 @@ public class DynamicJavaScriptMiddleware
         //string xContent = content.Replace("{{vX}}", "15");
         //string yContent= xContent.Replace("{{vY}}", "30");
         //return yContent.Replace("{{interval}}", "33");
-        Lightning lightning = new Lightning();
 
-        string bolt = await lightning.Bolt(_env, 60, 30, 30, 200, 4, 0);
-        string bolt2 = await lightning.Bolt(_env, 120, 30, 100, 200, 6, 2);
-        string bolt3 = await lightning.Bolt(_env, 250, 30, 160, 200, 5, 4);
+        string svg = "";
 
-        content = content.Replace("{{lightningBolt1}}", bolt);
-        content = content.Replace("{{lightningBolt2}}", bolt2);
-        content = content.Replace("{{lightningBolt3}}", bolt3);
+        Shield shield = new Shield();
+        string shieldSVG = await shield.Text(_env);
+
+        Lightning lightning = new Lightning(_env);
+        await lightning.InitializeAsync();
+
+        string bolt = lightning.Bolt(60, 30, 30, 200, 4, 0);
+        string bolt2 = lightning.Bolt(120, 30, 100, 200, 6, 2);
+        string bolt3 = lightning.Bolt(250, 30, 160, 200, 5, 4);
 
         OpenSourceForce openSourceForce = new OpenSourceForce();
         string openSourceForceText = await openSourceForce.Text(_env);
+
+        svg = shieldSVG + bolt + bolt2 + bolt3 + openSourceForceText;
         
-        return content.Replace("{{openSourceForceText}}", openSourceForceText);
+        return content.Replace("{{contents}}", svg); 
+
+        
     }
 }
 

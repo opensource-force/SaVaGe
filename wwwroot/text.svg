@@ -1,4 +1,14 @@
-<text x="{{textX}}" y="{{textY}}" text-anchor="middle" font-family="Arial" font-size="{{fontSize}}">
+<text 
+  x="{{textX}}" 
+  y="{{textY}}" 
+  text-anchor="middle" 
+  font-family="Arial" 
+  font-weight="{{fontWeight}}" 
+  font-size="{{fontSize}}" 
+  stroke="{{textColor}}" 
+  fill="{{textColor}}" 
+  text-decoration="{{textDecoration}}"
+  opacity={{opacity}}>
     {{text}}
     {{animations}}
 </text>

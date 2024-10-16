@@ -10,36 +10,6 @@
     <link rel="stylesheet" href="savage.styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <HeadOutlet />
-    <title>Fixed Background SVG</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        #svgContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        #fullSVG {
-            position: fixed;
-	    top: 0;
-	    left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .content {
-            position: relative;
-            z-index: 1;
-            color: white;
-            padding: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -52,11 +22,7 @@
     <!--div id="planet-nine-logo-container">
       <script type="text/javascript" src="planet-nine-logo.js"></script>
     </div-->
-    <div id="svgContainer">
-      <div id="savage">
-        <script type="text/javascript" src="juliaswitch.js"></script>
-      </div>
-    </div>
+      <script type="text/javascript" src="juliaswitch.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,3 @@
+<image cx="{{centerX}}" cy="{{centerY}}" width="{{width}}" height="{{height}}" href="{{imageURL}}">
+  {{animations}}
+</image>

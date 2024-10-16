@@ -6,7 +6,7 @@
   font-weight="{{fontWeight}}" 
   font-size="{{fontSize}}" 
   stroke="{{textColor}}" 
-  fill="{{textColor}}" 
+  fill="{{fill}}" 
   text-decoration="{{textDecoration}}"
   opacity={{opacity}}>
     {{text}}

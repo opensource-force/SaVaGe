@@ -41,8 +41,8 @@ public class Webpage
         string juliaswitch = await text.SVG("{{contents}}", _env, "50%", "50%", "bold", "36", "#A9A9A9", "#COCOCO", "none", "0", "juliaswitch", animation5);
 
         string juliaLink = await linker.SVG("{{contents}}", _env, "https://en.wikipedia.org/wiki/Julia_O%27Connor");
-        string juliaImage = await image.SVG("{{contents}}", _env, "25%", "41%", "6%", "9%", "0", "https://upload.wikimedia.org/wikipedia/en/b/bb/Julia_O%27Connor.jpg", animation5);
-        string juliaOConnor = await text.SVG("{{contents}}", _env, "30%", "53%", "none", "12", "#000000", "#ffffff", "none", "0", "Julia O'Connor", animation5);
+        string juliaImage = await image.SVG("{{contents}}", _env, "20%", "41%", "6%", "9%", "0", "https://upload.wikimedia.org/wikipedia/en/b/bb/Julia_O%27Connor.jpg", animation5);
+        string juliaOConnor = await text.SVG("{{contents}}", _env, "25%", "53%", "none", "12", "#000000", "#ffffff", "none", "0", "Julia O'Connor", animation5);
 
         juliaLink = juliaLink.Replace("{{contents}}", juliaImage + juliaOConnor);
 
@@ -51,7 +51,7 @@ public class Webpage
         string comingSoon = await text.SVG("{{contents}}", _env, "50%", "80%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "Coming November 6th.", animation8);        
         string because = await text.SVG("{{contents}}", _env, "50%", "85%", "bold", "8", "#32cd32", "#32cd32", "none", "0", "(because either way it goes, you know there's gonna be some people you don't want to talk to)", animation8);        
         string reminderLink = await linker.SVG("{{contents}}", _env, "https://duckduckgo.com/?q=how+to+set+a+reminder+for+november+6th");
-        string reminderText = await text.SVG(reminderLink, _env, "75%", "30%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "Setup a reminder", animation8);
+        string reminderText = await text.SVG(reminderLink, _env, "75%", "35%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "Setup a reminder", animation8);
 
         svgContent = svgContent + youAreNotANumber + phoneNumber + youAreNotAnEmail + email; 
         svgContent = svgContent + juliaswitch + juliaLink + noRandos + onlyConnect + comingSoon + reminderText + because;

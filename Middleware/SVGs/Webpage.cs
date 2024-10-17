@@ -41,7 +41,10 @@ public class Webpage
         string juliaswitch = await text.SVG("{{contents}}", _env, "50%", "50%", "bold", "28", "#A9A9A9", "#COCOCO", "none", "0", "juliaswitch", animation5);
 
         string juliaLink = await linker.SVG("{{contents}}", _env, "https://en.wikipedia.org/wiki/Julia_O%27Connor");
-        string juliaImage = await image.SVG(juliaLink, _env, "25%", "50%", "6%", "9%", "https://upload.wikimedia.org/wikipedia/en/b/bb/Julia_O%27Connor.jpg", animation5);
+        string juliaImage = await image.SVG("{{contents}}", _env, "25%", "41%", "6%", "9%", "0", "https://upload.wikimedia.org/wikipedia/en/b/bb/Julia_O%27Connor.jpg", animation5);
+        string juliaOConnor = await text.SVG("{{contents}}", _env, "30%", "53%", "none", "12", "#000000", "#ffffff", "none", "0", "Julia O'Connor", animation5);
+
+        juliaLink = juliaLink.Replace("{{contents}}", juliaImage + juliaOConnor);
 
         string noRandos = await text.SVG("{{contents}}", _env, "50%", "60%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "No spam; No randos; No stalkers; No bots", animation6);        
         string onlyConnect = await text.SVG("{{contents}}", _env, "50%", "67%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "<tspan x=\"50%\" dy=\"0\">Only connect with who you want, and disconnect at any time.</tspan><tspan x=\"50%\" dy=\"1.2em\">The world's first anonymous zero-discovery messenger app.</tspan>", animation7);        
@@ -50,8 +53,21 @@ public class Webpage
 
 
         svgContent = svgContent + youAreNotANumber + phoneNumber + youAreNotAnEmail + email; 
-        svgContent = svgContent + juliaswitch + juliaImage + noRandos + onlyConnect + comingSoon + because;
+        svgContent = svgContent + juliaswitch + juliaLink + noRandos + onlyConnect + comingSoon + because;
 
+        string planetNineLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/planet-nine-app");
+       
+        string planetNineContainer = @"<svg x=""5%"" y=""55%"" width=""15%"" height=""15%"" viewBox=""0 0 200 140"">
+              {{contents}}
+              </svg>
+            "; 
+
+        planetNineLink = planetNineLink.Replace("{{contents}}", planetNineContainer);
+        
+        PlanetNineLogo planetNineLogo = new PlanetNineLogo(_env);
+        string planetNineLogoSVG = await planetNineLogo.SVG();
+
+        planetNineLink = planetNineLink.Replace("{{contents}}", planetNineLogoSVG);
 
         string osfLink = await linker.SVG("{{contents}}", _env, "https://opensourceforce.net");
 
@@ -65,7 +81,7 @@ public class Webpage
         OSFLogo osfLogo = new OSFLogo();
         string osf = await osfLogo.SVG(osfLink, _env); 
 
-        svgContent = svgContent + osf;
+        svgContent = svgContent + planetNineLink + osf;
 
        /* string planetNineContainer = @"<svg cx=""50"" y=""75"" width=""20"" height=""20"">
             {{contents}}

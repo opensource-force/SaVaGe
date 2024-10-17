@@ -1,4 +1,8 @@
 (() => {
+    const container = document.getElementById('planet-nine-logo-container') || document.createElement('div');
+    if(!container.id) {
+      document.body.appendChild(container);
+    }
     const width = 800;
     const height = 500;
 

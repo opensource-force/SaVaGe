@@ -38,7 +38,7 @@ public class Webpage
         string youAreNotAnEmail = await text.SVG("{{contents}}", _env, "50%", "30%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "You are not an email", animation3);        
         string email = await text.SVG("{{contents}}", _env, "50%", "40%", "bold", "18", "#32cd32", "#32cd32", "line-through", "0", "trackme@somemail.com", animation4);        
 
-        string juliaswitch = await text.SVG("{{contents}}", _env, "50%", "50%", "bold", "28", "#A9A9A9", "#COCOCO", "none", "0", "juliaswitch", animation5);
+        string juliaswitch = await text.SVG("{{contents}}", _env, "50%", "50%", "bold", "36", "#A9A9A9", "#COCOCO", "none", "0", "juliaswitch", animation5);
 
         string juliaLink = await linker.SVG("{{contents}}", _env, "https://en.wikipedia.org/wiki/Julia_O%27Connor");
         string juliaImage = await image.SVG("{{contents}}", _env, "25%", "41%", "6%", "9%", "0", "https://upload.wikimedia.org/wikipedia/en/b/bb/Julia_O%27Connor.jpg", animation5);
@@ -50,10 +50,11 @@ public class Webpage
         string onlyConnect = await text.SVG("{{contents}}", _env, "50%", "67%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "<tspan x=\"50%\" dy=\"0\">Only connect with who you want, and disconnect at any time.</tspan><tspan x=\"50%\" dy=\"1.2em\">The world's first anonymous zero-discovery messenger app.</tspan>", animation7);        
         string comingSoon = await text.SVG("{{contents}}", _env, "50%", "80%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "Coming November 6th.", animation8);        
         string because = await text.SVG("{{contents}}", _env, "50%", "85%", "bold", "8", "#32cd32", "#32cd32", "none", "0", "(because either way it goes, you know there's gonna be some people you don't want to talk to)", animation8);        
-
+        string reminderLink = await linker.SVG("{{contents}}", _env, "https://duckduckgo.com/?q=how+to+set+a+reminder+for+november+6th");
+        string reminderText = await text.SVG(reminderLink, _env, "75%", "30%", "bold", "18", "#32cd32", "#32cd32", "none", "0", "Setup a reminder", animation8);
 
         svgContent = svgContent + youAreNotANumber + phoneNumber + youAreNotAnEmail + email; 
-        svgContent = svgContent + juliaswitch + juliaLink + noRandos + onlyConnect + comingSoon + because;
+        svgContent = svgContent + juliaswitch + juliaLink + noRandos + onlyConnect + comingSoon + reminderText + because;
 
         string planetNineLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/planet-nine-app");
        
@@ -73,15 +74,26 @@ public class Webpage
 
         string osfContainer = @"<svg x=""5%"" y=""75%"" width=""15%"" height=""15%"" viewBox=""0 0 200 240"">
               {{contents}}
-              </svg>
-            </svg>";
+              </svg>";
 
         osfLink = osfLink.Replace("{{contents}}", osfContainer);
 
         OSFLogo osfLogo = new OSFLogo();
         string osf = await osfLogo.SVG(osfLink, _env); 
 
-        svgContent = svgContent + planetNineLink + osf;
+        string savageLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/opensource-force/SaVaGe");
+
+        string savageContainer = @"<svg x=""80%"" y=""55%"" width=""15%"" height=""15%"" viewBox=""0 0 300 360"">
+              {{contents}}
+              </svg>
+            "; 
+
+        savageLink = savageLink.Replace("{{contents}}", savageContainer);
+        
+        SaVaGeLogo savageLogo = new SaVaGeLogo();
+        string savageLogoSVG = await savageLogo.SVG(savageLink, _env);
+
+        svgContent = svgContent + planetNineLink + osf + savageLogoSVG + "\r\n</svg>";
 
        /* string planetNineContainer = @"<svg cx=""50"" y=""75"" width=""20"" height=""20"">
             {{contents}}

@@ -52,6 +52,30 @@ And then maybe the logo's on fire.
 
 ## Contributing
 
+(NOTE: There's some structural organization coming so that everything's not all in the wwwroot directory)
+
+If you have never made SVG via code, which is likely because I don't think people really do that, please read this [primer][primer].
+
+There are two types of components: js and svg. 
+js components are meant to be served by the blazor server after being composed.
+svg components are the pieces of svg composed into the js.
+
+#### Adding an svg component
+
+svg components will always be wrapped in svg tags. 
+svg can have svg in it so you can wrap your component in svg or not.
+If you don't it'll be appended wherever in the svg dom it gets added during composition.
+
+In the svg, we use mustache templating for interpolated values.
+A double mustache {{replacementString}} is for values inserted by the server via C#.
+A single mustache {replacementString} is for values inserted by javascript.
+
+#### Adding a js component
+
+js components are IIFEs that will add themselves to the dom.
+If an html element with the correct id exists, it'll add the svg as a child to that element. 
+js components are what get served from the SaVaGe server.
+
 To add to this repo, feel free to make a [pull request][pr].
 
 ## Totally optional history section
@@ -79,6 +103,6 @@ npm installing 50 dependencies, and adding a transpiler, and downloading an ide,
 [mdn]: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial
 [pr]: https://github.com/opensource-force/savage/pulls
 [logo]: https://en.wikipedia.org/wiki/Logo_(programming_language)
-
+[primer]: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Introduction
 
 [ht1]: ## "Scalable Vector Graphics, an image format for the web."

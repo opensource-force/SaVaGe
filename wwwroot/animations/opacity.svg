@@ -1,0 +1,6 @@
+<animate
+  attributeName="opacity"
+  values="{{values}}"
+  begin="{{begin}}"
+  dur="{{duration}}"
+  fill="{{end}}" />

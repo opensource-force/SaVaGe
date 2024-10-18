@@ -18,6 +18,7 @@ public class DynamicJavaScriptMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         OSFLogo osfLogo = new OSFLogo();
+        ButtonSVG button = new ButtonSVG();
         Webpage webpage = new Webpage();
 
         context.Response.ContentType = "application/javascript";
@@ -35,6 +36,9 @@ public class DynamicJavaScriptMiddleware
 		    return;
 		break;
                 case "/juliaswitch.js": svg = await webpage.Juliaswitch(svg, _env, "#734f96");
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/button.js": svg = await button.SVG("{{contents}}", _env);
                     await context.Response.WriteAsync(svg);
                     return;
 		default:

@@ -1,0 +1,3 @@
+<foreignObject x="{{objectX}}" y="{{objectY}}" width="{{objectWidth}}" height="{{objectHeight}}">
+  <canvas id="{{canvasId}}" width="{{canvasWidth}}" height="{{canvasHeight}}"></canvas>
+</foreignObject>

@@ -17,6 +17,7 @@ public class DynamicJavaScriptMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
+        Test test = new Test();
         OSFLogo osfLogo = new OSFLogo();
         ButtonSVG button = new ButtonSVG();
         Webpage webpage = new Webpage();
@@ -39,6 +40,16 @@ public class DynamicJavaScriptMiddleware
                     await context.Response.WriteAsync(svg);
                     return;
                 case "/button.js": svg = await button.SVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/canvas-test.js": 
+                    svg = await test.CanvasSVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/canvas-pes-test.js": svg = await test.PESSVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/threejs.js": svg = await test.ThreejsSVG("{{contents}}", _env);
                     await context.Response.WriteAsync(svg);
                     return;
 		default:

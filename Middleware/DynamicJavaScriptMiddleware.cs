@@ -22,12 +22,20 @@ public class DynamicJavaScriptMiddleware
         ButtonSVG button = new ButtonSVG();
         Webpage webpage = new Webpage();
 
-        context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
         string jsContent = await ReadJavaScriptFileAsync("webpage.js");
         string svg = jsContent;
 
+        if (context.Request.Path.Value.EndsWith(".glb"))
+        {
+            context.Response.ContentType = "model/gltf-binary";
+            byte[] fileBytes = await ReadBinaryFileAsync("LowPoly_Chicken_Model.glb");
+            await context.Response.Body.WriteAsync(fileBytes, 0, fileBytes.Length);
+            return;
+        }
+
         if (context.Request.Path.Value.EndsWith(".js"))
+        context.Response.ContentType = "application/javascript";
         {
 	    switch (context.Request.Path.Value)
 	    {
@@ -50,6 +58,9 @@ public class DynamicJavaScriptMiddleware
                     await context.Response.WriteAsync(svg);
                     return;
                 case "/threejs.js": svg = await test.ThreejsSVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/three-d.js": svg = await test.ThreeDModelSVG("{{contents}}", _env);
                     await context.Response.WriteAsync(svg);
                     return;
 		default:
@@ -81,6 +92,16 @@ public class DynamicJavaScriptMiddleware
 	    throw new FileNotFoundException($"The file {fileName} was not found in wwwroot.");
 	}
 	return await File.ReadAllTextAsync(filePath);
+    }
+
+    private async Task<byte[]> ReadBinaryFileAsync(string fileName)
+    {
+	string filePath = Path.Combine(_env.WebRootPath, fileName);
+	if (!File.Exists(filePath))
+	{
+	    throw new FileNotFoundException($"The file {fileName} was not found in wwwroot.");
+	}
+	return await File.ReadAllBytesAsync(filePath);
     }
 
     private string GenerateDynamicJavaScript()

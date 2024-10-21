@@ -16,7 +16,6 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
         }
         #svgContainer {
             position: fixed;
@@ -24,6 +23,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            background-color: "green";
         }
         #fullSVG {
             position: fixed;
@@ -47,12 +47,31 @@
       <script type="text/javascript" src="planet-nine-logo.js"></script>
     </div-->
     <div id="svgContainer">
-      <div id="savage">
         <!--script type="text/javascript" src="juliaswitch.js"></script-->
         <!--script type="text/javascript" src="canvas-test.js"></script-->
-        <!--script type="text/javascript" src="canvas-pes-test.js"></script-->
-        <script type="text/javascript" src="threejs.js"></script>
-      </div>
+        <script type="text/javascript" src="canvas-pes-test.js"></script>
+        <!--script type="text/javascript" src="threejs.js"></script-->
+        <!--script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+        </script>
+        <script type="module">
+	  import * as THREE from 'three';
+	  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+	  let scene, camera, renderer, model;
+          window.THREE = THREE;
+          window.GLTFLoader = GLTFLoader;
+          window.scene = scene;
+          window.camera = camera;
+          window.renderer = renderer;
+          window.model = model;
+        </script>
+        <script type="text/javascript" src="three-d.js"></script-->
     </div>
 </body>
 

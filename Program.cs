@@ -18,6 +18,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// The fact that this exists makes me feel good we're not the first to try
+app.UseDynamicJavaScript();
+
 app.UseStaticFiles();
 app.UseAntiforgery();
 

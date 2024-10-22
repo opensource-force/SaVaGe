@@ -1,14 +1,14 @@
 (() => {
-  let x = 0;
-  let y = 0;
+  const container = document.getElementById('osf-logo-container') || document.createElement('div');
+  if(!container.id) {
+    document.body.appendChild(container);
+  }
 
-  setInterval(() => {
-    x++;
-    y++;
-    const svg = `<svg width="400" height="500" style="background-color:#bff;">` +
-    `<rect x="0" y="0" width="20" height="20" transform="translate(${x},${y})" />` +
-    `</svg>`;
-    const container = document.getElementById('osf-logo-container').innerHTML = svg;
-  }, 100);
+
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+    {{contents}}
+  </svg>`;
+
+  container.innerHTML = svg;
+ 
 })();
-

@@ -1,13 +1,13 @@
 using System;
 
-public class Button
+internal class Button
 {
-    public Button() 
+    internal Button() 
     {
         
     }
 
-    public async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string buttonText) 
+    internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string buttonText) 
     {
         string svg = await _env.ReadFileFromWebRootAsync("button.svg");
 

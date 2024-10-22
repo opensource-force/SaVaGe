@@ -1,24 +1,24 @@
 using System;
 
-public class Starfield
+internal class Starfield
 {
-    public Starfield() 
+    internal Starfield() 
     {
         
     }
 
-    public async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string width, string height, string backgroundColor, int numberOfStars) 
+    internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string width, string height, string backgroundColor, int numberOfStars) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("starfield.svg");
-        string stars = "<g id=\"stars\">";
+        var svg = await _env.ReadFileFromWebRootAsync("starfield.svg");
+        var stars = "<g id=\"stars\">";
         string[] starColors = ["#fddede", "#defdde", "#dedefd", "#fdfdde", "#fddefd", "#defdfd"];
         for(int i = 0; i < numberOfStars; i++) 
         {
-            int cx = RandomGenerator.GetRandomNumber(0, 100);
-            int cy = RandomGenerator.GetRandomNumber(0, 100);
-            int r = RandomGenerator.GetRandomNumber(1, 5);
-            int fillColorIndex = RandomGenerator.GetRandomNumber(0, 5);
-            string fillColor = starColors[fillColorIndex];
+            var cx = RandomGenerator.GetRandomNumber(0, 100);
+            var cy = RandomGenerator.GetRandomNumber(0, 100);
+            var r = RandomGenerator.GetRandomNumber(1, 5);
+            var fillColorIndex = RandomGenerator.GetRandomNumber(0, 5);
+            var fillColor = starColors[fillColorIndex];
 
             stars = stars + $"<circle cx=\"{cx}%\" cy=\"{cy}%\" r=\"{r}\" fill=\"{fillColor}\"/>";
         }

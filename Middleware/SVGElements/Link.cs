@@ -1,15 +1,15 @@
 using System;
 
-public class Link
+internal class Link
 {
-    public Link() 
+    internal Link() 
     {
         
     }
 
-    public async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string link) 
+    internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string link) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("link.svg");
+        var svg = await _env.ReadFileFromWebRootAsync("link.svg");
 
         svg = svg.Replace("{{link}}", link);
 

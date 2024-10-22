@@ -1,10 +1,10 @@
 using System;
 
-public class OpenSourceForce
+internal class OpenSourceForce
 {
-    public async Task<string> Text(IWebHostEnvironment env) 
+    internal async Task<string> Text(IWebHostEnvironment env) 
     {
-         string svg = await ReadFileFromWebRootAsync(env, "open-source-force-text.svg");
+         var svg = await ReadFileFromWebRootAsync(env, "open-source-force-text.svg");
 
          // Lots of things can be dynamic with this text, and here is where you can add that
          
@@ -13,7 +13,7 @@ public class OpenSourceForce
 
     // TODO: Move this to some shared utils file eventually
 
-    public async Task<string> ReadFileFromWebRootAsync(IWebHostEnvironment env, string fileName)
+    internal async Task<string> ReadFileFromWebRootAsync(IWebHostEnvironment env, string fileName)
     {
         string filePath = Path.Combine(env.WebRootPath, fileName);
         if (!File.Exists(filePath))

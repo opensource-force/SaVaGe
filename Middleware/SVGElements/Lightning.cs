@@ -4,58 +4,54 @@ using System;
 
 // This is PRNG based on the system clock. Good enough for random lightning strikes, but if you need
 // better randomness you should use another class.
-public class RandomGenerator
+internal class RandomGenerator
 {
-    private static readonly Random _random = new Random();
 
-    public static int GetRandomNumber(int min, int max)
+    internal static int GetRandomNumber(int min, int max)
     {
-        lock (_random) // Thread-safe operation
-        {
-            return _random.Next(min, max);
-        }
+        return Random.Shared.Next(min, max);
     }
 }
 
-public class Lightning
+internal class Lightning
 {
     private readonly IWebHostEnvironment _env;
     private readonly Lazy<Task> _initializationTask;
     private string svg;
     private string originalSVG;
 
-    public Lightning(IWebHostEnvironment env)  
+    internal Lightning(IWebHostEnvironment env)  
     {
         _env = env;
         _initializationTask = new Lazy<Task>(() => DoInitializeAsync());
     }
 
-    public async Task InitializeAsync() 
+    internal async Task InitializeAsync() 
     {
         await _initializationTask.Value;
     }
 
-    public async Task DoInitializeAsync() 
+    internal async Task DoInitializeAsync() 
     {
         svg = await ReadFileFromWebRootAsync(_env, "lightning.svg"); 
         originalSVG = svg;
     }
 
-    public string Bolt(int startX, int startY, int endX, int endY, int jags, int delay) 
+    internal string Bolt(int startX, int startY, int endX, int endY, int jags, int delay) 
     {
          svg = originalSVG;
 
-         string path = $"M{startX} {startY}";
+         var path = $"M{startX} {startY}";
 
          svg = svg.Replace("{{delay}}", $"{delay}");
 
-         int jagX = (endX - startX) / (jags - 1);
-         int jagY = (endY - startY) / (jags - 1);;
+         var jagX = (endX - startX) / (jags - 1);
+         var jagY = (endY - startY) / (jags - 1);;
 
-         int xDirection = 1;
+         var xDirection = 1;
 
-         int lineX = startX;
-         int lineY = startY;
+         var lineX = startX;
+         var lineY = startY;
 
          while(jags > 0) 
          {
@@ -71,7 +67,7 @@ public class Lightning
 
          path = $"{path} L{endX} {endY}";
 
-         string randomId = $"{RandomGenerator.GetRandomNumber(1, 100000)}";        
+         var randomId = $"{RandomGenerator.GetRandomNumber(1, 100000)}";        
          svg = svg.Replace("{{randomId}}", randomId);
 
          return svg.Replace("{{boltPath}}", path);
@@ -79,7 +75,7 @@ public class Lightning
 
     // TODO: Move this to some shared utils file eventually
 
-    public async Task<string> ReadFileFromWebRootAsync(IWebHostEnvironment env, string fileName)
+    internal async Task<string> ReadFileFromWebRootAsync(IWebHostEnvironment env, string fileName)
     {
          string filePath = Path.Combine(env.WebRootPath, fileName);
          if (!File.Exists(filePath))

@@ -1,46 +1,46 @@
 using System;
 
-public class SaVaGeLogo
+internal class SaVaGeLogo
 {
-    public SaVaGeLogo()  
+    internal SaVaGeLogo()  
     {
     
     }
 
-    public async Task<string> SVG(string wrapper, IWebHostEnvironment _env) 
+    internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("savage-logo.svg");
+        var svg = await _env.ReadFileFromWebRootAsync("savage-logo.svg");
 
-        DateTime specificDate = new DateTime(2024, 10, 15); // Example: January 1, 2023
-        DateTime today = DateTime.Today;
-        TimeSpan difference = today - specificDate;
+        var specificDate = new DateTime(2024, 10, 15); // Example: January 1, 2023
+        var today = DateTime.Today;
+        var difference = today - specificDate;
         
-        int daysSince = (int)difference.TotalDays;
+        var daysSince = (int)difference.TotalDays;
 
-         string savageContents = $"This website is a single svg composed of smaller svgs using a framework called SaVaGe. If it looks a little janky it's because SaVaGe was made like {daysSince} days ago. But here's why it's cool. This website is {{svgSize}} KB whereas the average website is 2.5 MB. And this website has lightning 🙂";
+        var savageContents = $"This website is a single svg composed of smaller svgs using a framework called SaVaGe. If it looks a little janky it's because SaVaGe was made like {daysSince} days ago. But here's why it's cool. This website is {{svgSize}} KB whereas the average website is 2.5 MB. And this website has lightning 🙂";
 
-         string str = savageContents;
-         int chunkSize = 20;
+        var str = savageContents;
+        var chunkSize = 20;
 
-         List<string> chunks = Enumerable.Range(0, str.Length / chunkSize)
+        List<string> chunks = Enumerable.Range(0, str.Length / chunkSize)
             .Select(i => str.Substring(i * chunkSize, chunkSize))
             .Concat(new[] { str.Substring(str.Length - str.Length % chunkSize) })
             .Where(s => !string.IsNullOrEmpty(s))
             .ToList();
 
-         string explainer = "";
-         float baseY = 5.2F;
-         float index = 1.2F;
+        var explainer = "";
+        var baseY = 5.2F;
+        var index = 1.2F;
 
-         foreach (string chunk in chunks) 
-         {
+        foreach (string chunk in chunks) 
+        {
              explainer = explainer + $"<tspan x=\"50%\" y=\"{baseY + index}em\">{chunk}</tspan>";
              index = index + 1;
-         }
+        }
 
-         svg = svg.Replace("{{savageLogoText}}", explainer); 
+        svg = svg.Replace("{{savageLogoText}}", explainer); 
 
-         return wrapper.Replace("{{contents}}", svg);
+        return wrapper.Replace("{{contents}}", svg);
     }
 
 }

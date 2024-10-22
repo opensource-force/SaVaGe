@@ -6,25 +6,30 @@ using System.Threading.Tasks;
 
 public class DynamicJavaScriptMiddleware
 {
+
+    private readonly ILogger<DynamicJavaScriptMiddleware> _logger;
+
     private readonly RequestDelegate _next;
     private readonly IWebHostEnvironment _env;
 
-    public DynamicJavaScriptMiddleware(RequestDelegate next, IWebHostEnvironment env)
+    public DynamicJavaScriptMiddleware(RequestDelegate next, ILogger<DynamicJavaScriptMiddleware> logger, IWebHostEnvironment env)
     {
+        _logger = logger;
         _next = next;
         _env = env;
     }
 
     public async Task InvokeAsync(HttpContext context)
     {
-        OSFLogo osfLogo = new OSFLogo();
-        ButtonSVG button = new ButtonSVG();
-        Webpage webpage = new Webpage();
+        var osfLogo = new OSFLogo();
+        var button = new ButtonSVG();
+        var parentContainer = new ParentContainer();
+        var webpage = new Webpage();
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
-        string jsContent = await ReadJavaScriptFileAsync("webpage.js");
-        string svg = jsContent;
+        var jsContent = await ReadJavaScriptFileAsync("webpage.js");
+        var svg = jsContent;
 
         if (context.Request.Path.Value.EndsWith(".js"))
         {
@@ -32,7 +37,6 @@ public class DynamicJavaScriptMiddleware
 	    {
 		case "/foo.js": svg = await osfLogo.SVG(svg, _env);
 		    await context.Response.WriteAsync(svg);
-    Console.WriteLine(svg);
 		    return;
 		break;
                 case "/juliaswitch.js": svg = await webpage.Juliaswitch(svg, _env, "#734f96");
@@ -41,10 +45,13 @@ public class DynamicJavaScriptMiddleware
                 case "/button.js": svg = await button.SVG("{{contents}}", _env);
                     await context.Response.WriteAsync(svg);
                     return;
+                case "/parent-container.js": svg = await parentContainer.SVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
 		default:
-    Console.WriteLine("it's this default thing");
-    Console.WriteLine(context.Request.Path.Value);
-		break;
+    _logger.LogInformation("it's this default thing");
+    _logger.LogInformation("Request path: {Path}", context.Request.Path.Value);
+   		break;
 	    };
 	
         }

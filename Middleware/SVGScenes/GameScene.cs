@@ -23,7 +23,7 @@ internal class GameScene
 		js = js.Replace("{{decoration}}", "houseplant");
 	    }
         } else {
-            js = js.Replace("{{decoration}}", "decoration");
+            js = js.Replace("{{decoration}}", decoration);
         }
 
         return wrapper.Replace("{{contents}}", js);

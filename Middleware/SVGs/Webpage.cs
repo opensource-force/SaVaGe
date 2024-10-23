@@ -109,7 +109,7 @@ internal class Webpage
         SavageLogo savageLogo = new SavageLogo();
         var savage = savageLogo.SVG(savageContainer, _env);
 */
-        svg = svg.Replace("{{svgContent}}", svgContent);
+        svg = svg.Replace("{{contents}}", svgContent);
 
         return wrapper.Replace("{{contents}}", svg);
     }

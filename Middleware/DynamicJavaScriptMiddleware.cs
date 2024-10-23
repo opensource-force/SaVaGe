@@ -54,8 +54,9 @@ public class DynamicJavaScriptMiddleware
                     await context.Response.WriteAsync(svg);
                     return;
                 case "/game-scene.js":
+                    var decoration2 = queryParams["decoration"].ToString() ?? "";
                     var adStrings = "['ads_', 'ad-', 'ads-', 'googlesyndication', 'pagead2', 'fixed-ad']";
-                    var scene = await gameScene.SVG("{{contents}}", _env, adStrings);
+                    var scene = await gameScene.SVG("{{contents}}", _env, adStrings, decoration2);
                     await context.Response.WriteAsync(scene);
                     return;
 		default:

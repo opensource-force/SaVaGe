@@ -25,11 +25,13 @@ public class DynamicJavaScriptMiddleware
         var button = new ButtonSVG();
         var parentContainer = new ParentContainer();
         var webpage = new Webpage();
+        var gameScene = new GameScene();
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
         var jsContent = await ReadJavaScriptFileAsync("webpage.js");
         var svg = jsContent;
+        var queryParams = context.Request.Query;
 
         if (context.Request.Path.Value.EndsWith(".js"))
         {
@@ -45,8 +47,16 @@ public class DynamicJavaScriptMiddleware
                 case "/button.js": svg = await button.SVG("{{contents}}", _env);
                     await context.Response.WriteAsync(svg);
                     return;
-                case "/parent-container.js": svg = await parentContainer.SVG("{{contents}}", _env);
+                case "/parent-container.js": 
+                    var parentElementId = queryParams["parentElementId"].ToString() ?? "parent";
+                    var decoration = queryParams["decoration"].ToString() ?? "";
+                    svg = await parentContainer.SVG("{{contents}}", _env, parentElementId, decoration);
                     await context.Response.WriteAsync(svg);
+                    return;
+                case "/game-scene.js":
+                    var adStrings = "['ads_', 'ad-', 'ads-', 'googlesyndication', 'pagead2', 'fixed-ad']";
+                    var scene = await gameScene.SVG("{{contents}}", _env, adStrings);
+                    await context.Response.WriteAsync(scene);
                     return;
 		default:
     _logger.LogInformation("it's this default thing");

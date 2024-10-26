@@ -19,7 +19,7 @@ public class Text
       // punting on this again because of the points above, and because for now I think it's useful to keep
       // all the svg in one place.
 
-      string svg = await _env.ReadFileFromWebRootAsync("text.svg");
+      string svg = await _env.ReadFileFromWebRootAsync("ui/text/text.svg");
 
       svg = svg.Replace("{{textX}}", textX)
           .Replace("{{textY}}", textY)

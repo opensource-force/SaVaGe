@@ -29,7 +29,7 @@ public class DynamicJavaScriptMiddleware
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
-        var jsContent = await ReadJavaScriptFileAsync("webpage.js");
+        var jsContent = await ReadJavaScriptFileAsync("containers/webpage/webpage.js");
         var svg = jsContent;
         var queryParams = context.Request.Query;
 

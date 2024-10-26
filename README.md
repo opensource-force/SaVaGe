@@ -52,7 +52,32 @@ And then maybe the logo's on fire.
 
 ## Contributing
 
-(NOTE: There's some structural organization coming so that everything's not all in the wwwroot directory)
+The flowchart above takes place in code as follows:
+
+`Middleware/DynamicJavaScriptMiddleware.cs` receives a request for a SaVaGe element. 
+That request gets sent to the appropriate class in `Middleware/SVGs`. 
+That class puts together the svg and js files in wwwroot, and the middleware returns it back to the client.
+
+The wwwroot dir has the following structure:
+
+├── animations            // these are specifically svg animations that can be added to components
+├── bootstrap             // leftover from the original blazor app
+├── containers            // these are backgrounds and/or layers for holding svgs
+│   ├── backgrounds       // backgrounds
+│   ├── parent            // this container fills its parent container
+│   └── webpage           // this container is the body element of a webpage
+├── effects               // special effects like sparkles and lightning bolts
+├── game-scene            // building towards a whole layered game scene 
+├── logos                 // logos for use like the Open Source Force logo
+│   ├── osf-logo          // Open Source Force logo
+│   ├── planet-nine-logo  // Planet Nine logo
+│   └── savage-logo       // SaVaGe logo
+├── planet's-test-dir     // feel free to make your own test dir for trying things out
+└── ui                    // base ui elements
+    ├── button            // button, the onclick handling is a bit awkward right now
+    ├── image             // image
+    ├── link              // a wrapper that can turn any svg into a link
+    └── text              // text
 
 If you have never made SVG via code, which is likely because I don't think people really do that, please read this [primer][primer].
 

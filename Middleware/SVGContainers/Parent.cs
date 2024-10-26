@@ -9,7 +9,7 @@ internal class Parent
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string viewBoxWidth, string viewBoxHeight, string backgroundColor) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("containers/parent.svg");
+        string svg = await _env.ReadFileFromWebRootAsync("containers/parent/parent.svg");
 
         svg = svg.Replace("{{viewBoxWidth}}", viewBoxWidth)
             .Replace("{{viewBoxHeight}}", viewBoxHeight)

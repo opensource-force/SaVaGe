@@ -9,7 +9,7 @@ internal class Overlay
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string backgroundColor) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("containers/overlay.svg");
+        string svg = await _env.ReadFileFromWebRootAsync("containers/overlays/overlay.svg");
 
         svg = svg.Replace("{{backgroundColor}}", backgroundColor);
 

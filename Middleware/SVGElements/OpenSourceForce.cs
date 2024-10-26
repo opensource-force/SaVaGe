@@ -4,7 +4,7 @@ internal class OpenSourceForce
 {
     internal async Task<string> Text(IWebHostEnvironment env) 
     {
-         var svg = await ReadFileFromWebRootAsync(env, "open-source-force-text.svg");
+         var svg = await ReadFileFromWebRootAsync(env, "logos/osf-logo/open-source-force-text.svg");
 
          // Lots of things can be dynamic with this text, and here is where you can add that
          

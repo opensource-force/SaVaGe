@@ -1,0 +1,5 @@
+<linearGradient id="borderGradient" x1="{{startX}}" y1="{{startY}}" x2="{{endX}}" y2="{{endY}}">
+  <stop offset="0%" style="stop-color:{{startColor}}"/>
+  {{optionalStops}}
+  <stop offset="100%" style="stop-color:{{endColor}}"/>
+</linearGradient>

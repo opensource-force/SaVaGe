@@ -11,7 +11,7 @@ internal class ButtonSVG
     {
         var svg = "";
 
-        var js = await _env.ReadFileFromWebRootAsync("button.js");
+        var js = await _env.ReadFileFromWebRootAsync("ui/button/button.js");
         js = js.Replace("{{buttonId}}", "foo");
         js = js.Replace("{{buttonOnClick}}", "console.log(\'boom!\');");
 

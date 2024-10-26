@@ -9,7 +9,7 @@ internal class PlanetNine
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string cx, string cy, string r) 
     {
-        var svg = await _env.ReadFileFromWebRootAsync("planet-nine.svg");
+        var svg = await _env.ReadFileFromWebRootAsync("logos/planet-nine-logo/planet-nine.svg");
 
         svg = svg.Replace("{{cx}}", cx)
             .Replace("{{cy}}", cy)

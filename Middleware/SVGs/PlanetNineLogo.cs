@@ -20,7 +20,7 @@ internal class PlanetNineLogo
 
     internal async Task DoInitializeAsync() 
     {
-        svg = await _env.ReadFileFromWebRootAsync("planet-nine-logo.svg"); 
+        svg = await _env.ReadFileFromWebRootAsync("logos/planet-nine-logo/planet-nine-logo.svg"); 
         originalSVG = svg;
     }
 

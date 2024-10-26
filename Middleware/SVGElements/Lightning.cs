@@ -33,7 +33,7 @@ internal class Lightning
 
     internal async Task DoInitializeAsync() 
     {
-        svg = await ReadFileFromWebRootAsync(_env, "lightning.svg"); 
+        svg = await ReadFileFromWebRootAsync(_env, "effects/lightning.svg"); 
         originalSVG = svg;
     }
 

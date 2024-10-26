@@ -9,7 +9,7 @@ internal class Background
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string backgroundColor) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("containers/background.svg");
+        string svg = await _env.ReadFileFromWebRootAsync("containers/backgrounds/background.svg");
 
         svg = svg.Replace("{{backgroundColor}}", backgroundColor);
 

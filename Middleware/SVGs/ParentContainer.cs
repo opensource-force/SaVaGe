@@ -11,7 +11,7 @@ internal class ParentContainer
     {
         var svg = "";
 
-        var js = await _env.ReadFileFromWebRootAsync("containers/parent.js");
+        var js = await _env.ReadFileFromWebRootAsync("containers/parent/parent.js");
         js = js.Replace("{{parentElement}}", parentElementId);
 
         var parent = new Parent();

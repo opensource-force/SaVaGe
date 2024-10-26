@@ -9,7 +9,7 @@ internal class Image
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string centerX, string centerY, string width, string height, string opacity, string imageURL, string animations) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("image.svg");
+        string svg = await _env.ReadFileFromWebRootAsync("ui/image/image.svg");
 Console.WriteLine(svg);
 
         svg = svg.Replace("{{centerX}}", centerX)

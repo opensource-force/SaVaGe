@@ -9,7 +9,7 @@ internal class Starfield
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string width, string height, string backgroundColor, int numberOfStars) 
     {
-        var svg = await _env.ReadFileFromWebRootAsync("starfield.svg");
+        var svg = await _env.ReadFileFromWebRootAsync("containers/backgrounds/starfield.svg");
         var stars = "<g id=\"stars\">";
         string[] starColors = ["#fddede", "#defdde", "#dedefd", "#fdfdde", "#fddefd", "#defdfd"];
         for(int i = 0; i < numberOfStars; i++) 

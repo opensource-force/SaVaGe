@@ -9,7 +9,7 @@ internal class Button
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env, string buttonText) 
     {
-        string svg = await _env.ReadFileFromWebRootAsync("button.svg");
+        string svg = await _env.ReadFileFromWebRootAsync("ui/button/button.svg");
 
         svg = svg.Replace("{{buttonText}}", buttonText);
 

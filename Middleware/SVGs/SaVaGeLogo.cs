@@ -9,7 +9,7 @@ internal class SaVaGeLogo
 
     internal async Task<string> SVG(string wrapper, IWebHostEnvironment _env) 
     {
-        var svg = await _env.ReadFileFromWebRootAsync("savage-logo.svg");
+        var svg = await _env.ReadFileFromWebRootAsync("logos/savage-logo/savage-logo.svg");
 
         var specificDate = new DateTime(2024, 10, 15); // Example: January 1, 2023
         var today = DateTime.Today;

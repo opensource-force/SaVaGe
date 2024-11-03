@@ -11,7 +11,6 @@ internal class GridContainer
     {
         string js = await _env.ReadFileFromWebRootAsync("containers/grid-container/grid-container.js");
 
-
         return wrapper.Replace("{{contents}}", js);
     }
 }

@@ -1,0 +1,1 @@
+{"image":"Snake.png","minX":0,"maxX":0,"minY":0,"maxY":320,"minVX":500,"maxVX":500,"minVY":0,"maxVY":0,"minLifetime":2,"maxLifetime":2,"minAX":0,"maxAX":0,"minAY":0,"maxAY":0,"minR":255,"maxR":255,"minG":255,"maxG":255,"minB":255,"maxB":255,"maxParticles":"80","minStartScale":32,"maxStartScale":32,"minEndScale":32,"maxEndScale":32}

@@ -23,7 +23,7 @@ Console.WriteLine(svg);
         return wrapper.Replace("{{contents}}", svg);
     }
 
-    internl async Task<string> CircularSVG(string wrapper, IWebHostEnvironment _env, string centerX, string centerY, string width, string height, string opacity, string imageURL, string animations, string radius)
+    internal async Task<string> CircularSVG(string wrapper, IWebHostEnvironment _env, string centerX, string centerY, string width, string height, string opacity, string imageURL, string animations, string radius)
     {
         string clipPath = await _env.ReadFileFromWebRootAsync("containers/clip-paths/circular-clip-path.svg");
         clipPath = clipPath.Replace("{{cx}}", centerX);
@@ -31,7 +31,7 @@ Console.WriteLine(svg);
         clipPath = clipPath.Replace("{{r}}", radius);
         string svg = await SVG("{{contents}}", _env, centerX, centerY, width, height, opacity, imageURL, animations);
 
-        svg = clipPath + svg
+        svg = clipPath + svg;
       
         return wrapper.Replace("{{contents}}", svg);
     }

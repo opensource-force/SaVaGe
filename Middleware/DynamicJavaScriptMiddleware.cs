@@ -26,6 +26,7 @@ public class DynamicJavaScriptMiddleware
         var parentContainer = new ParentContainer();
         var webpage = new Webpage();
         var gameScene = new GameScene();
+        var svgParticleEmitter = new SVGParticleEmitter();
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
@@ -58,6 +59,11 @@ public class DynamicJavaScriptMiddleware
                     var adStrings = "['ads_', 'ad-', 'ads-', 'googlesyndication', 'pagead2', 'fixed-ad']";
                     var scene = await gameScene.SVG("{{contents}}", _env, adStrings, decoration2);
                     await context.Response.WriteAsync(scene);
+                    return;
+                case "/svg-pes.js":
+                    var emitter = queryParams["emitter"].ToString() ?? "";
+                    var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
+                    await context.Response.WriteAsync(svg);
                     return;
 		default:
     _logger.LogInformation("it's this default thing");

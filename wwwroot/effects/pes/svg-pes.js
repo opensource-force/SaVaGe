@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+/*<!DOCTYPE html>
 <html>
 <head>
   <style>
@@ -30,16 +30,23 @@
     </svg>
   </div>
 
-  <script>
+  <script>*/
+  (() => {
+    const container = document.getElementById('osf-logo-container') || document.createElement('div');
+    if(!container.id) {
+      document.body.appendChild(container);
+    }
+
     const emitterConfig = {{emitterConfig}}
 
     const random = (min, max) => {
       return Math.random() * (max - min) + min;
     }
 
-    const createColorFilters = (startRGB, endRGB) => {
-        const startFilterId = 'colorize_start';
-        const endFilterId = 'colorize_end';
+    const startFilterId = 'colorize_start';
+    const endFilterId = 'colorize_end';
+
+    const createColorFilters = (startRGBA, endRGBA) => {
         const startFilter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
         const endFilter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
         startFilter.setAttribute("id", startFilterId);
@@ -48,19 +55,19 @@
         const startColorMatrix = document.createElementNS("http://www.w3.org/2000/svg", "feColorMatrix");
         startColorMatrix.setAttribute("type", "matrix");
         startColorMatrix.setAttribute("values", `
-          ${startRGB.r/255} 0 0 0 0
-          0 ${startRGB.g/255} 0 0 0
-          0 0 ${startRGB.b/255} 0 0
-          0 0 0 1 0
+          ${random(startRGBA.minStartR, startRGBA.maxStartR)/255} 0 0 0 0
+          0 ${random(startRGBA.minStartG, startRGBA.maxStartG)/255} 0 0 0
+          0 0 ${random(startRGBA.minStartB, startRGBA.maxStartB)/255} 0 0
+          0 0 0 ${random(startRGBA.minStartA, startRGBA.maxStartA)/255} 0
         `);
 
         const endColorMatrix = document.createElementNS("http://www.w3.org/2000/svg", "feColorMatrix");
         endColorMatrix.setAttribute("type", "matrix");
         endColorMatrix.setAttribute("values", `
-          ${endRGB.r/255} 0 0 0 0
-          0 ${endRGB.g/255} 0 0 0
-          0 0 ${endRGB.b/255} 0 0
-          0 0 0 1 0
+          ${random(endRGBA.minEndR, endRGBA.maxEndR)/255} 0 0 0 0
+          0 ${random(endRGBA.minEndG, endRGBA.maxEndG)/255} 0 0 0
+          0 0 ${random(endRGBA.minEndB, endRGBA.maxEndB)/255} 0 0
+          0 0 0 ${random(endRGBA.minEndA, endRGBA.maxEndA)/255} 0
         `);
 
         startFilter.appendChild(startColorMatrix);
@@ -69,45 +76,66 @@
         this.svg.querySelector("defs").appendChild(endFilter);
       };
 
-      createParticle() {
+      // Create an SVG animation that follows physics
+      const createPhysicsAnimation = (startX, startY, startVX, startVY, accelX, accelY, lifetime, fps = 60) {
+
+	  const frames = lifetime * fps;
+	  const dt = lifetime / frames;
+	  const points = [];
+
+	  let x = startX;
+	  let y = startY;
+	  let vx = startVX;
+	  let vy = startVY;
+
+	  // Calculate position at each frame // come back HEREERERERER
+	  for (let i = 0; i <= frames; i++) {
+	      points.push(`${x},${y}`);
+	      
+	      // Update position
+	      x += vx * dt;
+	      y += vy * dt;
+	      
+	      // Update velocity
+              vx += accelX * dt;
+	      vy += accelY * dt;
+	  }
+
+	  return points.join(' ');
+      };
+
+      const createParticle = () => {
         const particle = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        const lifetime = this.random(this.config.minLifetime, this.config.maxLifetime) * 1000; // Convert to ms
+        const lifetime = random(emitterConfig.minLifetime, emitterConfig.maxLifetime) * 1000; // Convert to ms
         
-        // Initial position
-        const x = this.random(this.config.minX, this.config.maxX);
-        const y = this.random(this.config.minY, this.config.maxY);
+        const x = random(emitterConfig.minX, emitterConfig.maxX);
+        const y = random(emitterConfig.minY, emitterConfig.maxY);
         
-        // Set basic attributes
         particle.setAttributeNS("http://www.w3.org/1999/xlink", "href", "/api/placeholder/32/32");
         particle.setAttribute("width", "32");
         particle.setAttribute("height", "32");
         particle.setAttribute("x", x);
         particle.setAttribute("y", y);
 
-        // Create color filters
-        const startFilterId = this.createColorFilter(
-          this.random(this.config.minR, this.config.maxR),
-          this.random(this.config.minG, this.config.maxG),
-          this.random(this.config.minB, this.config.maxB)
-        );
-        
-        // Apply initial color filter
-        particle.setAttribute("filter", `url(#${startFilterId})`);
+        const vx = random(emitterConfig.minVX, emitterConfig.maxVX);
+        const vy = random(emitterConfig.minVY, emitterConfig.maxVY);
 
-        // Create animations
+        const colorFilters = createColorFilter(emitterConfig.startRGBA, emitterConfig.endRGBA);
+        
+        particle.setAttribute("filter", `url(#${startFilterId})`);
+        particle.setAttribute("filter", `url(#${endFilterId})`);
+
+        const path = createPhysicsAnimation(x, y, vx, vy, accelX, accelY, lifetime);
+
         const motionAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animateMotion");
-        const vx = this.random(this.config.minVX, this.config.maxVX);
-        const vy = this.random(this.config.minVY, this.config.maxVY);
-        const distance = vx * (lifetime / 1000);
         
         motionAnimation.setAttribute("dur", `${lifetime}ms`);
         motionAnimation.setAttribute("repeatCount", "1");
-        motionAnimation.setAttribute("path", `M 0,0 L ${distance},${vy * (lifetime / 1000)}`);
+        motionAnimation.setAttribute("path", `M ${path}`);
 
-        // Scale animation
         const scaleAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-        const startScale = this.random(this.config.minStartScale, this.config.maxStartScale) / 32;
-        const endScale = this.random(this.config.minEndScale, this.config.maxEndScale) / 32;
+        const startScale = random(emitterConfig.minStartScale, emitterConfig.maxStartScale) / 32;
+        const endScale = random(emitterConfig.minEndScale, emitterConfig.maxEndScale) / 32;
         
         scaleAnimation.setAttribute("attributeName", "transform");
         scaleAnimation.setAttribute("type", "scale");
@@ -116,22 +144,14 @@
         scaleAnimation.setAttribute("dur", `${lifetime}ms`);
         scaleAnimation.setAttribute("repeatCount", "1");
 
-        // Opacity animation
-        const opacityAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-        opacityAnimation.setAttribute("attributeName", "opacity");
-        opacityAnimation.setAttribute("from", "1");
-        opacityAnimation.setAttribute("to", "0");
-        opacityAnimation.setAttribute("dur", `${lifetime}ms`);
-        opacityAnimation.setAttribute("repeatCount", "1");
-
         // Add animations to particle
         particle.appendChild(motionAnimation);
         particle.appendChild(scaleAnimation);
         particle.appendChild(opacityAnimation);
 
         // Add particle to SVG
-        this.svg.appendChild(particle);
-        this.activeParticles.add(particle);
+        svg.appendChild(particle);
+        activeParticles.add(particle);
 
         // Remove particle and its filter when animation ends
         setTimeout(() => {
@@ -141,22 +161,21 @@
           this.svg.removeChild(particle);
           this.activeParticles.delete(particle);
         }, lifetime);
-      }
+      };
 
-      start() {
+      const start = () => {
         const emitParticle = () => {
-          if (this.activeParticles.size < this.config.maxParticles) {
-            this.createParticle();
+          if (activeParticles.length < emitterConfig.maxParticles) {
+            createParticle();
           }
           requestAnimationFrame(emitParticle);
         };
         
         requestAnimationFrame(emitParticle);
-      }
+      };
 
-    // Start the animation
-    const animator = new ParticleSVGAnimator(emitterConfig, "particleSvg");
-    animator.start();
-  </script>
+      window.onload = start;
+  })();
+/*  </script>
 </body>
-</html>
+</html>*/

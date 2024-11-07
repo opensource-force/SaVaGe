@@ -63,7 +63,7 @@ public class DynamicJavaScriptMiddleware
                 case "/svg-pes.js":
                     var emitter = queryParams["emitter"].ToString() ?? "";
                     var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
-                    await context.Response.WriteAsync(svg);
+                    await context.Response.WriteAsync(svgEmitter);
                     return;
 		default:
     _logger.LogInformation("it's this default thing");

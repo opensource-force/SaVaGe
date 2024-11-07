@@ -11,7 +11,7 @@ internal class SVGParticleEmitter
     {
         var svg = "";
         var emitterJS = await _env.ReadFileFromWebRootAsync("effects/pes/svg-pes.js");
-        var emitterJSON = await _env.ReadFileFromWebRootAsync("effects/pes/json-emitters/{emitter}");
+        var emitterJSON = await _env.ReadFileFromWebRootAsync($"effects/pes/json-emitters/{emitter}");
 
         svg = emitterJS.Replace("{{emitterConfig}}", emitterJSON);
 

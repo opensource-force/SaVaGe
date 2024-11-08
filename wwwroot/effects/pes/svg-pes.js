@@ -55,7 +55,9 @@ console.log('width and height', windowWidth, windowHeight);
       return `0 0 ${maxX} ${maxY}`;
     };
 
-    svg.setAttribute("viewBox", getViewBox(
+    svg.setAttribute("viewBox", "0 0 400 400");
+
+    /*svg.setAttribute("viewBox", getViewBox(
       Math.max(emitterConfig.minX, emitterConfig.maxX),
       Math.max(emitterConfig.minY, emitterConfig.maxY),
       Math.max(emitterConfig.minVX, emitterConfig.maxVX),
@@ -63,7 +65,7 @@ console.log('width and height', windowWidth, windowHeight);
       Math.max(emitterConfig.minAX, emitterConfig.maxAX),
       Math.max(emitterConfig.minAY, emitterConfig.maxAY),
       Math.max(emitterConfig.maxLifetime)
-    ));
+    ));*/
     const backgroundColor = Math.random() < 0.5 ? (Math.random() < 0.5 ? 'green' : 'blue') : 'orange';
     svg.setAttribute("overflow", "hidden");
     svg.setAttribute("style", `background-color: ${backgroundColor};`);
@@ -149,9 +151,9 @@ console.log('width and height', windowWidth, windowHeight);
         particle.setAttributeNS("http://www.w3.org/1999/xlink", "href", emitterConfig.imageData);
         particle.setAttribute("width", "32");
         particle.setAttribute("height", "32");
-        particle.setAttribute("x", x);
-        particle.setAttribute("y", y);
-        particle.setAttribute("opacity", "0");
+        particle.setAttribute("x", 0);
+        particle.setAttribute("y", 0);
+        particle.setAttribute("opacity", "0.5");
         particle.setAttribute("fill", "green");
 
         const vx = random(emitterConfig.minVX, emitterConfig.maxVX);
@@ -171,7 +173,7 @@ console.log(x, y, vx, vy, ax, ay, lifetime);
         const removeParticle = () => {
 	  animationCount++;
 	  if (animationCount >= totalAnimations) {
-//	    svg.removeChild(particle);
+	    svg.removeChild(particle);
 	    svg.querySelector("defs").removeChild(
 	      document.getElementById(startFilterId)
 	    );
@@ -180,7 +182,7 @@ console.log(x, y, vx, vy, ax, ay, lifetime);
         };
 
         setTimeout(() => {
-//          svg.removeChild(particle);
+          svg.removeChild(particle);
 	  svg.querySelector("defs").removeChild(
 	    document.getElementById(startFilterId)
 	  );

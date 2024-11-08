@@ -36,6 +36,16 @@ public class DynamicJavaScriptMiddleware
 
         if (context.Request.Path.Value.EndsWith(".js"))
         {
+Console.WriteLine(context.Request.Path.Value);
+            if (context.Request.Path.Value.StartsWith("/svg-pes-")) 
+            {
+		  var stack = new Stack<string>(context.Request.Path.Value.Split("-"));
+                  var emitterjs = stack.Pop();
+                  var emitter = emitterjs.Split(".")[0];
+		  var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
+		  await context.Response.WriteAsync(svgEmitter);
+		  return;
+            }
 	    switch (context.Request.Path.Value)
 	    {
 		case "/foo.js": svg = await osfLogo.SVG(svg, _env);

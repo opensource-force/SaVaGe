@@ -34,11 +34,9 @@
   (() => {
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
-    const container = document.getElementById('container') || document.createElement('div');
-    if(!container.id) {
-      container.setAttribute("style", `width:${400 + 'px'};height:${400 + 'px'};background-color: blue;`);
-      document.body.appendChild(container);
-    }
+    const containerId = 'container_' + Math.floor(Math.random() * 10000);
+    const container = document.createElement('div');
+    container.id = containerId;
 console.log('width and height', windowWidth, windowHeight);
  
     const emitterConfig = {{emitterConfig}}
@@ -50,8 +48,9 @@ console.log('width and height', windowWidth, windowHeight);
     svg.setAttribute("border-width", "2");
 
     const getViewBox = (x, y, vx, vy, ax, ay, lifetime) => {
-      const maxX = x + (vx * lifetime) + ((1 / 2) * ax * (lifetime ^ 2));
-      const maxY = y + (vy * lifetime) + ((1 / 2) * ay * (lifetime ^ 2));
+      const paddedLifetime = lifetime;
+      const maxX = Math.abs(x + (vx * paddedLifetime) + ((1 / 2) * ax * (paddedLifetime ^ 2)));
+      const maxY = Math.abs(y + (vy * paddedLifetime) + ((1 / 2) * ay * (paddedLifetime ^ 2)));
 
       return `0 0 ${maxX} ${maxY}`;
     };
@@ -108,7 +107,7 @@ console.log('width and height', windowWidth, windowHeight);
 
       // Create an SVG animation that follows physics
       const createPhysicsAnimation = (startX, startY, startVX, startVY, accelX, accelY, lifetimeMS, fps = 60) => {
-          const lifetime = (lifetimeMS + 1) / 1000;
+          const lifetime = (lifetimeMS) / 1000;
 
 	  const frames = lifetime * fps;
 	  const dt = lifetime / frames;
@@ -119,7 +118,7 @@ console.log('width and height', windowWidth, windowHeight);
 	  let vx = startVX;
 	  let vy = startVY;
   
-          points.push("M 0,0 ");
+          points.push(`M ${x},${y} `);
 
 	  // Calculate position at each frame // come back HEREERERERER
 	  for (let i = 0; i <= frames; i++) {
@@ -129,7 +128,7 @@ console.log('width and height', windowWidth, windowHeight);
 	      x += Math.round(vx * dt);
 	      y += Math.round(vy * dt);
 	      
-emitterConfig.	      // Update velocity
+	      // Update velocity
               vx += accelX * dt;
 	      vy += accelY * dt;
 	  }
@@ -141,6 +140,8 @@ emitterConfig.	      // Update velocity
       const createParticle = () => {
         const particle = document.createElementNS("http://www.w3.org/2000/svg", "image");
         const lifetime = random(emitterConfig.minLifetime, emitterConfig.maxLifetime) * 1000; // Convert to ms
+        let animationCount = 0;
+        const totalAnimations = 3;
         
         const x = random(emitterConfig.minX, emitterConfig.maxX);
         const y = random(emitterConfig.minY, emitterConfig.maxY);
@@ -150,6 +151,7 @@ emitterConfig.	      // Update velocity
         particle.setAttribute("height", "32");
         particle.setAttribute("x", x);
         particle.setAttribute("y", y);
+        particle.setAttribute("opacity", "0");
         particle.setAttribute("fill", "green");
 
         const vx = random(emitterConfig.minVX, emitterConfig.maxVX);
@@ -166,44 +168,74 @@ emitterConfig.	      // Update velocity
         const path = createPhysicsAnimation(x, y, vx, vy, ax, ay, lifetime);
 console.log(x, y, vx, vy, ax, ay, lifetime);
 
+        const removeParticle = () => {
+	  animationCount++;
+	  if (animationCount >= totalAnimations) {
+//	    svg.removeChild(particle);
+	    svg.querySelector("defs").removeChild(
+	      document.getElementById(startFilterId)
+	    );
+            particleCount--;
+	  }
+        };
+
+        setTimeout(() => {
+//          svg.removeChild(particle);
+	  svg.querySelector("defs").removeChild(
+	    document.getElementById(startFilterId)
+	  );
+	  particleCount--;
+        }, lifetime + 50);
+
         const motionAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animateMotion");
         
         motionAnimation.setAttribute("dur", `${lifetime}ms`);
         motionAnimation.setAttribute("repeatCount", "1");
         motionAnimation.setAttribute("path", `${path}`);
+        motionAnimation.setAttribute("fill", "freeze");
+        motionAnimation.addEventListener('endEvent', removeParticle);
 
-        const scaleAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-      //  const startScale = random(emitterConfig.minStartScale, emitterConfig.maxStartScale) / 32;
+      
+        const widthAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+        const heightAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+//  const startScale = random(emitterConfig.minStartScale, emitterConfig.maxStartScale) / 32;
         const startScale = random(emitterConfig.minStartScale, emitterConfig.maxStartScale);
-        const endScale = random(emitterConfig.minEndScale, emitterConfig.maxEndScale) / 32;
+        const endScale = random(emitterConfig.minEndScale, emitterConfig.maxEndScale);
         
-        scaleAnimation.setAttribute("attributeName", "transform");
-        scaleAnimation.setAttribute("type", "scale");
-        scaleAnimation.setAttribute("from", startScale);
-        scaleAnimation.setAttribute("to", endScale);
-        scaleAnimation.setAttribute("dur", `${lifetime}ms`);
-        scaleAnimation.setAttribute("repeatCount", "1");
+        widthAnimation.setAttribute("attributeName", "width");
+        widthAnimation.setAttribute("from", startScale);
+        widthAnimation.setAttribute("to", endScale);
+        widthAnimation.setAttribute("dur", `${lifetime}ms`);
+        widthAnimation.setAttribute("repeatCount", "1");
+        widthAnimation.setAttribute("fill", "freeze");
+        widthAnimation.addEventListener('endEvent', removeParticle);
+
+        heightAnimation.setAttribute("attributeName", "height");
+        heightAnimation.setAttribute("from", startScale);
+        heightAnimation.setAttribute("to", endScale);
+        heightAnimation.setAttribute("dur", `${lifetime}ms`);
+        heightAnimation.setAttribute("repeatCount", "1");
+        heightAnimation.setAttribute("fill", "freeze");
+        heightAnimation.addEventListener('endEvent', removeParticle);
+
+        const opacityAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+        opacityAnimation.setAttribute("attributeName", "opacity");
+        opacityAnimation.setAttribute("from", "0");
+        opacityAnimation.setAttribute("to", "1");
+        opacityAnimation.setAttribute("dur", "0.001s");
+        opacityAnimation.setAttribute("begin", "0s");
+        opacityAnimation.setAttribute("fill", "freeze");
 
         // Add animations to particle
         particle.appendChild(motionAnimation);
-        particle.appendChild(scaleAnimation);
+        particle.appendChild(widthAnimation);
+        particle.appendChild(heightAnimation);
+        particle.appendChild(opacityAnimation);
 
         // Add particle to SVG
+console.log('trying to append particle to svg.id', svg.id);
         svg.appendChild(particle);
         particleCount++;
-
-        // Remove particle and its filter when animation ends
-        setTimeout(() => {
-          svg.querySelector("defs").removeChild(
-            document.getElementById(startFilterId)
-          );
-         /* svg.querySelector("defs").removeChild(
-            document.getElementById(colorFilters.endFilterId)
-          );*/
-
-          svg.removeChild(particle);
-          particleCount--;
-        }, lifetime);
       };
 
       let running = true;
@@ -213,10 +245,13 @@ console.log(x, y, vx, vy, ax, ay, lifetime);
       };
 
       const start = () => {
+        document.body.appendChild(container);
+console.log('start gets called for svg.id', svg.id);
 svg.setAttribute("fill", "green");
         container.appendChild(svg);
         const emitParticle = () => {
           if (particleCount < emitterConfig.maxParticles) {
+console.log('creating particle for svg.id', svg.id);
             createParticle();
           }
           if(running) {
@@ -228,11 +263,15 @@ svg.setAttribute("fill", "green");
 
 	setTimeout(() => {
 console.log('ending');
-	  end();
+	  //end();
 	}, emitterConfig.maxLifetime * 1000);
       };
 
-      window.onload = start;
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+	  start();
+      }
   })();
 /*  </script>
 </body>

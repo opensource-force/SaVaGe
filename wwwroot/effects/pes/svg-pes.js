@@ -1,71 +1,29 @@
-/*<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .particle-container {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      background: #333;
-      overflow: hidden;
-    }
-    .particle {
-      position: absolute;
-      opacity: 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="particle-container">
-    <svg width="100%" height="100%" id="particleSvg">
-      <defs>
-        <!-- Motion path for particles -->
-        <path id="motionPath" d="M 0,0 Q 35,0 70,0" fill="none" />
-        
-        <!-- Filter for colorizing the particles -->
-        <filter id="colorize">
-          <feColorMatrix type="matrix" values="1 0 0 0 0   0 1 0 0 0   0 0 1 0 0  0 0 0 1 0"/>
-        </filter>
-      </defs>
-    </svg>
-  </div>
-
-  <script>*/
   (() => {
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
-    const containerId = 'container_' + Math.floor(Math.random() * 10000);
-    const container = document.createElement('div');
+
+    const containerId = 'savage';
+    const container = document.getElementById('savage') || document.createElement('div');
     container.id = containerId;
-console.log('width and height', windowWidth, windowHeight);
+    container.style = `width:${windowWidth}px;height:${windowHeight}px;`;
  
     const emitterConfig = {{emitterConfig}}
 
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("id", "emitterSVG" + (Math.floor(Math.random() * 10000)));
-    svg.setAttribute("width", `${400}`);
-    svg.setAttribute("height", `${400}`);
+    let svg = document.getElementById("emitterSVG") || document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+    if(!svg.id) {
+      container.appendChild(svg);
+      svg.setAttribute("id", "emitterSVG");
+    }
+
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
     svg.setAttribute("border-width", "2");
 
-    const getViewBox = (x, y, vx, vy, ax, ay, lifetime) => {
-      const paddedLifetime = lifetime;
-      const maxX = Math.abs(x + (vx * paddedLifetime) + ((1 / 2) * ax * (paddedLifetime ^ 2)));
-      const maxY = Math.abs(y + (vy * paddedLifetime) + ((1 / 2) * ay * (paddedLifetime ^ 2)));
+    // The container, and this viewBox will likely end up being the same for all game scenes, but
+    // since this is the furthest along, we'll leave it as is for now.
+    svg.setAttribute("viewBox", "0 0 1200 500");
 
-      return `0 0 ${maxX} ${maxY}`;
-    };
-
-    svg.setAttribute("viewBox", "0 0 400 400");
-
-    /*svg.setAttribute("viewBox", getViewBox(
-      Math.max(emitterConfig.minX, emitterConfig.maxX),
-      Math.max(emitterConfig.minY, emitterConfig.maxY),
-      Math.max(emitterConfig.minVX, emitterConfig.maxVX),
-      Math.max(emitterConfig.minVY, emitterConfig.maxVY),
-      Math.max(emitterConfig.minAX, emitterConfig.maxAX),
-      Math.max(emitterConfig.minAY, emitterConfig.maxAY),
-      Math.max(emitterConfig.maxLifetime)
-    ));*/
     const backgroundColor = Math.random() < 0.5 ? (Math.random() < 0.5 ? 'green' : 'blue') : 'orange';
     svg.setAttribute("overflow", "hidden");
     svg.setAttribute("style", `background-color: ${backgroundColor};`);
@@ -73,8 +31,6 @@ console.log('width and height', windowWidth, windowHeight);
     const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
     svg.appendChild(defs);
     
-    container.appendChild(svg);
-
     let particleCount = 0;
 
     const random = (min, max) => {
@@ -107,7 +63,8 @@ console.log('width and height', windowWidth, windowHeight);
         return startFilterId;
       };
 
-      // Create an SVG animation that follows physics
+      // Right now this just handles linear motion. I think the plan is to add more Physics as
+      // needed in small chunks. 
       const createPhysicsAnimation = (startX, startY, startVX, startVY, accelX, accelY, lifetimeMS, fps = 60) => {
           const lifetime = (lifetimeMS) / 1000;
 
@@ -122,15 +79,12 @@ console.log('width and height', windowWidth, windowHeight);
   
           points.push(`M ${x},${y} `);
 
-	  // Calculate position at each frame // come back HEREERERERER
 	  for (let i = 0; i <= frames; i++) {
 	      points.push(` L ${x},${y}`);
 	      
-	      // Update position
 	      x += Math.round(vx * dt);
 	      y += Math.round(vy * dt);
 	      
-	      // Update velocity
               vx += accelX * dt;
 	      vy += accelY * dt;
 	  }
@@ -153,7 +107,7 @@ console.log('width and height', windowWidth, windowHeight);
         particle.setAttribute("height", "32");
         particle.setAttribute("x", 0);
         particle.setAttribute("y", 0);
-        particle.setAttribute("opacity", "0.5");
+        particle.setAttribute("opacity", "0");
         particle.setAttribute("fill", "green");
 
         const vx = random(emitterConfig.minVX, emitterConfig.maxVX);
@@ -165,13 +119,12 @@ console.log('width and height', windowWidth, windowHeight);
         const startFilterId = createColorFilters(emitterConfig.startRGBA, emitterConfig.endRGBA);
         
         particle.setAttribute("filter", `url(#${startFilterId})`);
-        //particle.setAttribute("filter", `url(#${colorFilters.endFilterId})`);
 
         const path = createPhysicsAnimation(x, y, vx, vy, ax, ay, lifetime);
-console.log(x, y, vx, vy, ax, ay, lifetime);
 
         const removeParticle = () => {
 	  animationCount++;
+
 	  if (animationCount >= totalAnimations) {
 	    svg.removeChild(particle);
 	    svg.querySelector("defs").removeChild(
@@ -200,7 +153,6 @@ console.log(x, y, vx, vy, ax, ay, lifetime);
       
         const widthAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
         const heightAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-//  const startScale = random(emitterConfig.minStartScale, emitterConfig.maxStartScale) / 32;
         const startScale = random(emitterConfig.minStartScale, emitterConfig.maxStartScale);
         const endScale = random(emitterConfig.minEndScale, emitterConfig.maxEndScale);
         
@@ -247,13 +199,14 @@ console.log('trying to append particle to svg.id', svg.id);
       };
 
       const start = () => {
-        document.body.appendChild(container);
-console.log('start gets called for svg.id', svg.id);
-svg.setAttribute("fill", "green");
-        container.appendChild(svg);
+        if(!document.getElementById(container.id)) {
+          document.body.appendChild(container);
+        }
+
+        svg = document.getElementById('emitterSVG');
+
         const emitParticle = () => {
           if (particleCount < emitterConfig.maxParticles) {
-console.log('creating particle for svg.id', svg.id);
             createParticle();
           }
           if(running) {
@@ -264,8 +217,7 @@ console.log('creating particle for svg.id', svg.id);
         requestAnimationFrame(emitParticle);
 
 	setTimeout(() => {
-console.log('ending');
-	  //end();
+	  end();
 	}, emitterConfig.maxLifetime * 1000);
       };
 
@@ -275,6 +227,3 @@ console.log('ending');
 	  start();
       }
   })();
-/*  </script>
-</body>
-</html>*/

@@ -1,33 +1,33 @@
-function createCircleGrid(containerElement, count = 5) {
-      // Limit count between 1 and 64
-      const safeCount = Math.min(Math.max(1, count), 64);
-      
-      // Calculate optimal grid layout
-      function calculateLayout(n) {
-        const containerAspectRatio = 2; // 2:1 since we want half height
-        let bestRows = 1;
-        let bestCols = n;
-        let bestWaste = Infinity;
-        
-        // Try different row counts to find optimal arrangement
-        for (let rows = 1; rows <= Math.sqrt(n * containerAspectRatio); rows++) {
-          const cols = Math.ceil(n / rows);
-          const gridAspectRatio = cols / rows;
-          const waste = Math.abs(containerAspectRatio - gridAspectRatio);
-          
-          if (waste < bestWaste) {
-            bestWaste = waste;
-            bestRows = rows;
-            bestCols = cols;
+const createGrid = (containerElement, count = 5) => {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const safeCount = Math.min(Math.max(1, count), 32);
+ 
+      const displayElements = {{displayElements}};
+
+      const getLayout = (displayElements, safeCount) => {
+        let rows = 1;
+        let columns = 0;
+        let maxColumns = 4;
+        let maxRows = 4;
+        for(var i = 0; i < Math.min(safeCount, displayElements.length); i++) {
+          columns++;
+          if(columns > maxColumns) {
+            rows++;
+            columns = 1;
+            continue();
           }
-        }
-        
-        return { rows: bestRows, cols: bestCols };
-      }
+          if(rows > maxRows) {
+            if(windowWidth > windowHeight) {
+              maxColumns++;
+            } else {
+              maxRows++;
+            }
+          }
+        } 
+        return { rows, columns };
+      };
       
-      const layout = calculateLayout(safeCount);
-      
-      // Create SVG string
       let svgString = `
         <svg width="100%" height="100%" viewBox="0 0 ${layout.cols * 120} ${layout.rows * 120}" 
              preserveAspectRatio="xMidYMid meet">

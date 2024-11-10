@@ -75,6 +75,10 @@ Console.WriteLine(context.Request.Path.Value);
                     var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
                     await context.Response.WriteAsync(svgEmitter);
                     return;
+                case "/speakeasy.js":
+                    var speakeasy = await _env.ReadFileFromWebRootAsync("containers/speakeasy/speakeasy.js");
+                    await context.Response.WriteAsync(speakeasy);
+                    return;
 		default:
     _logger.LogInformation("it's this default thing");
     _logger.LogInformation("Request path: {Path}", context.Request.Path.Value);

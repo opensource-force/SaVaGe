@@ -27,6 +27,7 @@ public class DynamicJavaScriptMiddleware
         var webpage = new Webpage();
         var gameScene = new GameScene();
         var svgParticleEmitter = new SVGParticleEmitter();
+        var dialogBox = new DialogBox();
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
@@ -78,6 +79,17 @@ Console.WriteLine(context.Request.Path.Value);
                 case "/speakeasy.js":
                     var speakeasy = await _env.ReadFileFromWebRootAsync("containers/speakeasy/speakeasy.js");
                     await context.Response.WriteAsync(speakeasy);
+                    return;
+                case "/dialog-box.js":
+Console.WriteLine($"{queryParams.ToString()}");
+                    var borderStops = queryParams["borderStops"].ToString() ?? "";
+                    var backgroundStops = queryParams["backgroundStops"].ToString() ?? "";
+                    var width = queryParams["width"].ToString() ?? "";
+                    var height = queryParams["height"].ToString() ?? "";
+                    var borderRadius = queryParams["borderRadius"].ToString() ?? "";
+                    var borderWidth = queryParams["borderWidth"].ToString() ?? "";
+                    var dialog = await dialogBox.SVG("{{contents}}", _env, borderStops, backgroundStops, width, height, borderRadius, borderWidth);
+                    await context.Response.WriteAsync(dialog);
                     return;
 		default:
     _logger.LogInformation("it's this default thing");

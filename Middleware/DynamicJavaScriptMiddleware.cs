@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 public class DynamicJavaScriptMiddleware
 {
@@ -26,6 +27,7 @@ public class DynamicJavaScriptMiddleware
         var parentContainer = new ParentContainer();
         var webpage = new Webpage();
         var gameScene = new GameScene();
+        var background = new Background();
         var svgParticleEmitter = new SVGParticleEmitter();
         var dialogBox = new DialogBox();
 
@@ -58,6 +60,21 @@ Console.WriteLine(context.Request.Path.Value);
                     return;
                 case "/button.js": svg = await button.SVG("{{contents}}", _env);
                     await context.Response.WriteAsync(svg);
+                    return;
+                case "/background.js": 
+                    var backgroundType = queryParams["backgroundType"].ToString() ?? "noType";
+            Console.WriteLine($"{backgroundType}SVG");
+            var backgroundColor = queryParams["backgroundColor"].ToString() ?? "foobar";
+            Console.WriteLine(backgroundColor);
+                    var bgType = background.GetType();
+                    var methodInfo = bgType.GetMethod($"{backgroundType}SVG");
+                    if(methodInfo == null) 
+                    {
+                        return;
+                    } 
+                    var args = new object[] { "{{contents}}", _env, queryParams };
+                    svg = await (Task<string>)methodInfo.Invoke(background, args);
+                    context.Response.WriteAsync(svg);
                     return;
                 case "/parent-container.js": 
                     var parentElementId = queryParams["parentElementId"].ToString() ?? "parent";

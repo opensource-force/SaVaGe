@@ -1,43 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="100%" height="100%" viewBox="0 0 400 400">
 <defs>
-  <radialGradient id="shine" cx="30%" cy="30%" r="70%" fx="30%" fy="30%">
+  <radialGradient id="monitorShine" cx="30%" cy="30%" r="70%" fx="30%" fy="30%">
     <stop offset="0%" style="stop-color:rgb(60,60,60);stop-opacity:1" />
     <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
   </radialGradient>
-  <filter id="glow">
+  <filter id="monitorGlow">
     <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
     <feMerge>
       <feMergeNode in="coloredBlur"/>
       <feMergeNode in="SourceGraphic"/>
     </feMerge>
   </filter>
-</defs>
-
-<defs>
-   
-    <!-- Glow filter for the text -->
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
     
     <!-- Clip path to constrain the text within the circle -->
-    <clipPath id="circleClip">
+    <clipPath id="monitorCircleClip">
       <circle cx="{{cx}}" cy="{{cy}}" r="{{r}}" />
     </clipPath>
   </defs>
 
-<circle cx="{{cx}}" cy="{{cy}}" r="{{r}}" fill="url(#shine)" />
+<circle cx="{{cx}}" cy="{{cy}}" r="{{r}}" fill="url(#monitorShine)" />
   
-<g clip-path="url(#circleClip)">
-    <text x="{{cx}}" y="{{cyText1}}" font-family="Arial, sans-serif" font-size="6" fill="#00ff00" 
-          text-anchor="middle" filter="url(#glow)">
-      Greetings walking ones.
+<g clip-path="url(#monitorCircleClip)">
+    <text id="planetNineTopText" x="{{cx}}" y="{{cy}}" font-family="Arial, sans-serif" font-size="6" fill="#00ff00" 
+          text-anchor="middle" filter="url(#monitorGlow)">
+      foo
     </text>
-    <text x="{{cx}}" y="{{cyText2}}" font-family="Arial, sans-serif" font-size="6" fill="#00ff00" 
-          text-anchor="middle" filter="url(#glow)">
-      {{bottomText}}
+    <text id="planetNineBottomText" x="{{cx}}" y="{{cy}}" font-family="Arial, sans-serif" font-size="6" fill="#00ff00" 
+          text-anchor="middle" filter="url(#monitorGlow)">
+      bar
     </text>
   </g>
+</svg>

@@ -23,13 +23,14 @@ public class DynamicJavaScriptMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         var osfLogo = new OSFLogo();
-        var button = new ButtonSVG();
+        var button = new Button();
         var parentContainer = new ParentContainer();
         var webpage = new Webpage();
         var gameScene = new GameScene();
         var background = new Background();
         var svgParticleEmitter = new SVGParticleEmitter();
         var dialogBox = new DialogBox();
+        var planetNineMonitor = new PlanetNineMonitor();
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
@@ -56,9 +57,6 @@ Console.WriteLine(context.Request.Path.Value);
 		    return;
 		break;
                 case "/juliaswitch.js": svg = await webpage.Juliaswitch(svg, _env, "#734f96");
-                    await context.Response.WriteAsync(svg);
-                    return;
-                case "/button.js": svg = await button.SVG("{{contents}}", _env);
                     await context.Response.WriteAsync(svg);
                     return;
                 case "/background.js": 
@@ -108,6 +106,21 @@ Console.WriteLine($"{queryParams.ToString()}");
                     var dialog = await dialogBox.SVG("{{contents}}", _env, borderStops, backgroundStops, width, height, borderRadius, borderWidth);
                     await context.Response.WriteAsync(dialog);
                     return;
+                case "/planet-nine-monitor.js":
+                    var containerId = queryParams["containerId"].ToString() ?? "";
+                    var pnWidth = queryParams["width"].ToString() ?? "";
+                    var pnHeight = queryParams["height"].ToString() ?? "";
+                    var pnCx = queryParams["cx"].ToString() ?? "";
+                    var pnCy = queryParams["cy"].ToString() ?? "";
+                    var pnR = queryParams["r"].ToString() ?? "";
+                    var monitor = await planetNineMonitor.SVG("{{contents}}", _env, containerId, pnWidth, pnHeight, pnCx, pnCy, pnR);
+                    await context.Response.WriteAsync(monitor);
+                    return;
+                case "/gradient-button.js":
+                    var gradientButton = await button.GradientSVG("{{contents}}", _env, queryParams);
+                    
+                    await context.Response.WriteAsync(gradientButton);
+                return;
 		default:
     _logger.LogInformation("it's this default thing");
     _logger.LogInformation("Request path: {Path}", context.Request.Path.Value);

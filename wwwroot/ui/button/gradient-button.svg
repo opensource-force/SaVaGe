@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="{{x}}" y="{{y}}" width="{{width}}" height="{{height}}" viewBox="0 0 120 48">
+  <defs>
+        <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            {{borderStops}}
+        </linearGradient>
+
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            {{backgroundStops}}          
+        </linearGradient>
+    </defs>
+  <style>
+    .button-text {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      fill: white;
+    }
+  </style>
+  
+  <rect x="0" y="0" width="120" height="48" rx="24" ry="24"
+        fill="#url(backgroundGradient)"
+        stroke="#url(borderGradient)" stroke-width="{{borderWidth}}" />
+  <!--rect x="{{xMinusBorder}}" y="{{yMinusBorder}}" width="{{widthMinusBorder}}" height="{{heightMinusBorder}}"-->
+  
+  <text x="50%" y="50%" class="button-text" text-anchor="middle" dominant-baseline="middle">
+    {{buttonText}}
+  </text>
+</svg>

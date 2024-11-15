@@ -24,7 +24,7 @@ Console.WriteLine(backgroundColor);
 
         var starfield = new Starfield();
         string svg = await starfield.SVG("{{contents}}", _env, "100%", "100%", backgroundColor, 200);
-        js = js.Replace("{{contents}}", $"<svg width=\"100%\" height=\"100%\">\n{svg}\n</svg>");
+        js = js.Replace("{{contents}}", $"<svg id=\"starfield\" width=\"100%\" height=\"100%\" viewBox=\"0 0 400 400\">\n{svg}\n</svg>");
 
         return wrapper.Replace("{{contents}}", js);
     }

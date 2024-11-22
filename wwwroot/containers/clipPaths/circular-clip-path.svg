@@ -1,0 +1,5 @@
+<defs>
+    <clipPath id="circleClip">
+      <circle cx="{{cx}}" cy="{{cy}}" r="{{r}}"/>
+    </clipPath>
+  </defs>

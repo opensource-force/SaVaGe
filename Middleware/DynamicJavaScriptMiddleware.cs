@@ -26,6 +26,8 @@ public class DynamicJavaScriptMiddleware
         var parentContainer = new ParentContainer();
         var webpage = new Webpage();
         var gameScene = new GameScene();
+        var svgParticleEmitter = new SVGParticleEmitter();
+        var dialogBox = new DialogBox();
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
@@ -35,6 +37,16 @@ public class DynamicJavaScriptMiddleware
 
         if (context.Request.Path.Value.EndsWith(".js"))
         {
+Console.WriteLine(context.Request.Path.Value);
+            if (context.Request.Path.Value.StartsWith("/svg-pes-")) 
+            {
+		  var stack = new Stack<string>(context.Request.Path.Value.Split("-"));
+                  var emitterjs = stack.Pop();
+                  var emitter = emitterjs.Split(".")[0];
+		  var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
+		  await context.Response.WriteAsync(svgEmitter);
+		  return;
+            }
 	    switch (context.Request.Path.Value)
 	    {
 		case "/foo.js": svg = await osfLogo.SVG(svg, _env);
@@ -58,6 +70,26 @@ public class DynamicJavaScriptMiddleware
                     var adStrings = "['ads_', 'ad-', 'ads-', 'googlesyndication', 'pagead2', 'fixed-ad']";
                     var scene = await gameScene.SVG("{{contents}}", _env, adStrings, decoration2);
                     await context.Response.WriteAsync(scene);
+                    return;
+                case "/svg-pes.js":
+                    var emitter = queryParams["emitter"].ToString() ?? "";
+                    var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
+                    await context.Response.WriteAsync(svgEmitter);
+                    return;
+                case "/speakeasy.js":
+                    var speakeasy = await _env.ReadFileFromWebRootAsync("containers/speakeasy/speakeasy.js");
+                    await context.Response.WriteAsync(speakeasy);
+                    return;
+                case "/dialog-box.js":
+Console.WriteLine($"{queryParams.ToString()}");
+                    var borderStops = queryParams["borderStops"].ToString() ?? "";
+                    var backgroundStops = queryParams["backgroundStops"].ToString() ?? "";
+                    var width = queryParams["width"].ToString() ?? "";
+                    var height = queryParams["height"].ToString() ?? "";
+                    var borderRadius = queryParams["borderRadius"].ToString() ?? "";
+                    var borderWidth = queryParams["borderWidth"].ToString() ?? "";
+                    var dialog = await dialogBox.SVG("{{contents}}", _env, borderStops, backgroundStops, width, height, borderRadius, borderWidth);
+                    await context.Response.WriteAsync(dialog);
                     return;
 		default:
     _logger.LogInformation("it's this default thing");

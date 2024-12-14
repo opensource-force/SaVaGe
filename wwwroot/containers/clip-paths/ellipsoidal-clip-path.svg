@@ -1,0 +1,12 @@
+<defs>
+  <clipPath id="ellipseClip">
+    <ellipse 
+	cx="{{cx}}" 
+	cy="{{cy}}" 
+	rx="{{rx}}" 
+	ry="{{ry}}"
+	stroke="{{ellipseClipStroke}}"
+	stroke-width="2"
+      />
+  </clipPath>
+</defs>

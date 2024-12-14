@@ -3,7 +3,7 @@ const createGrid = (containerElement, count = 5) => {
       const windowHeight = window.innerHeight;
       const safeCount = Math.min(Math.max(1, count), 32);
  
-      const displayElements = {{displayElements}};
+      const displayElements = savage.{{containerId}}Elements;
 
       const getLayout = (displayElements, safeCount) => {
         let rows = 1;
@@ -29,7 +29,7 @@ const createGrid = (containerElement, count = 5) => {
       };
       
       let svgString = `
-        <svg width="100%" height="100%" viewBox="0 0 ${layout.cols * 120} ${layout.rows * 120}" 
+        <svg id="{{containerId}}" width="{{width}}" height="{{height}}" viewBox="0 0 ${layout.cols * 120} ${layout.rows * 120}" 
              preserveAspectRatio="xMidYMid meet">
           <defs>
             <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -41,6 +41,7 @@ const createGrid = (containerElement, count = 5) => {
               <circle cx="50" cy="50" r="45"/>
             </clipPath>
           </defs>
+          {{contents}}
       `;
       
       // Generate circles
@@ -55,30 +56,20 @@ const createGrid = (containerElement, count = 5) => {
             <image
               x="0" y="0"
               width="100" height="100"
-              href="/api/placeholder/100/100?text=${i + 1}"
+              href=${displayElements[i]}
               clip-path="url(#circleClip)"
-            />
-            <circle 
-              cx="50" cy="50" r="45"
-              fill="none"
-              stroke="url(#borderGradient)"
-              stroke-width="3"
             />
           </g>
         `;
       }
       
       svgString += '</svg>';
-      
-      // Insert the SVG into the container
-      containerElement.innerHTML = svgString;
     }
 
-    // Initial creation
-    const container = document.getElementById('svgContainer');
+    const container = 
+
     createCircleGrid(container, 12); // Try with 12 circles
 
-    // Optional: Update on window resize for better responsive behavior
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);

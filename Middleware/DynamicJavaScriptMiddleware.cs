@@ -120,7 +120,15 @@ Console.WriteLine($"{queryParams.ToString()}");
                     var gradientButton = await button.GradientSVG("{{contents}}", _env, queryParams);
                     
                     await context.Response.WriteAsync(gradientButton);
-                return;
+                    return;
+                case "/ellipsoidal-grid-container.js": 
+                    var evgContainerId = queryParams["containerId"] ?? "";
+                    var egvWidth = queryParams["width"].ToString() ?? "";
+                    var egvHeight = queryParams["height"].ToString() ?? "";
+                    var ellipsoidalGridContainer = await gridContainer.EllipsoidalSVG("{{contents}}", _env, evgContainerId, evgWidth, evgHeight);
+
+                    await context.Response.WriteAsync(ellipsoidalGridContainer);
+                    return;
 		default:
     _logger.LogInformation("it's this default thing");
     _logger.LogInformation("Request path: {Path}", context.Request.Path.Value);

@@ -7,6 +7,24 @@ internal class Webpage
         
     }
 
+    internal async Task<string> MAGICAndTeleportation(string wrapper, IWebHostEnvironment _env)
+    {
+        var svg = "";
+        var svgContent = "";
+
+        var linker = new Link();
+        var image = new Image();
+
+        var background = new Background();
+        svg = await background.SVG("{{contents}}", _env, "url(#background)");
+        var linearGradient = new LinearGradient();
+        svg = await linearGradient.SVG(svg, _env, "background", "0%", "0%", "100%", "0%", "0%", "100%", "purple", "green");
+        
+        
+
+        return wrapper.Replace("{{contents}}", svg);
+    }
+
     internal async Task<string> Juliaswitch(string wrapper, IWebHostEnvironment _env, string backgroundColor) 
     {
         var svg = "";

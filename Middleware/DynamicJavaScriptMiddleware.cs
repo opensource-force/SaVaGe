@@ -49,6 +49,9 @@ Console.WriteLine(context.Request.Path.Value);
             }
 	    switch (context.Request.Path.Value)
 	    {
+                case "/gradient-background.js": svg = await webpage.MAGICAndTeleportation(svg, _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
 		case "/foo.js": svg = await osfLogo.SVG(svg, _env);
 		    await context.Response.WriteAsync(svg);
 		    return;

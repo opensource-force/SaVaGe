@@ -17,10 +17,20 @@ internal class Webpage
 
         var background = new Background();
         svg = await background.SVG("{{contents}}", _env, "url(#background)");
+        
+        var magic = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic.svg");
+        svg = svg + magic;
+
+        var teleportation = await _env.ReadFileFromWebRootAsync("planet's-test-dir/teleportation.svg");
+        teleportation = teleportation.Replace("{{x}}", "50%").Replace("{{y}}", "0");
+        svg = svg + teleportation;
+
         var linearGradient = new LinearGradient();
         svg = await linearGradient.SVG(svg, _env, "background", "0%", "0%", "100%", "0%", "0%", "100%", "purple", "green");
         
-        
+        var svgParticleEmitter = new SVGParticleEmitter();
+        var pes = await svgParticleEmitter.SVG("{{contents}}", _env, "MAGICFire", "100", "250");
+        wrapper = wrapper.Replace("{{additionalJS}}", pes);
 
         return wrapper.Replace("{{contents}}", svg);
     }

@@ -1,5 +1,4 @@
-const svg = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" style="position: relative; z-index: 999;">
     <defs>
       <!-- Define gradients and filters for magical effects -->
       <radialGradient id="sparkle" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
@@ -56,4 +55,3 @@ const svg = `
       <!-- Add more sparkles as needed -->
     </g>
   </svg>
-`

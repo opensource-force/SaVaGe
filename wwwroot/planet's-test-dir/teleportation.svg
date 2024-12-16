@@ -1,0 +1,117 @@
+<svg transform="translate({{x}},{{y}})" viewBox="0 0 800 400" style="position: relative; z-index: 1000;">>
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Static parts -->
+  <text transform="translate(200, 200)"  font-family="monospace" font-size="50" fill="#8a2be2" filter="url(#glow)">tele</text>
+  <text transform="translate(450, 200)" font-family="monospace" font-size="50" fill="#8a2be2" filter="url(#glow)">ation</text>
+
+  <!-- Teleporting group -->
+  <g id="teleportationGroup" transform="translate(325, 200)">
+    <!-- The teleport tag above -->
+    <text transform="translate(0,-50)" font-family="monospace" font-size="12" fill="#4CAF50" filter="url(#glow)" opacity="0">
+      &lt;teleport pubKey=awesome&gt;
+      <animate 
+        id="topTagOpacity"
+        attributeName="opacity"
+        values="0;1"
+        dur="1s"
+        begin="2s"
+        fill="freeze"
+      />
+    </text>
+
+    <!-- The middle "port" text -->
+    <text transform="translate(0, 0)" font-family="monospace" font-size="50" fill="#8a2be2" filter="url(#glow)">
+      port
+    </text>
+
+    <!-- The closing teleport tag below -->
+    <text transform="translate(0, 50)" font-family="monospace" font-size="12" fill="#4CAF50" filter="url(#glow)" opacity="0">
+      &lt;/teleport&gt;
+      <animate 
+        attributeName="opacity"
+        values="0;1"
+        dur="1s"
+        begin="2s"
+        fill="freeze"
+      />
+    </text>
+
+    <animate
+      id="topTagOpacityOut" 
+      attributeName="opacity"
+      values="1;0"
+      dur="0.15s"
+      begin="3s; teleport1.end + 1.7s; teleport2.end + 1.7s; teleport3.end + 1.7s; teleport4.end + 1.7s; teleport5.end + 3s"
+      repeatCount="1"
+      fill="freeze"
+    />
+    <animate
+      id="topTagOpacityIn" 
+      attributeName="opacity"
+      values="0;1"
+      dur="0.15s"
+      begin="3.15s;topTagOpacityOut.end + 0.15s"
+      repeatCount="1"
+      fill="freeze"
+    />
+    <animateTransform 
+      attributeName="transform"
+      type="translate"
+      values="325,200; 200,100"
+      dur="0.3s"
+      begin="3s; teleport5.end + 3s"
+      repeatCount="1"
+      id="teleport1"
+      fill="freeze"
+    />
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="200,100; 100,400"
+      dur="0.15s"
+      begin="teleport1.end + 1.7s"
+      repeatCount="1"
+      id="teleport2"
+      fill="freeze"
+    />
+    <animateTransform 
+      attributeName="transform"
+      type="translate"
+      values="100,400; 325,325"
+      dur="0.15s"
+      begin="teleport2.end + 1.7s"
+      repeatCount="1"
+      id="teleport3"
+      fill="freeze"
+    />
+    <animateTransform 
+      attributeName="transform"
+      type="translate"
+      values="325,325; 150,50"
+      dur="0.15s"
+      begin="teleport3.end + 1.7s"
+      repeatCount="1"
+      id="teleport4"
+      fill="freeze"
+    />
+    <animateTransform 
+      attributeName="transform"
+      type="translate"
+      values="150,50; 325,200"
+      dur="0.15s"
+      begin="teleport4.end + 1.7s"
+      repeatCount="1"
+      id="teleport5"
+      fill="freeze"
+    />
+  </g>
+</svg>

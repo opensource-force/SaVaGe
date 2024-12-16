@@ -5,7 +5,7 @@
     const containerId = 'savage';
     const container = document.getElementById('savage') || document.createElement('div');
     container.id = containerId;
-    container.style = `width:${windowWidth}px;height:${windowHeight}px;`;
+    container.style = `position:relative;z-index:9999;width:${windowWidth}px;height:${windowHeight}px;`;
  
     const emitterConfig = {{emitterConfig}}
 
@@ -25,8 +25,8 @@
     svg.setAttribute("viewBox", "0 0 1200 500");
 
     const backgroundColor = Math.random() < 0.5 ? (Math.random() < 0.5 ? 'green' : 'blue') : 'orange';
-    svg.setAttribute("overflow", "hidden");
-    svg.setAttribute("style", `background-color: ${backgroundColor};`);
+    //svg.setAttribute("overflow", "hidden");
+    //svg.setAttribute("style", `background-color: ${backgroundColor};`);
 
     const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
     svg.appendChild(defs);
@@ -37,26 +37,50 @@
       return Math.random() * (max - min) + min;
     }
 
-    const createColorFilters = (startRGBA, endRGBA) => {
+    const createColorFilters = (startRGBA, endRGBA, lifetime, begin) => {
         const startFilterId = 'colorize_start' + Math.floor(Math.random() * 10000);
         const endFilterId = 'colorize_end' + Math.floor(Math.random() * 10000);
 
         const startFilter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
         startFilter.setAttribute("id", startFilterId);
 
+        const startR = random(startRGBA.minStartR, startRGBA.maxStartR) / 255;
+	const startG = random(startRGBA.minStartG, startRGBA.maxStartG) / 255;
+	const startB = random(startRGBA.minStartB, startRGBA.maxStartB) / 255;
+	const startA = random(startRGBA.minStartA, startRGBA.maxStartA) / 255;
+	
+	const endR = random(endRGBA.minEndR, endRGBA.maxEndR) / 255;
+	const endG = random(endRGBA.minEndG, endRGBA.maxEndG) / 255;
+	const endB = random(endRGBA.minEndB, endRGBA.maxEndB) / 255;
+	const endA = random(endRGBA.minEndA, endRGBA.maxEndA) / 255;
+
         const startColorMatrix = document.createElementNS("http://www.w3.org/2000/svg", "feColorMatrix");
         startColorMatrix.setAttribute("type", "matrix");
-        startColorMatrix.setAttribute("values", "1 0 0 0 0   0 1 0 0 0   0 0 1 0 0  0 0 0 1 0");
 
-        const startMatrix = `${random(startRGBA.minStartR, startRGBA.maxStartR)/255} 0 0 0 0   0 ${random(startRGBA.minStartG, startRGBA.maxStartG)/255} 0 0 0   0 0 ${random(startRGBA.minStartB, startRGBA.maxStartB)/255} 0 0   0 0 0 ${random(startRGBA.minStartA, startRGBA.maxStartA)/255} 0;${random(endRGBA.minEndR, endRGBA.maxEndR)/255} 0 0 0 0   0 ${random(endRGBA.minEndG, endRGBA.maxEndG)/255} 0 0 0   0 0 ${random(endRGBA.minEndB, endRGBA.maxEndB)/255} 0 0   0 0 0 ${random(endRGBA.minEndA, endRGBA.maxEndA)/255} 0;`;
+        const startValues = `
+	  ${startR} 0 0 0 0
+	  0 ${startG} 0 0 0
+	  0 0 ${startB} 0 0
+	  0 0 0 ${startA} 0`;
+        
+        const endValues = `
+	  ${endR} 0 0 0 0
+	  0 ${endG} 0 0 0
+	  0 0 ${endB} 0 0
+	  0 0 0 ${endA} 0`;
 
-        const endColorMatrix = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-        endColorMatrix.setAttribute("attributeName", "values");
-        endColorMatrix.setAttribute("dur", "1s");
-        endColorMatrix.setAttribute("repeatCount", "1");
-        endColorMatrix.setAttribute("values", startMatrix);
+        startColorMatrix.setAttribute("values", startValues);
 
-        startColorMatrix.appendChild(endColorMatrix);
+        const animation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+	animation.setAttribute("attributeName", "values");
+	animation.setAttribute("from", startValues);
+	animation.setAttribute("to", endValues);
+	animation.setAttribute("dur", `${lifetime}ms`);
+	animation.setAttribute("begin", `${begin}ms`);  
+	animation.setAttribute("repeatCount", "1");
+	animation.setAttribute("fill", "freeze");
+
+        startColorMatrix.appendChild(animation);
         startFilter.appendChild(startColorMatrix);
         svg.querySelector("defs").appendChild(startFilter);
 
@@ -92,15 +116,20 @@
 	  return points.join(' ');
       };
 
+      const startTime = new Date().getTime();
 
       const createParticle = () => {
         const particle = document.createElementNS("http://www.w3.org/2000/svg", "image");
         const lifetime = random(emitterConfig.minLifetime, emitterConfig.maxLifetime) * 1000; // Convert to ms
+        const begin = new Date().getTime() - startTime;
         let animationCount = 0;
         const totalAnimations = 3;
+
+        const screenPositionX = {{screenPositionX}};
+        const screenPositionY = {{screenPositionY}};
         
-        const x = random(emitterConfig.minX, emitterConfig.maxX);
-        const y = random(emitterConfig.minY, emitterConfig.maxY);
+        const x = random(emitterConfig.minX, emitterConfig.maxX) + screenPositionX;
+        const y = random(emitterConfig.minY, emitterConfig.maxY) + screenPositionY;
         
         particle.setAttributeNS("http://www.w3.org/1999/xlink", "href", emitterConfig.imageData);
         particle.setAttribute("width", "32");
@@ -108,7 +137,6 @@
         particle.setAttribute("x", 0);
         particle.setAttribute("y", 0);
         particle.setAttribute("opacity", "0");
-        particle.setAttribute("fill", "green");
 
         const vx = random(emitterConfig.minVX, emitterConfig.maxVX);
         const vy = random(emitterConfig.minVY, emitterConfig.maxVY);
@@ -116,7 +144,7 @@
         const ax = random(emitterConfig.minAX, emitterConfig.maxAX);
         const ay = random(emitterConfig.minAY, emitterConfig.maxAY);
 
-        const startFilterId = createColorFilters(emitterConfig.startRGBA, emitterConfig.endRGBA);
+        const startFilterId = createColorFilters(emitterConfig.startRGBA, emitterConfig.endRGBA, lifetime, begin);
         
         particle.setAttribute("filter", `url(#${startFilterId})`);
 
@@ -126,6 +154,7 @@
 	  animationCount++;
 
 	  if (animationCount >= totalAnimations) {
+console.log('removing particle because of animation count');
 	    svg.removeChild(particle);
 	    svg.querySelector("defs").removeChild(
 	      document.getElementById(startFilterId)
@@ -135,18 +164,22 @@
         };
 
         setTimeout(() => {
-          svg.removeChild(particle);
-	  svg.querySelector("defs").removeChild(
-	    document.getElementById(startFilterId)
-	  );
-	  particleCount--;
-        }, lifetime + 50);
+          if(particle.parentNode) {
+console.log('removing particle because of timeout', lifetime);
+            svg.removeChild(particle);
+	    svg.querySelector("defs").removeChild(
+	      document.getElementById(startFilterId)
+	    );
+	    particleCount--;
+          }
+        }, lifetime + 50000);
 
         const motionAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animateMotion");
         
         motionAnimation.setAttribute("dur", `${lifetime}ms`);
         motionAnimation.setAttribute("repeatCount", "1");
         motionAnimation.setAttribute("path", `${path}`);
+        motionAnimation.setAttribute("begin", `${begin}ms`);
         motionAnimation.setAttribute("fill", "freeze");
         motionAnimation.addEventListener('endEvent', removeParticle);
 
@@ -161,6 +194,7 @@
         widthAnimation.setAttribute("to", endScale);
         widthAnimation.setAttribute("dur", `${lifetime}ms`);
         widthAnimation.setAttribute("repeatCount", "1");
+        widthAnimation.setAttribute("begin", `${begin}ms`);
         widthAnimation.setAttribute("fill", "freeze");
         widthAnimation.addEventListener('endEvent', removeParticle);
 
@@ -169,6 +203,7 @@
         heightAnimation.setAttribute("to", endScale);
         heightAnimation.setAttribute("dur", `${lifetime}ms`);
         heightAnimation.setAttribute("repeatCount", "1");
+        heightAnimation.setAttribute("begin", `${begin}ms`);
         heightAnimation.setAttribute("fill", "freeze");
         heightAnimation.addEventListener('endEvent', removeParticle);
 
@@ -177,22 +212,24 @@
         opacityAnimation.setAttribute("from", "0");
         opacityAnimation.setAttribute("to", "1");
         opacityAnimation.setAttribute("dur", "0.001s");
-        opacityAnimation.setAttribute("begin", "0s");
+        opacityAnimation.setAttribute("begin", `${begin}ms`);
         opacityAnimation.setAttribute("fill", "freeze");
 
-        // Add animations to particle
         particle.appendChild(motionAnimation);
         particle.appendChild(widthAnimation);
         particle.appendChild(heightAnimation);
         particle.appendChild(opacityAnimation);
 
-        // Add particle to SVG
 console.log('trying to append particle to svg.id', svg.id);
         svg.appendChild(particle);
         particleCount++;
       };
 
       let running = true;
+
+setTimeout(() => {
+  running = false;
+}, 2000);
 
       const end = () => {
         running = false;
@@ -217,13 +254,14 @@ console.log('trying to append particle to svg.id', svg.id);
         requestAnimationFrame(emitParticle);
 
 	setTimeout(() => {
+console.log('calling end after ' + (emitterConfig.duration || emitterConfig.maxLifetime * 1000));
 	  end();
-	}, emitterConfig.maxLifetime * 1000);
+	}, (emitterConfig.duration || emitterConfig.maxLifetime * 1000));
       };
 
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', start);
+        window.addEventListener('DOMContentLoaded', start);
       } else {
-	  start();
+	start();
       }
   })();

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path d="{{path1}}"
+
+
+           M 50,100 
+           C 80,50 120,50 150,100
+           C 180,150 220,150 250,100"
+        fill="url(#glow)"
+        stroke="blue"
+        stroke-width="2">
+    <animate 
+      attributeName="d" 
+      dur="2s"
+      repeatCount="indefinite"
+      values="{{wiggle1}}"
+
+        M 50,100 C 80,50 120,50 150,100 C 180,150 220,150 250,100;
+        M 50,100 C 80,150 120,150 150,100 C 180,50 220,50 250,100;
+        M 50,100 C 80,50 120,50 150,100 C 180,150 220,150 250,100"
+      />
+  </path>
+  <path d="{{path2}}"
+        fill="url(#glow)"
+        stroke="blue"
+        stroke-width="2">
+    <animate 
+      attributeName="d" 
+      dur="2s"
+      repeatCount="indefinite"
+      values="{{wiggle2}}"
+      />
+  </path>
+  <path d="{{path3}}"
+        fill="url(#glow)"
+        stroke="blue"
+        stroke-width="2">
+    <animate 
+      attributeName="d" 
+      dur="2s"
+      repeatCount="indefinite"
+      values="{{wiggle3}}"
+
+        M 50,100 C 80,50 120,50 150,100 C 180,150 220,150 250,100;
+        M 50,100 C 80,150 120,150 150,100 C 180,50 220,50 250,100;
+        M 50,100 C 80,50 120,50 150,100 C 180,150 220,150 250,100"
+      />
+  </path>
+</svg>

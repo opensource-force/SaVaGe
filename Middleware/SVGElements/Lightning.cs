@@ -11,6 +11,11 @@ internal class RandomGenerator
     {
         return Random.Shared.Next(min, max);
     }
+
+    internal static int GetOneOrNegativeOne() 
+    {
+        return Random.Shared.NextDouble() < 0.5 ? -1 : 1;
+    }
 }
 
 internal class Lightning

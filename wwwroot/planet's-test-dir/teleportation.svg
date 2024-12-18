@@ -1,4 +1,4 @@
-<svg transform="translate({{x}},{{y}})" viewBox="0 0 800 400" style="position: relative; z-index: 1000;">>
+<svg transform="translate({{x}},{{y}})" viewBox="0 0 800 400" style="position: relative; z-index: 1000;">
   <defs>
     <filter id="glow">
       <feGaussianBlur stdDeviation="2" result="coloredBlur"/>

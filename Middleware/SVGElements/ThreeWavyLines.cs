@@ -163,8 +163,8 @@ internal class ThreeWavyLines
          svg = svg.Replace("{{path3}}", moveStart);
 
          svg = svg.Replace("{{wiggle1}}", values1);
-         svg = svg.Replace("{{wiggle2}}", values1);
-         svg = svg.Replace("{{wiggle3}}", values1);
+         svg = svg.Replace("{{wiggle2}}", values2);
+         svg = svg.Replace("{{wiggle3}}", values3);
 
 
          return wrapper.Replace("{{contents}}", svg);

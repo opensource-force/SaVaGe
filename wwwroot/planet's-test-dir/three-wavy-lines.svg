@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" style="position: relative; z-index: 1000;" fill="transparent">
   <defs>
     <filter id="glow">
       <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
@@ -15,7 +15,7 @@
         stroke-width="2">
     <animate 
       attributeName="d" 
-      dur="2s"
+      dur="0.25s"
       repeatCount="indefinite"
       values="{{wiggle1}}"
     />
@@ -26,7 +26,7 @@
         stroke-width="2">
     <animate 
       attributeName="d" 
-      dur="2s"
+      dur="0.25s"
       repeatCount="indefinite"
       values="{{wiggle2}}"
       />
@@ -37,7 +37,7 @@
         stroke-width="2">
     <animate 
       attributeName="d" 
-      dur="2s"
+      dur="0.25s"
       repeatCount="indefinite"
       values="{{wiggle3}}"
     />

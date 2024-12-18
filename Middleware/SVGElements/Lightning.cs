@@ -9,6 +9,13 @@ internal class RandomGenerator
 
     internal static int GetRandomNumber(int min, int max)
     {
+        if (min > max) 
+        {
+            var realMin = max;
+            max = min;
+            min = realMin;
+        }
+    
         return Random.Shared.Next(min, max);
     }
 

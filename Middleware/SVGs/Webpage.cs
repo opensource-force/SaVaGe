@@ -21,6 +21,10 @@ internal class Webpage
         var magic = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic.svg");
         svg = svg + magic;
 
+        var threeWavyLines = new ThreeWavyLines();
+        var beam = await threeWavyLines.SVG("{{contents}}", _env, 25, 300, 100, 125, 4);
+        svg = svg + beam;
+
         var teleportation = await _env.ReadFileFromWebRootAsync("planet's-test-dir/teleportation.svg");
         teleportation = teleportation.Replace("{{x}}", "50%").Replace("{{y}}", "0");
         svg = svg + teleportation;

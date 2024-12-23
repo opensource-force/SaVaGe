@@ -19,7 +19,7 @@ internal class JSSVGPES
         var deployEmitter = await _env.ReadFileFromWebRootAsync($"effects/pes/deploy-emitter.js");
         var emitterJSON = await _env.ReadFileFromWebRootAsync($"effects/pes/json-emitters/{emitter}");
 
-        emitterJSON = emitterJSON.Insert(emitterJSON.Length - 2, $",\"screendPositionX\":\"{screenPositionX}\",\"screenPositionY\":\"{screenPositionY}\"");
+        emitterJSON = emitterJSON.Insert(emitterJSON.Length - 2, $",\"screenPositionX\":{screenPositionX},\"screenPositionY\":{screenPositionY}");
 
         deployEmitter = deployEmitter.Replace("{{emitter}}", emitterJSON);
         deployEmitter = deployEmitter.Replace("{{delay}}", delay);

@@ -125,6 +125,7 @@
 
         const screenPositionX = emitter.screenPositionX;
         const screenPositionY = emitter.screenPositionY;
+console.log('screenPositionX', screenPositionX);
         
         const x = random(emitter.minX, emitter.maxX) + screenPositionX;
         const y = random(emitter.minY, emitter.maxY) + screenPositionY;

@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" style="position: relative; z-index: 1000;" fill="transparent">
   <defs>
-    <filter id="glow">
+    <filter id="lineGlow">
       <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
@@ -10,36 +9,35 @@
   </defs>
 
   <path d="{{path1}}"
-        fill="url(#glow)"
+        filter="url(#lineGlow)"
         stroke="blue"
         stroke-width="2">
     <animate 
       attributeName="d" 
       dur="0.25s"
-      repeatCount="indefinite"
+      repeatCount="5"
       values="{{wiggle1}}"
     />
   </path>
   <path d="{{path2}}"
-        fill="url(#glow)"
+        filter="url(#lineGlow)"
         stroke="blue"
         stroke-width="2">
     <animate 
       attributeName="d" 
       dur="0.25s"
-      repeatCount="indefinite"
+      repeatCount="5"
       values="{{wiggle2}}"
       />
   </path>
   <path d="{{path3}}"
-        fill="url(#glow)"
+        filter="url(#lineGlow)"
         stroke="blue"
         stroke-width="2">
     <animate 
       attributeName="d" 
       dur="0.25s"
-      repeatCount="indefinite"
+      repeatCount="5"
       values="{{wiggle3}}"
     />
   </path>
-</svg>

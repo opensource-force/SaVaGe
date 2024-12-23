@@ -1,46 +1,115 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" style="position: relative; z-index: 999;">
     <defs>
-      <!-- Define gradients and filters for magical effects -->
-      <radialGradient id="sparkle" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-	<stop offset="0%" style="stop-color:purple;stop-opacity:1" />
-	<stop offset="100%" style="stop-color:white;stop-opacity:0" />
-      </radialGradient>
-      
+      <filter id="sparkle" x="-50%" y="-50%" width="200%" height="200%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" result="noise">
+          <animate attributeName="baseFrequency"
+            values="0.5;0.8;0.5"
+            dur="3s"
+            repeatCount="indefinite"/>
+        </feTurbulence>
+        
+        <feColorMatrix type="saturate" values="0" result="noiseAlpha"/>
+        
+        <feComponentTransfer in="noiseAlpha" result="stars">
+          <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1"/>
+        </feComponentTransfer>
+        
+        <feMerge>
+          <feMergeNode in="SourceGraphic"/>
+          <feMergeNode in="stars"/>
+        </feMerge>
+      </filter>
+     
       <filter id="glow">
-	<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-	<feMerge>
-	  <feMergeNode in="blur" />
-	  <feMergeNode in="SourceGraphic" />
-	</feMerge>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <!-- Combined filter for both effects -->
+      <filter id="sparkleAndGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <!-- Sparkle effect -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" result="noise">
+          <animate attributeName="baseFrequency"
+            values="0.5;0.8;0.5"
+            dur="3s"
+            repeatCount="indefinite"/>
+        </feTurbulence>
+        
+        <feColorMatrix type="saturate" values="0" result="noiseAlpha"/>
+        
+        <feComponentTransfer in="noiseAlpha" result="stars">
+          <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1"/>
+        </feComponentTransfer>
+
+        <!-- Glow effect -->
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+        
+        <!-- Combine everything -->
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+          <feMergeNode in="stars" />
+        </feMerge>
       </filter>
     </defs>
-    
-    <!-- Background -->
-    <rect width="100%" height="100%" fill="black" />
-    
-    <!-- Animated electrical arcs (simplified representation) -->
-    <path d="M0,200 Q400,100 800,200" stroke="cyan" stroke-width="2" fill="none">
-      <animate attributeName="d" 
-	       values="M0,200 Q400,100 800,200;M0,200 Q400,300 800,200;M0,200 Q400,100 800,200" 
-	       dur="2s" repeatCount="indefinite" />
-    </path>
-    
-    <!-- Fireballs (simplified) -->
-    <circle cx="100" cy="300" r="20" fill="orange">
-      <animate attributeName="cy" values="300;100;300" dur="3s" repeatCount="indefinite" />
-    </circle>
-    
-    <!-- Ice spells (simplified) -->
-    <polygon points="700,300 720,320 680,320" fill="lightblue">
-      <animate attributeName="points" 
-	       values="700,300 720,320 680,320;700,100 720,120 680,120;700,300 720,320 680,320" 
-	       dur="4s" repeatCount="indefinite" />
-    </polygon>
+
+    {{lightningBolt}}
+
+    {{MAGICFire}}
+
+    {{threeWavyLines}}
     
     <!-- The word "MAGIC" with sparkle effect -->
-    <text x="400" y="200" font-family="Arial, sans-serif" font-size="80" fill="url(#sparkle)" 
-	  text-anchor="middle" filter="url(#glow)">
-      MAGIC
+    <text x="400" y="200" font-family="Arial, sans-serif" font-size="80" fill="silver" 
+	  text-anchor="middle" filter="url(#sparkleAndGlow)">
+      <tspan fill-opacity="0">M
+          <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="0.5s"
+        fill="freeze"
+        id="mAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">A
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="mAnim.end + 0.3s"
+        fill="freeze"
+        id="aAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">G
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="aAnim.end + 0.3s"
+        fill="freeze"
+        id="gAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">I
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="gAnim.end + 0.3s"
+        fill="freeze"
+        id="iAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">C
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="iAnim.end + 0.3s"
+        fill="freeze"
+        id="cAnim"/>
+      </tspan>
       <animate attributeName="font-size" values="80;85;80" dur="1s" repeatCount="indefinite" />
     </text>
     

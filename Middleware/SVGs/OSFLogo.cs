@@ -14,12 +14,11 @@ internal class OSFLogo
         var shield = new Shield();
         var shieldSVG = await shield.Text(_env);
 
-        var lightning = new Lightning(_env);
-        await lightning.InitializeAsync();
+        var lightning = new Lightning();
 
-        var bolt = lightning.Bolt(60, 30, 30, 200, 4, 0);
-        var bolt2 = lightning.Bolt(120, 30, 100, 200, 6, 2);
-        var bolt3 = lightning.Bolt(250, 30, 160, 200, 5, 4);
+        var bolt = await lightning.Bolt(wrapper, _env, 60, 30, 30, 200, 4, "0");
+        var bolt2 = await lightning.Bolt(wrapper, _env, 120, 30, 100, 200, 6, "2");
+        var bolt3 = await lightning.Bolt(wrapper, _env, 250, 30, 160, 200, 5, "4");
 
         var openSourceForce = new OpenSourceForce();
         var openSourceForceText = await openSourceForce.Text(_env);

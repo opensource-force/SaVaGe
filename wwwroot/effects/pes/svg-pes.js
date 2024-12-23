@@ -7,8 +7,6 @@
     container.id = containerId;
     container.style = `position:relative;z-index:9999;width:${windowWidth}px;height:${windowHeight}px;`;
  
-    const emitterConfig = {{emitterConfig}}
-
     let svg = document.getElementById("emitterSVG") || document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
     if(!svg.id) {
@@ -22,7 +20,7 @@
 
     // The container, and this viewBox will likely end up being the same for all game scenes, but
     // since this is the furthest along, we'll leave it as is for now.
-    svg.setAttribute("viewBox", "0 0 1200 500");
+    svg.setAttribute("viewBox", "0 0 1600 800");
 
     const backgroundColor = Math.random() < 0.5 ? (Math.random() < 0.5 ? 'green' : 'blue') : 'orange';
     //svg.setAttribute("overflow", "hidden");
@@ -118,33 +116,33 @@
 
       const startTime = new Date().getTime();
 
-      const createParticle = () => {
+      const createParticle = (emitter) => {
         const particle = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        const lifetime = random(emitterConfig.minLifetime, emitterConfig.maxLifetime) * 1000; // Convert to ms
+        const lifetime = random(emitter.minLifetime, emitter.maxLifetime) * 1000; // Convert to ms
         const begin = new Date().getTime() - startTime;
         let animationCount = 0;
         const totalAnimations = 3;
 
-        const screenPositionX = {{screenPositionX}};
-        const screenPositionY = {{screenPositionY}};
+        const screenPositionX = emitter.screenPositionX;
+        const screenPositionY = emitter.screenPositionY;
         
-        const x = random(emitterConfig.minX, emitterConfig.maxX) + screenPositionX;
-        const y = random(emitterConfig.minY, emitterConfig.maxY) + screenPositionY;
+        const x = random(emitter.minX, emitter.maxX) + screenPositionX;
+        const y = random(emitter.minY, emitter.maxY) + screenPositionY;
         
-        particle.setAttributeNS("http://www.w3.org/1999/xlink", "href", emitterConfig.imageData);
+        particle.setAttributeNS("http://www.w3.org/1999/xlink", "href", emitter.imageData);
         particle.setAttribute("width", "32");
         particle.setAttribute("height", "32");
         particle.setAttribute("x", 0);
         particle.setAttribute("y", 0);
         particle.setAttribute("opacity", "0");
 
-        const vx = random(emitterConfig.minVX, emitterConfig.maxVX);
-        const vy = random(emitterConfig.minVY, emitterConfig.maxVY);
+        const vx = random(emitter.minVX, emitter.maxVX);
+        const vy = random(emitter.minVY, emitter.maxVY);
 
-        const ax = random(emitterConfig.minAX, emitterConfig.maxAX);
-        const ay = random(emitterConfig.minAY, emitterConfig.maxAY);
+        const ax = random(emitter.minAX, emitter.maxAX);
+        const ay = random(emitter.minAY, emitter.maxAY);
 
-        const startFilterId = createColorFilters(emitterConfig.startRGBA, emitterConfig.endRGBA, lifetime, begin);
+        const startFilterId = createColorFilters(emitter.startRGBA, emitter.endRGBA, lifetime, begin);
         
         particle.setAttribute("filter", `url(#${startFilterId})`);
 
@@ -186,8 +184,8 @@ console.log('removing particle because of timeout', lifetime);
       
         const widthAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
         const heightAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-        const startScale = random(emitterConfig.minStartScale, emitterConfig.maxStartScale);
-        const endScale = random(emitterConfig.minEndScale, emitterConfig.maxEndScale);
+        const startScale = random(emitter.minStartScale, emitter.maxStartScale);
+        const endScale = random(emitter.minEndScale, emitter.maxEndScale);
         
         widthAnimation.setAttribute("attributeName", "width");
         widthAnimation.setAttribute("from", startScale);
@@ -227,15 +225,12 @@ console.log('trying to append particle to svg.id', svg.id);
 
       let running = true;
 
-setTimeout(() => {
-  running = false;
-}, 2000);
 
       const end = () => {
         running = false;
       };
 
-      const start = () => {
+      const start = (emitter) => {
         if(!document.getElementById(container.id)) {
           document.body.appendChild(container);
         }
@@ -243,8 +238,8 @@ setTimeout(() => {
         svg = document.getElementById('emitterSVG');
 
         const emitParticle = () => {
-          if (particleCount < emitterConfig.maxParticles) {
-            createParticle();
+          if (particleCount < emitter.maxParticles) {
+            createParticle(emitter);
           }
           if(running) {
             requestAnimationFrame(emitParticle);
@@ -254,14 +249,16 @@ setTimeout(() => {
         requestAnimationFrame(emitParticle);
 
 	setTimeout(() => {
-console.log('calling end after ' + (emitterConfig.duration || emitterConfig.maxLifetime * 1000));
+console.log('calling end after ' + (emitter.duration || emitter.maxLifetime * 1000));
 	  end();
-	}, (emitterConfig.duration || emitterConfig.maxLifetime * 1000));
+	}, (emitter.duration || emitter.maxLifetime * 1000));
       };
 
-      if (document.readyState === 'loading') {
+/*      if (document.readyState === 'loading') {
         window.addEventListener('DOMContentLoaded', start);
       } else {
 	start();
-      }
+      }*/
+
+      window.deployEmitter = emitter => start(emitter);
   })();

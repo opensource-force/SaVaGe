@@ -55,6 +55,9 @@ Console.WriteLine(context.Request.Path.Value);
 	    switch (context.Request.Path.Value)
 	    {
                 case "/magic-and-teleportation.js": svg = await webpage.MAGICAndTeleportation(svg, _env);
+                    var pes = new SVGParticleEmitter();
+                    var magicFire = await pes.SVG("{{contents}}", _env, "MAGICFire", "300", "400");
+                    svg = svg.Replace("{{additionalJS}}", magicFire);
                     await context.Response.WriteAsync(svg);
                     return;
                 case "/linear-gradient.js": svg = await background.GradientSVG(svg, _env);

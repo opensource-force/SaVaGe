@@ -27,35 +27,17 @@ internal class RandomGenerator
 
 internal class Lightning
 {
-    private readonly IWebHostEnvironment _env;
-    private readonly Lazy<Task> _initializationTask;
-    private string svg;
-    private string originalSVG;
-
-    internal Lightning(IWebHostEnvironment env)  
+    internal Lightning()  
     {
-        _env = env;
-        _initializationTask = new Lazy<Task>(() => DoInitializeAsync());
     }
 
-    internal async Task InitializeAsync() 
+    internal async Task<string> Bolt(string wrapper, IWebHostEnvironment _env, int startX, int startY, int endX, int endY, int jags, string delay) 
     {
-        await _initializationTask.Value;
-    }
-
-    internal async Task DoInitializeAsync() 
-    {
-        svg = await ReadFileFromWebRootAsync(_env, "effects/lightning.svg"); 
-        originalSVG = svg;
-    }
-
-    internal string Bolt(int startX, int startY, int endX, int endY, int jags, int delay) 
-    {
-         svg = originalSVG;
+         var svg = await ReadFileFromWebRootAsync(_env, "effects/lightning.svg"); 
 
          var path = $"M{startX} {startY}";
 
-         svg = svg.Replace("{{delay}}", $"{delay}");
+         svg = svg.Replace("{{delay}}", delay);
 
          var jagX = (endX - startX) / (jags - 1);
          var jagY = (endY - startY) / (jags - 1);;

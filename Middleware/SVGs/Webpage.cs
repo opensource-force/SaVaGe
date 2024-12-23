@@ -12,6 +12,8 @@ internal class Webpage
         var svg = "";
         var svgContent = "";
 
+        var js = "";
+
         var linker = new Link();
         var image = new Image();
 
@@ -19,11 +21,23 @@ internal class Webpage
         svg = await background.SVG("{{contents}}", _env, "url(#background)");
         
         var magic = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic.svg");
-        svg = svg + magic;
+
+        var lightningBolt = new Lightning();
+        var bolt = await lightningBolt.Bolt("{{contents}}", _env, 400, 50, 425, 200, 3, "0.2s");
+        magic = magic.Replace("{{lightningBolt}}", bolt);
+
+        magic = magic.Replace("{{MAGICFire}}", "");
+        
+        var pes = new SVGParticleEmitter();
+        js = js + pes;
+
+        var 
 
         var threeWavyLines = new ThreeWavyLines();
-        var beam = await threeWavyLines.SVG("{{contents}}", _env, 25, 300, 100, 125, 4);
-        svg = svg + beam;
+        var beam = await threeWavyLines.SVG("{{contents}}", _env, 175, 300, 225, 165, 4);
+        magic = magic.Replace("{{threeWavyLines}}", beam);
+
+        svg = svg + magic;
 
         var teleportation = await _env.ReadFileFromWebRootAsync("planet's-test-dir/teleportation.svg");
         teleportation = teleportation.Replace("{{x}}", "50%").Replace("{{y}}", "0");
@@ -31,11 +45,7 @@ internal class Webpage
 
         var linearGradient = new LinearGradient();
         svg = await linearGradient.SVG(svg, _env, "background", "0%", "0%", "100%", "0%", "0%", "100%", "purple", "green");
-        
-        var svgParticleEmitter = new SVGParticleEmitter();
-        var pes = await svgParticleEmitter.SVG("{{contents}}", _env, "MAGICFire", "100", "250");
-        wrapper = wrapper.Replace("{{additionalJS}}", pes);
-
+        wrapper = wrapper.Replace("{{additionalJS}}", js);
         return wrapper.Replace("{{contents}}", svg);
     }
 

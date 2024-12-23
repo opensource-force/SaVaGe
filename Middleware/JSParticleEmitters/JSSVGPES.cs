@@ -11,18 +11,19 @@ internal class JSSVGPES
     {
         var emitterJS = await _env.ReadFileFromWebRootAsync("effects/pes/svg-pes.js");
 
-        svg = emitterJS.Replace("{{emitterConfig}}", emitterJSON);
-
-        return wrapper.Replace("{{contents}}", svg);
+        return wrapper.Replace("{{additionalJS}}", emitterJS);
     }
 
-    internal async Task<string> DeployEmitter(string wrapper, IWebHostEnvironment _env, string emitter, string screenPositionX, string screenPositionY)
+    internal async Task<string> DeployEmitter(string wrapper, IWebHostEnvironment _env, string emitter, string screenPositionX, string screenPositionY, string delay)
     {
         var deployEmitter = await _env.ReadFileFromWebRootAsync($"effects/pes/deploy-emitter.js");
         var emitterJSON = await _env.ReadFileFromWebRootAsync($"effects/pes/json-emitters/{emitter}");
 
-        emitterJSON = emitterJSON.insert(emitterJSON.Length - 2, $",\"screendPositionX\":\"{screenPositionX}\",\"screenPositionY\":\"{screenPositionY}\"");
+        emitterJSON = emitterJSON.Insert(emitterJSON.Length - 2, $",\"screendPositionX\":\"{screenPositionX}\",\"screenPositionY\":\"{screenPositionY}\"");
 
-        return wrapper.Replace("{{additionalJS}}", emitterJSON);
+        deployEmitter = deployEmitter.Replace("{{emitter}}", emitterJSON);
+        deployEmitter = deployEmitter.Replace("{{delay}}", delay);
+
+        return wrapper.Replace("{{additionalJS}}", deployEmitter);
     }
 }

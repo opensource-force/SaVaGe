@@ -1,8 +1,11 @@
 (() => {
-  const container = document.getElementById('savage') || document.createElement('div');
+  const container = document.getElementById('webpage') || document.createElement('div');
   if(!container.id) {
+    container.setAttribute('id', 'webpage');
     document.body.appendChild(container);
   }
+
+  container.setAttribute('style', 'position:fixed;width:100vw;height:100vh;');
   
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;

@@ -27,11 +27,13 @@ internal class Webpage
         magic = magic.Replace("{{lightningBolt}}", bolt);
 
         magic = magic.Replace("{{MAGICFire}}", "");
-        
-        var pes = new SVGParticleEmitter();
-        js = js + pes;
 
-        var 
+        var jssvgpes = new JSSVGPES();
+        var pesJS = await jssvgpes.JS("{{additionalJS}}", _env);
+        js = js + pesJS;
+
+        var magicFire = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "MAGICFire", "300", "200", "1200");
+        js = js + magicFire;
 
         var threeWavyLines = new ThreeWavyLines();
         var beam = await threeWavyLines.SVG("{{contents}}", _env, 175, 300, 225, 165, 4);

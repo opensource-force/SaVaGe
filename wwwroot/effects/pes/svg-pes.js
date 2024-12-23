@@ -2,10 +2,10 @@
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
-    const containerId = 'savage';
-    const container = document.getElementById('savage') || document.createElement('div');
+    const containerId = 'top-layer';
+    const container = document.getElementById('top-layer') || document.createElement('div');
     container.id = containerId;
-    container.style = `position:relative;z-index:9999;width:${windowWidth}px;height:${windowHeight}px;`;
+    container.style = `position:fixed;z-index:9999;width:100vw;height:100vh;`;
  
     let svg = document.getElementById("emitterSVG") || document.createElementNS("http://www.w3.org/2000/svg", "svg");
 

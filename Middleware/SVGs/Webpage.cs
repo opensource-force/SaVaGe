@@ -22,22 +22,37 @@ internal class Webpage
         
         var magic = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic.svg");
 
-        var lightningBolt = new Lightning();
-        var bolt = await lightningBolt.Bolt("{{contents}}", _env, 400, 50, 425, 200, 3, "0.2s");
-        magic = magic.Replace("{{lightningBolt}}", bolt);
-
         magic = magic.Replace("{{MAGICFire}}", "");
 
         var jssvgpes = new JSSVGPES();
         var pesJS = await jssvgpes.JS("{{additionalJS}}", _env);
         js = js + pesJS;
 
-        var magicFire = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "MAGICFire", "300", "200", "1200");
+        var magicFire = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "MAGICFire", "150", "200", "200");
         js = js + magicFire;
+
+        var lightningBolt = new Lightning();
+        var bolt = await lightningBolt.Bolt("{{contents}}", _env, 200, 50, 250, 200, 3, "2.2s");
+        magic = magic.Replace("{{lightningBolt}}", bolt);
+
+        //var magicFire = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "MAGICFire", "300", "200", "1200");
+        //js = js + magicFire;
 
         var threeWavyLines = new ThreeWavyLines();
         var beam = await threeWavyLines.SVG("{{contents}}", _env, 175, 300, 225, 165, 4);
         magic = magic.Replace("{{threeWavyLines}}", beam);
+
+        var rainbows = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "Rainbows", "650", "125", "3800");
+        js = js + rainbows;
+
+        var drawings = new Drawings();
+//        var cloudContainer = "<svg x=\"550\" y=\"50\" viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\">{{contents}}</svg>";
+        var cloudContainer = "<g transform=\"translate(550,50)\">{{contents}}</g>";
+        cloudContainer = await drawings.CloudSVG(cloudContainer, _env);
+        magic = magic.Replace("{{cloud}}", cloudContainer);
+     
+        var rain = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "RainEmitter", "750", "80", "4800");
+        js = js + rain;
 
         svg = svg + magic;
 

@@ -232,6 +232,7 @@ console.log('trying to append particle to svg.id', svg.id);
       };
 
       const start = (emitter) => {
+        running = true;
         if(!document.getElementById(container.id)) {
           document.body.appendChild(container);
         }

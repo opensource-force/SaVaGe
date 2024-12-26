@@ -61,7 +61,9 @@
     {{MAGICFire}}
 
     {{threeWavyLines}}
-    
+
+    {{cloud}}
+
     <!-- The word "MAGIC" with sparkle effect -->
     <text x="400" y="200" font-family="Arial, sans-serif" font-size="80" fill="silver" 
 	  text-anchor="middle" filter="url(#sparkleAndGlow)">

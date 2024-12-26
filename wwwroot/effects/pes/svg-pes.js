@@ -5,7 +5,7 @@
     const containerId = 'top-layer';
     const container = document.getElementById('top-layer') || document.createElement('div');
     container.id = containerId;
-    container.style = `position:fixed;z-index:9999;width:100vw;height:100vh;`;
+    container.style = `position:fixed;z-index:9999;width:100vw;height:100vh;pointer-events:none;`;
  
     let svg = document.getElementById("emitterSVG") || document.createElementNS("http://www.w3.org/2000/svg", "svg");
 

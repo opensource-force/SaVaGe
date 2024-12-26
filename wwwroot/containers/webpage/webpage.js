@@ -5,7 +5,8 @@
     document.body.appendChild(container);
   }
 
-  container.setAttribute('style', 'position:fixed;width:100vw;height:100vh;');
+//  container.setAttribute('style', 'position:fixed;width:100vw;height:100vh;display: grid; grid-template-columns: auto auto; gap: 20px;');
+  container.setAttribute('style', 'position:fixed;width:100vw;height:100vh;display:flex;');
   
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;

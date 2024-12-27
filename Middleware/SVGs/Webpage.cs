@@ -9,6 +9,7 @@ internal class Webpage
 
     internal async Task<string> MAGICAndTeleportation(string wrapper, IWebHostEnvironment _env)
     {
+        var svgContainer = "<svg id=\"web-svg\" width=\"100%\" height=\"100%\">{{contents}}</svg>";
         var svg = "";
         var svgContent = "";
 
@@ -19,6 +20,7 @@ internal class Webpage
 
         var background = new Background();
         svg = await background.SVG("{{contents}}", _env, "url(#background)");
+//        svg = await background.SVG(svg, _env, "url(#background)");
         
         var magic = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic.svg");
 
@@ -54,14 +56,27 @@ internal class Webpage
         var rain = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "RainEmitter", "750", "80", "4800");
         js = js + rain;
 
+        var magicLink = await linker.SVG("{{contents}}", _env, "https://github.com/planet-nine-app/MAGIC");
+        magic = magicLink.Replace("{{contents}}", magic);
+
         svg = svg + magic;
 
         var teleportation = await _env.ReadFileFromWebRootAsync("planet's-test-dir/teleportation.svg");
         teleportation = teleportation.Replace("{{x}}", "50%").Replace("{{y}}", "0");
+
+        var teleportationLink = await linker.SVG("{{contents}}", _env, "https://github.com/planet-nine-app/teleportation");
+        teleportation = teleportationLink.Replace("{{contents}}", teleportation);
+
         svg = svg + teleportation;
 
         var linearGradient = new LinearGradient();
         svg = await linearGradient.SVG(svg, _env, "background", "0%", "0%", "100%", "0%", "0%", "100%", "purple", "green");
+
+        svg = svgContainer.Replace("{{contents}}", svg);
+
+//        var siteSpecificJS = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic-and-teleportation.js");
+//        js = js + siteSpecificJS;
+
         wrapper = wrapper.Replace("{{additionalJS}}", js);
         return wrapper.Replace("{{contents}}", svg);
     }

@@ -224,15 +224,8 @@ console.log('trying to append particle to svg.id', svg.id);
         particleCount++;
       };
 
-      let running = true;
-
-
-      const end = () => {
-        running = false;
-      };
-
       const start = (emitter) => {
-        running = true;
+        let running = true;
         if(!document.getElementById(container.id)) {
           document.body.appendChild(container);
         }
@@ -240,6 +233,10 @@ console.log('trying to append particle to svg.id', svg.id);
         svg = document.getElementById('emitterSVG');
 
         const emitParticle = () => {
+console.log('unique emitter??????', emitter.minVY + emitter.maxVY);
+          if(emitter.duration === 150000000) {
+console.log('sparkle emitter has ' + particleCount + ' particles of its ' + emitter.maxParticles + ' max');
+          }
           if (particleCount < emitter.maxParticles) {
             createParticle(emitter);
           }
@@ -250,9 +247,11 @@ console.log('trying to append particle to svg.id', svg.id);
         
         requestAnimationFrame(emitParticle);
 
+console.log('setting a timeout to end after ' + (emitter.duration || emitter.maxLifetime * 1000) + 'ms');
+
 	setTimeout(() => {
 console.log('calling end after ' + (emitter.duration || emitter.maxLifetime * 1000));
-	  end();
+	  running = false;
 	}, (emitter.duration || emitter.maxLifetime * 1000));
       };
 

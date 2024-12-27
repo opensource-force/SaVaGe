@@ -60,7 +60,7 @@ console.log('startValue', startValue, 'endValue', endValue);
     const teleportationSVG = document.getElementById('teleportation-svg');
     const webSVG = document.getElementById('web-svg');
 
-    magicSVG.addEventListener('click', () => {
+/*    magicSVG.addEventListener('click', () => {
       applyAnimations(webSVG);
       const magicIFrame = document.createElement('iframe');
       magicIFrame.setAttribute('style', 'position:absolute;top:0;left:0;width:100vw;height:100vh;z-index:1;');
@@ -79,6 +79,58 @@ console.log('startValue', startValue, 'endValue', endValue);
       iframe.setAttribute('src', 'https://github.com/planet-nine-app/teleportation?tab=readme-ov-file#teleportation');   
       const webpage = document.getElementById('webpage');
       webpage.insertBefore(teleportationIFrame, webpage.firstChild);
-    });
+    });*/
+
+    const videoSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    
+//    videoSVG.setAttribute("x", "50%");
+//    videoSVG.setAttribute("y", "75%");
+//    videoSVG.setAttribute("width", "66%");
+//    videoSVG.setAttribute("height", "33%");
+    videoSVG.setAttribute("style", "position: absolute;left: 50%;top: 75%;width: 66%;height: 33%;z-index: 1002;overflow: hidden;");
+//    videoSVG.setAttribute("viewBox", "0 0 400 400");
+
+    const background = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    background.setAttribute("x", "50%");
+    background.setAttribute("y", "75%");
+    background.setAttribute("width", "20%");
+    background.setAttribute("height", "20%");
+    background.setAttribute("fill", "blue");
+
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("src", "https://player.vimeo.com/video/1037625246?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;transparent=1");
+    iframe.setAttribute("frameborder", 0);
+    iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture; clipboard-write");
+    iframe.setAttribute("style", "position: relative; top: 0; left: 0; width: 100%; height: 100%; margin: 0; padding: 0;z-index:10000;");
+    iframe.setAttribute("title", "MAGIC and Teleportation");
+
+    const script = document.createElement("script");
+    script.setAttribute("src", "https://player.vimeo.com/api/player.js");
+
+    const fo = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+    fo.setAttribute("x", "30%");
+    fo.setAttribute("y", "60%");
+    fo.setAttribute("width", "40%");
+    fo.setAttribute("height", "30%");
+
+
+    const div = document.createElement("div");
+    div.setAttribute("width", "100%");
+    div.setAttribute("height", "100%");
+    div.setAttribute("style", "width: 100%; height: 100%; position: relative; overflow: hidden;");
+
+    //div.appendChild(vidya);
+    div.appendChild(iframe);
+    div.appendChild(script);
+
+    fo.appendChild(div);
+
+    //videoSVG.innerHTML = video;
+    
+    videoSVG.appendChild(fo);
+    //videoSVG.appendChild(background);
+
+    document.getElementById('web-svg').appendChild(videoSVG);
+    
   }, 1000);
 })();

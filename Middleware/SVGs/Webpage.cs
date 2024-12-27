@@ -9,7 +9,11 @@ internal class Webpage
 
     internal async Task<string> MAGICAndTeleportation(string wrapper, IWebHostEnvironment _env)
     {
+//        var svgContainer = "<svg id=\"web-svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 1600 800\">{{contents}}</svg>";
         var svgContainer = "<svg id=\"web-svg\" width=\"100%\" height=\"100%\">{{contents}}</svg>";
+ //       var svgContainer = "<svg id=\"web-svg\" viewBox=\"0 0 1600 800\">{{contents}}</svg>";
+      
+ 
         var svg = "";
         var svgContent = "";
 
@@ -21,6 +25,9 @@ internal class Webpage
         var background = new Background();
         svg = await background.SVG("{{contents}}", _env, "url(#background)");
 //        svg = await background.SVG(svg, _env, "url(#background)");
+
+        var planetNinePresents = await _env.ReadFileFromWebRootAsync("planet's-test-dir/planet-nine-presents.svg");
+        svg = svg + planetNinePresents;
         
         var magic = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic.svg");
 
@@ -30,33 +37,42 @@ internal class Webpage
         var pesJS = await jssvgpes.JS("{{additionalJS}}", _env);
         js = js + pesJS;
 
-        var magicFire = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "MAGICFire", "150", "200", "200");
+        var magicFire = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "MAGICFire", "300", "450", "600");
         js = js + magicFire;
 
         var lightningBolt = new Lightning();
-        var bolt = await lightningBolt.Bolt("{{contents}}", _env, 200, 50, 250, 200, 3, "2.2s");
+        var bolt = await lightningBolt.Bolt("{{contents}}", _env, 300, 50, 450, 350, 3, "1.7s");
         magic = magic.Replace("{{lightningBolt}}", bolt);
 
         //var magicFire = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "MAGICFire", "300", "200", "1200");
         //js = js + magicFire;
 
         var threeWavyLines = new ThreeWavyLines();
-        var beam = await threeWavyLines.SVG("{{contents}}", _env, 175, 300, 225, 165, 4);
+        var beam = await threeWavyLines.SVG("{{contents}}", _env, 175, 600, 225, 365, 4);
         magic = magic.Replace("{{threeWavyLines}}", beam);
 
-        var rainbows = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "Rainbows", "650", "125", "3800");
+        var rainbows = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "Rainbows", "475", "325", "2500");
         js = js + rainbows;
 
         var drawings = new Drawings();
 //        var cloudContainer = "<svg x=\"550\" y=\"50\" viewBox=\"0 0 100 60\" xmlns=\"http://www.w3.org/2000/svg\">{{contents}}</svg>";
-        var cloudContainer = "<g transform=\"translate(550,50)\">{{contents}}</g>";
-        cloudContainer = await drawings.CloudSVG(cloudContainer, _env);
+        var cloudContainer = "<g transform=\"translate(550,50)\" opacity=\"0\">{{contents}}</g>";
+        var cloud = await drawings.CloudSVG("{{contents}}", _env);
+
+        var opacity = new Opacity();
+        var cloudAnimation = await opacity.SVG("{{contents}}", _env, "0;1;0;", "3.3s", "1s", "freeze");
+
+        cloudContainer = cloudContainer.Replace("{{contents}}", cloud + cloudAnimation);
+
         magic = magic.Replace("{{cloud}}", cloudContainer);
      
-        var rain = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "RainEmitter", "750", "80", "4800");
+        var rain = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "RainEmitter", "550", "80", "3300");
         js = js + rain;
 
-        var magicLink = await linker.SVG("{{contents}}", _env, "https://github.com/planet-nine-app/MAGIC");
+        var sparkles = await jssvgpes.DeployEmitter("{{additionalJS}}", _env, "Sparkles", "400", "400", "10");
+        js = js + sparkles;
+
+        var magicLink = await linker.SVG("{{contents}}", _env, "https://github.com/planet-nine-app/MAGIC?tab=readme-ov-file#magic");
         magic = magicLink.Replace("{{contents}}", magic);
 
         svg = svg + magic;
@@ -64,7 +80,7 @@ internal class Webpage
         var teleportation = await _env.ReadFileFromWebRootAsync("planet's-test-dir/teleportation.svg");
         teleportation = teleportation.Replace("{{x}}", "50%").Replace("{{y}}", "0");
 
-        var teleportationLink = await linker.SVG("{{contents}}", _env, "https://github.com/planet-nine-app/teleportation");
+        var teleportationLink = await linker.SVG("{{contents}}", _env, "https://github.com/planet-nine-app/teleportation?tab=readme-ov-file#teleportation");
         teleportation = teleportationLink.Replace("{{contents}}", teleportation);
 
         svg = svg + teleportation;
@@ -72,10 +88,50 @@ internal class Webpage
         var linearGradient = new LinearGradient();
         svg = await linearGradient.SVG(svg, _env, "background", "0%", "0%", "100%", "0%", "0%", "100%", "purple", "green");
 
+         var planetNineLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/planet-nine-app");
+
+        var planetNineContainer = @"<svg x=""80%"" y=""75%"" width=""15%"" height=""15%"" viewBox=""0 0 200 140"">
+              {{contents}}
+              </svg>
+            ";
+
+        planetNineLink = planetNineLink.Replace("{{contents}}", planetNineContainer);
+
+        PlanetNineLogo planetNineLogo = new PlanetNineLogo(_env);
+        var planetNineLogoSVG = await planetNineLogo.SVG();
+
+        planetNineLink = planetNineLink.Replace("{{contents}}", planetNineLogoSVG);
+
+        var osfLink = await linker.SVG("{{contents}}", _env, "https://opensourceforce.net");
+
+        var osfContainer = @"<svg x=""5%"" y=""75%"" width=""15%"" height=""15%"" viewBox=""0 0 200 240"">
+              {{contents}}
+              </svg>";
+
+        osfLink = osfLink.Replace("{{contents}}", osfContainer);
+
+        var osfLogo = new OSFLogo();
+        var osf = await osfLogo.SVG(osfLink, _env);
+
+        var savageLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/opensource-force/SaVaGe");
+
+        var savageContainer = @"<svg x=""7%"" y=""7%"" width=""15%"" height=""15%"" viewBox=""0 0 300 360"">
+              {{contents}}
+              </svg>
+            ";
+
+        savageLink = savageLink.Replace("{{contents}}", savageContainer);
+
+        var savageLogo = new SaVaGeLogo();
+        var savageLogoSVG = await savageLogo.SVG(savageLink, _env);
+
+        svg = svg + planetNineLink + osf + savageLogoSVG;
+
         svg = svgContainer.Replace("{{contents}}", svg);
 
-//        var siteSpecificJS = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic-and-teleportation.js");
-//        js = js + siteSpecificJS;
+
+        var siteSpecificJS = await _env.ReadFileFromWebRootAsync("planet's-test-dir/magic-and-teleportation.js");
+        js = js + siteSpecificJS;
 
         wrapper = wrapper.Replace("{{additionalJS}}", js);
         return wrapper.Replace("{{contents}}", svg);

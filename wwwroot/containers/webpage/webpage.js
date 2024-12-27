@@ -10,7 +10,12 @@
   
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
-  
+
+  let isHorizontal = windowWidth >= windowHeight;
+
+  let svgWidth = isHorizontal ? 1600 : 800;
+  let svgHeight = isHorizontal ? 800 : 1600;
+
   const updateSVG = () => {
     const svg = `{{contents}}`;
     return svg;
@@ -21,6 +26,11 @@
   const onResize = () => {
     windowWidth = window.innerWidth;
     windowHeight = window.innerHeight;
+
+    isHorizontal = windowWidth >= windowHeight;
+
+    svgWidth = isHorizontal ? 1600 : 800;
+    svgHeight = isHorizontal ? 800 : 1600;
 
     svg = updateSVG();
 

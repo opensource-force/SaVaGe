@@ -10,6 +10,7 @@
 
   <path d="{{path1}}"
         filter="url(#lineGlow)"
+        fill="transparent"
         stroke="blue"
         stroke-width="2">
     <animate 
@@ -21,6 +22,7 @@
   </path>
   <path d="{{path2}}"
         filter="url(#lineGlow)"
+        fill="transparent"
         stroke="blue"
         stroke-width="2">
     <animate 
@@ -32,6 +34,7 @@
   </path>
   <path d="{{path3}}"
         filter="url(#lineGlow)"
+        fill="transparent"
         stroke="blue"
         stroke-width="2">
     <animate 

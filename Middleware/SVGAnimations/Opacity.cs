@@ -14,7 +14,7 @@ public class Opacity
         svg = svg.Replace("{{values}}", values);
         svg = svg.Replace("{{begin}}", begin);
         svg = svg.Replace("{{duration}}", duration);
-        svg = svg.Replace("{{end}}", end);
+        svg = svg.Replace("{{fill}}", end);
 
         return wrapper.Replace("{{contents}}", svg);
     }

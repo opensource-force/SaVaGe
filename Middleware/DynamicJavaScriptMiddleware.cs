@@ -23,6 +23,7 @@ public class DynamicJavaScriptMiddleware
     {
         var osfLogo = new OSFLogo();
         var button = new ButtonSVG();
+        var background = new Background();
         var parentContainer = new ParentContainer();
         var webpage = new Webpage();
         var gameScene = new GameScene();
@@ -43,12 +44,25 @@ Console.WriteLine(context.Request.Path.Value);
 		  var stack = new Stack<string>(context.Request.Path.Value.Split("-"));
                   var emitterjs = stack.Pop();
                   var emitter = emitterjs.Split(".")[0];
-		  var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
+                  
+                  var screenPositionX = queryParams["x"].ToString() ?? "";
+                  var screenPositionY = queryParams["y"].ToString() ?? "";
+
+		  var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter, screenPositionX, screenPositionY);
 		  await context.Response.WriteAsync(svgEmitter);
 		  return;
             }
 	    switch (context.Request.Path.Value)
 	    {
+                case "/magic-and-teleportation.js": svg = await webpage.MAGICAndTeleportation(svg, _env);
+                    var pes = new SVGParticleEmitter();
+                    var magicFire = await pes.SVG("{{contents}}", _env, "MAGICFire", "300", "400");
+                    svg = svg.Replace("{{additionalJS}}", magicFire);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/linear-gradient.js": svg = await background.GradientSVG(svg, _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
 		case "/foo.js": svg = await osfLogo.SVG(svg, _env);
 		    await context.Response.WriteAsync(svg);
 		    return;
@@ -70,11 +84,6 @@ Console.WriteLine(context.Request.Path.Value);
                     var adStrings = "['ads_', 'ad-', 'ads-', 'googlesyndication', 'pagead2', 'fixed-ad']";
                     var scene = await gameScene.SVG("{{contents}}", _env, adStrings, decoration2);
                     await context.Response.WriteAsync(scene);
-                    return;
-                case "/svg-pes.js":
-                    var emitter = queryParams["emitter"].ToString() ?? "";
-                    var svgEmitter = await svgParticleEmitter.SVG("{{contents}}", _env, emitter);
-                    await context.Response.WriteAsync(svgEmitter);
                     return;
                 case "/speakeasy.js":
                     var speakeasy = await _env.ReadFileFromWebRootAsync("containers/speakeasy/speakeasy.js");

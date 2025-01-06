@@ -1,0 +1,46 @@
+  <defs>
+    <filter id="lineGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path d="{{path1}}"
+        filter="url(#lineGlow)"
+        fill="transparent"
+        stroke="blue"
+        stroke-width="2">
+    <animate 
+      attributeName="d" 
+      dur="0.25s"
+      repeatCount="5"
+      values="{{wiggle1}}"
+    />
+  </path>
+  <path d="{{path2}}"
+        filter="url(#lineGlow)"
+        fill="transparent"
+        stroke="blue"
+        stroke-width="2">
+    <animate 
+      attributeName="d" 
+      dur="0.25s"
+      repeatCount="5"
+      values="{{wiggle2}}"
+      />
+  </path>
+  <path d="{{path3}}"
+        filter="url(#lineGlow)"
+        fill="transparent"
+        stroke="blue"
+        stroke-width="2">
+    <animate 
+      attributeName="d" 
+      dur="0.25s"
+      repeatCount="5"
+      values="{{wiggle3}}"
+    />
+  </path>

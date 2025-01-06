@@ -1,0 +1,126 @@
+  <svg id="magic-svg" xmlns="http://www.w3.org/2000/svg" width="50%" height="100%" viewBox="0 0 ${svgWidth / 2} ${svgHeight}" style="position: relative; z-index: 999;" class="magic-svg">
+    <style type="text/css">
+      .magic-svg {
+        cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAFH0lEQVRYCdVXbWxTZRR+3ntv23Vdu4+u3QrDwWDFfYSNzA8UnAsuAwJLFFLURIyfqL8ECYMo0Svwjx8T/6g/NCF+IUskIlEDQY1AiBrMwsKHsDEUQWR0G1vX7na99/i+d1vpRks3MKinue17z3nf8zzvOec99xb4vwmpJNEukgnE/nXu/wSJCe+CiBgXoo20EAruw594h73PugUJBkY3Gw1pwgvfxDDZLDwJD7bCCr+5NoCJ+0gCljYCfGt8h+ABGIlAE5VBRxkMfM2aWeRWI5CEU2rV+JyPv0+9MrVFSW0attAccmA2nJA0B2QeiSkUQgePwW5c5bmPpVufzp4yBXx3UmQ5pih5KLJYdDdcsgI9asOpEzNRXH0Y/biEVlxgx9hAOpAb2ZNGQIDjkf5Z9umWacjK8EKRCxAO5QcPdqw0wjGPp8rYAKuUi7tg53Pbb4XEdQRU8KreBnvsq1MrgvvkNXBnncsukKO9pwcqLgTvzHUXXuz1xAarDVtmh+TSGarlCB2jDp4O/UY7TWW7jsAbOK5EO3GHdXZRd/e5iFd3Fnt7fr0KqcCLorkwwkeGnFCMUsOCKDRDk5xyN5aii/ZSrwARvSIVWDJ9/AzHK3p+uU3SYx74fEb+HVqbIycCf4Mj5q+SyJ1tsB4jR+4+2Hmv0t8zU8qz2HhTygHBJoDNRjXJFh0nEGeXw10CNp6IDLuTDYX/0Hmf0yUywBSLwSoXO6k9Mt15csdfy4aOti2ChcP7UcOfERtpLU0VXVH0jLi/NIPrCXT3MbiUQVy+nP/7iYwq15wMYhJ3y2dqGvDb6RjcmkZ55VZQpi3G4QeRiUp+NfFjWmrirZx4d0wgMEJ6wKUpg0Oh4J6ORRTMkSOneljbnpAUDIL6eizU9U0ru+r8BAUPlMSs5f7jWlgjdGF39HR0PjQcEQRYy8QLMl6ECe12gOaFPNn10ypcWu8ZIqMT/aFZZ7/LLgl7fJQx53x0e+xla8PREFtY8nSvz+m70P75j5dK2+f1pYl2UnOcgGltMUOn6y6HTfE5sjCAy6Ln89BOL2FttV1fyHO9qx78YYXxmba/89Gl58++2+Tp29T6XPsLJ3cFVOuJFsRUqEZSpBTKMcUiToJZRGvJrseiy2UmDwH6kGGzFkp2WPVDhxpZaflhqSjv5y9/+rjqouWJrbIMfNuRu+rTX3o+GlkvfE6YxBgCguQoiZFxJp7BNGTAzc+GnReazluwEQ6HQ5k5mScXNz/mX9x4YF9B9hWvdmXNh0/5m7ewt9kZtSJgVY+3RIWPmxJBggLE92YSUvg4mxopn+r4Vc/HIAs3jaRvQe7WBhzeGZhC6oL674ECh1gXqOBvDLcq6c7z6poaQcSUx6ulHZsbQOtqbZ1LK4vLhPK9Gt4l+KEwJ0z2axSc1lExbaIN/FMhfIiX0kRfdXWjkQBWVU997fWHQOtrZWOJ3/vw8HxIqni+TFbEm6/pYCO9SB9wOq/SZvN+RJ/oT+UA4hK6FZWelesWSPRWI6Pn57k3CZ2QRKLDmjTfYyLQROtJvIpxGdUnWc5WD4cc1YWFdzcvs3TtfVamV2pdOzm8WS8B8AM9GRHFmDh//H2ibXR8rfjKfNuW2I7uXy3R5kVZrXNnzCgWc9TJpkPs2PwjMi73o4DJfq+RCMhb6h27BIkNdXb+uJ7lEvPVyZJIBpJOl5jztfdnbX/pHscBDm3WCV87JrLpfN20PUXObw94AmumqsMn5LbtPAH8vz/8G6LR/798UbxxAAAAAElFTkSuQmCC') 0 0,
+          pointer !important;
+       }
+    </style>
+
+
+    <defs>
+      <filter id="sparkle" x="-50%" y="-50%" width="200%" height="200%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" result="noise">
+          <animate attributeName="baseFrequency"
+            values="0.5;0.8;0.5"
+            dur="3s"
+            repeatCount="indefinite"/>
+        </feTurbulence>
+        
+        <feColorMatrix type="saturate" values="0" result="noiseAlpha"/>
+        
+        <feComponentTransfer in="noiseAlpha" result="stars">
+          <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1"/>
+        </feComponentTransfer>
+        
+        <feMerge>
+          <feMergeNode in="SourceGraphic"/>
+          <feMergeNode in="stars"/>
+        </feMerge>
+      </filter>
+     
+      <filter id="glow">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <!-- Combined filter for both effects -->
+      <filter id="sparkleAndGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <!-- Sparkle effect -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" result="noise">
+          <animate attributeName="baseFrequency"
+            values="0.5;0.8;0.5"
+            dur="3s"
+            repeatCount="indefinite"/>
+        </feTurbulence>
+        
+        <feColorMatrix type="saturate" values="0" result="noiseAlpha"/>
+        
+        <feComponentTransfer in="noiseAlpha" result="stars">
+          <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1"/>
+        </feComponentTransfer>
+
+        <!-- Glow effect -->
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+        
+        <!-- Combine everything -->
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+          <feMergeNode in="stars" />
+        </feMerge>
+      </filter>
+
+    </defs>
+
+    {{lightningBolt}}
+
+    {{MAGICFire}}
+
+    {{threeWavyLines}}
+
+    {{cloud}}
+
+    <!-- The word "MAGIC" with sparkle effect -->
+    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="80" fill="silver" 
+	  text-anchor="middle" filter="url(#sparkleAndGlow)">
+      <tspan fill-opacity="0">M
+          <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="0.5s"
+        fill="freeze"
+        id="mAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">A
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="mAnim.end + 0.3s"
+        fill="freeze"
+        id="aAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">G
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="aAnim.end + 0.3s"
+        fill="freeze"
+        id="gAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">I
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="gAnim.end + 0.3s"
+        fill="freeze"
+        id="iAnim"/>
+      </tspan>
+      <tspan fill-opacity="0">C
+        <animate
+        attributeName="fill-opacity"
+        values="0;1"
+        dur="0.5s"
+        begin="iAnim.end + 0.3s"
+        fill="freeze"
+        id="cAnim"/>
+      </tspan>
+      <animate attributeName="font-size" values="80;85;80" dur="1s" repeatCount="indefinite" />
+    </text>
+  </svg>

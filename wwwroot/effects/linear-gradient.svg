@@ -1,0 +1,4 @@
+<linearGradient id="{{gradientId}}" x1="{{x1}}" y1="{{y1}}" x2="{{x2}}" y2="{{y2}}">
+  <stop offset="{{startOffset}}" style="stop-color:{{startColor}}"/>
+  <stop offset="{{endOffset}}" style="stop-color:{{endColor}}"/>
+</linearGradient>

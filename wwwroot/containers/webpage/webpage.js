@@ -1,12 +1,21 @@
 (() => {
-  const container = document.getElementById('savage') || document.createElement('div');
+  const container = document.getElementById('webpage') || document.createElement('div');
   if(!container.id) {
+    container.setAttribute('id', 'webpage');
     document.body.appendChild(container);
   }
+
+//  container.setAttribute('style', 'position:fixed;width:100vw;height:100vh;display: grid; grid-template-columns: auto auto; gap: 20px;');
+  container.setAttribute('style', 'position:fixed;width:100vw;height:100vh;display:flex;');
   
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
-  
+
+  let isHorizontal = windowWidth >= windowHeight;
+
+  let svgWidth = isHorizontal ? 1600 : 800;
+  let svgHeight = isHorizontal ? 800 : 1600;
+
   const updateSVG = () => {
     const svg = `{{contents}}`;
     return svg;
@@ -17,6 +26,11 @@
   const onResize = () => {
     windowWidth = window.innerWidth;
     windowHeight = window.innerHeight;
+
+    isHorizontal = windowWidth >= windowHeight;
+
+    svgWidth = isHorizontal ? 1600 : 800;
+    svgHeight = isHorizontal ? 800 : 1600;
 
     svg = updateSVG();
 
@@ -172,3 +186,5 @@ console.log('created bolt');
     };
  
 })();
+
+{{additionalJS}}

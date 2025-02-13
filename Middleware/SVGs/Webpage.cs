@@ -7,6 +7,101 @@ internal class Webpage
         
     }
 
+    internal async Task<string> TheAdvancement(string wrapper, IWebHostEnvironment _env) 
+    {
+        var svgContainer = "<svg id=\"web-svg\" width=\"100%\" height=\"100%\">{{contents}}</svg>";
+
+        var svg = "";
+        var svgContent = "";
+
+        var js = "";
+
+        var linker = new Link();
+        var image = new Image();
+
+        var background = new Background();
+        svg = await background.SVG("{{contents}}", _env, "url(#background)");
+
+        var letsBuildBoats = await _env.ReadFileFromWebRootAsync("planet's-test-dir/let'sBuildBoats.svg");
+        svg = svg + letsBuildBoats;
+
+        var linearGradient = new LinearGradient();
+        svg = await linearGradient.SVG(svg, _env, "background", "0%", "0%", "100%", "0%", "0%", "100%", "purple", "green");
+
+         var planetNineLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/planet-nine-app");
+
+        var planetNineContainer = @"<svg x=""80%"" y=""75%"" width=""15%"" height=""15%"" viewBox=""0 0 200 140"">
+              {{contents}}
+              </svg>
+            ";
+
+        planetNineLink = planetNineLink.Replace("{{contents}}", planetNineContainer);
+
+        PlanetNineLogo planetNineLogo = new PlanetNineLogo(_env);
+        var planetNineLogoSVG = await planetNineLogo.SVG();
+
+        planetNineLink = planetNineLink.Replace("{{contents}}", planetNineLogoSVG);
+
+        var osfLink = await linker.SVG("{{contents}}", _env, "https://opensourceforce.net");
+
+        var osfContainer = @"<svg x=""5%"" y=""75%"" width=""15%"" height=""15%"" viewBox=""0 0 200 240"">
+              {{contents}}
+              </svg>";
+
+        osfLink = osfLink.Replace("{{contents}}", osfContainer);
+
+        var osfLogo = new OSFLogo();
+        var osf = await osfLogo.SVG(osfLink, _env);
+
+        // Fed wiki logo
+        var fedWikiLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/allyabase.svg");
+        svg = svg + fedWikiLogo;
+
+        // allyabase logo
+        var allyabaseLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/allyabase.svg");
+        svg = svg + allyabaseLogo;
+
+        // SaVaGe logo
+        var savageLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/opensource-force/SaVaGe");
+
+        var savageContainer = @"<svg x=""7%"" y=""7%"" width=""15%"" height=""15%"" viewBox=""0 0 300 360"">
+              {{contents}}
+              </svg>
+            ";
+
+        savageLink = savageLink.Replace("{{contents}}", savageContainer);
+
+        var savageLogo = new SaVaGeLogo();
+        var savageLogoSVG = await savageLogo.SVG(savageLink, _env);
+
+        svg = svg + planetNineLink + osf + savageLogoSVG;
+
+        svg = svgContainer.Replace("{{contents}}", svg);
+
+        // MAGIC and teleportation logo
+        var magicAndTeleportationLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/magic-and-teleportation.svg");
+        svg = svg + magicAndTeleportationLogo;
+        
+
+        // Necromancy logo
+        // TODO
+
+        // speakeasy logo
+        // TODO
+
+        // PopupsPlease
+        var popupsPleaseLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/popups-please.svg");
+        svg = svg + popupsPleaseLogo;
+
+        // TechneLegalis
+
+        // Homeventory
+
+        // Parent collectives logo
+        var parentCollectiveLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/magic-and-teleportation.svg");
+        svg = svg + parentCollectiveLogo;
+    }
+
     internal async Task<string> MAGICAndTeleportation(string wrapper, IWebHostEnvironment _env)
     {
 //        var svgContainer = "<svg id=\"web-svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 1600 800\">{{contents}}</svg>";

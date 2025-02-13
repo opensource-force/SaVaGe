@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50">
+      <a href="http://fed.wiki">
+	  <rect width="100%" height="100%" fill="yellow"/>
+	  <image x="5" y="5" width="40" height="40" opacity="1" href="fedwiki.png">
+	  </image>
+	  <text x="55" y="5">Welcome Visitors\n(to the federated wiki)</text>
+      </a>
+</svg>

@@ -68,6 +68,8 @@ internal class Webpage
 
         svg = svg + planetNineLink + osf + savageLogoSVG;
 
+        var discord = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/discord.svg");
+        svg = svg + discord;
 
         // Fed wiki logo
         var fedWikiLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/fed-wiki.svg");

@@ -22,7 +22,7 @@ internal class Webpage
         var background = new Background();
         svg = await background.SVG("{{contents}}", _env, "url(#background)");
 
-        var letsBuildBoats = await _env.ReadFileFromWebRootAsync("planet's-test-dir/let'sBuildBoats.svg");
+        var letsBuildBoats = await _env.ReadFileFromWebRootAsync("planet's-test-dir/let's-build-boats.svg");
         svg = svg + letsBuildBoats;
 
         var linearGradient = new LinearGradient();
@@ -53,18 +53,10 @@ internal class Webpage
         var osfLogo = new OSFLogo();
         var osf = await osfLogo.SVG(osfLink, _env);
 
-        // Fed wiki logo
-        var fedWikiLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/allyabase.svg");
-        svg = svg + fedWikiLogo;
-
-        // allyabase logo
-        var allyabaseLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/allyabase.svg");
-        svg = svg + allyabaseLogo;
-
         // SaVaGe logo
         var savageLink = await linker.SVG("{{contents}}", _env, "https://www.github.com/opensource-force/SaVaGe");
 
-        var savageContainer = @"<svg x=""7%"" y=""7%"" width=""15%"" height=""15%"" viewBox=""0 0 300 360"">
+        var savageContainer = @"<svg x=""17%"" y=""30%"" width=""15%"" height=""15%"" viewBox=""0 0 300 360"">
               {{contents}}
               </svg>
             ";
@@ -76,7 +68,14 @@ internal class Webpage
 
         svg = svg + planetNineLink + osf + savageLogoSVG;
 
-        svg = svgContainer.Replace("{{contents}}", svg);
+
+        // Fed wiki logo
+        var fedWikiLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/fed-wiki.svg");
+        svg = svg + fedWikiLogo;
+
+        // allyabase logo
+        var allyabaseLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/allyabase.svg");
+        svg = svg + allyabaseLogo;
 
         // MAGIC and teleportation logo
         var magicAndTeleportationLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/magic-and-teleportation.svg");
@@ -98,8 +97,16 @@ internal class Webpage
         // Homeventory
 
         // Parent collectives logo
-        var parentCollectiveLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/magic-and-teleportation.svg");
+        var parentCollectiveLogo = await _env.ReadFileFromWebRootAsync("planet's-test-dir/boat-svgs/parent-collective.svg");
         svg = svg + parentCollectiveLogo;
+
+        svg = svgContainer.Replace("{{contents}}", svg);
+
+        var siteSpecificJS = await _env.ReadFileFromWebRootAsync("planet's-test-dir/the-advancement.js");
+        js = js + siteSpecificJS;
+
+        wrapper = wrapper.Replace("{{additionalJS}}", js);
+        return wrapper.Replace("{{contents}}", svg);
     }
 
     internal async Task<string> MAGICAndTeleportation(string wrapper, IWebHostEnvironment _env)

@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" x="25" y="265" width="200" height="100">
       <a href="https://magicandteleportation.com">
 	  <rect width="100%" height="100%" fill="orange"/>
-	  <image x="5" y="5" width="auto" height="auto" opacity="1" href="magic-and-teleportation.png">
+	  <image x="5" y="5" width="190" height="90" opacity="1" href="https://dev.savage.allyabase.com/magic-and-teleportation.png">
 	  </image>
-	  <text x="55" y="5">allyabase are belong to us</text>
+	  <text x="55" y="95" style="text-align: center;">Let's all get paid</text>
       </a>
 </svg>

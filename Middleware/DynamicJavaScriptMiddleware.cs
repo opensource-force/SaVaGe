@@ -54,6 +54,12 @@ Console.WriteLine(context.Request.Path.Value);
             }
 	    switch (context.Request.Path.Value)
 	    {
+                case "/the-advancement.js": svg = await webpage.TheAdvancement(svg, _env);
+                    var pest = new SVGParticleEmitter();
+                    var magicFiret = await pest.SVG("{{contents}}", _env, "MAGICFire", "300", "400");
+                    svg = svg.Replace("{{additionalJS}}", magicFiret);
+                    await context.Response.WriteAsync(svg);
+                    return;
                 case "/magic-and-teleportation.js": svg = await webpage.MAGICAndTeleportation(svg, _env);
                     var pes = new SVGParticleEmitter();
                     var magicFire = await pes.SVG("{{contents}}", _env, "MAGICFire", "300", "400");

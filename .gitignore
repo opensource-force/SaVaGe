@@ -291,3 +291,6 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 *.swp
+
+node_modules
+

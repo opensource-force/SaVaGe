@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Resizing Text Input Demo</title>
+    <style>
+        body {
+            background: #0f0f13;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #4ade80;
+            margin-bottom: 40px;
+        }
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #1a1a1f;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .demo-title {
+            color: #6b46c1;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            background: #0f1419;
+            border-radius: 8px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+            border: 1px solid #333;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        button {
+            background: linear-gradient(45deg, #6b46c1, #4ade80);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🎨 Auto-Resizing Text Input Demo</h1>
+        <p>Inspired by the <a href="https://crates.io/crates/backer" style="color: #4ade80;">backer</a> Rust crate's constraint propagation system.</p>
+        
+        <div class="demo-section">
+            <div class="demo-title">Basic Auto-Resizing Input</div>
+            <div id="input1"></div>
+            <div class="status" id="status1">Status: Ready</div>
+            <div class="controls">
+                <button onclick="window.autoTextInput1?.focus()">Focus</button>
+                <button onclick="window.autoTextInput1?.setValue('Hello, smooth resizing!')">Set Sample Text</button>
+                <button onclick="window.autoTextInput1?.clear()">Clear</button>
+                <button onclick="document.getElementById('status1').textContent = 'Value: ' + (window.autoTextInput1?.getValue() || 'empty')">Get Value</button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <div class="demo-title">Custom Placeholder Input</div>
+            <div id="input2"></div>
+            <div class="status" id="status2">Status: Ready</div>
+            <div class="controls">
+                <button onclick="window.autoTextInput2?.setValue('Testing kerning with: iiii MMMM')">Test Kerning</button>
+                <button onclick="window.autoTextInput2?.setValue('Wide chars: WWWWWWWWWW')">Wide Characters</button>
+                <button onclick="window.autoTextInput2?.setValue('Thin chars: ||||||||||||')">Thin Characters</button>
+                <button onclick="window.autoTextInput2?.clear()">Clear</button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <div class="demo-title">How it Works</div>
+            <p>This SVG text input automatically resizes based on character widths, similar to backer's constraint propagation:</p>
+            <ul>
+                <li>🔤 <strong>Character Width Mapping</strong>: Each character has a known width in the monospace font</li>
+                <li>📏 <strong>Dynamic Width Calculation</strong>: Total width is calculated by summing individual character widths</li>
+                <li>🎭 <strong>Smooth CSS Transitions</strong>: Width changes are animated using cubic-bezier easing</li>
+                <li>⚡ <strong>Real-time Updates</strong>: Width recalculates on every keystroke for fluid interaction</li>
+                <li>🎯 <strong>Cursor Tracking</strong>: Blinking cursor position updates to match text width</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Load the auto-resizing text inputs -->
+    <script>
+        // Set up event handlers for the first input
+        window.onAutoTextInput1 = (text, width) => {
+            document.getElementById('status1').textContent = `Text: "${text}" | Width: ${width}px | Length: ${text.length} chars`;
+        };
+        
+        window.onAutoTextSubmit1 = (text) => {
+            alert(`Submitted: "${text}"`);
+        };
+        
+        // Set up event handlers for the second input
+        window.onAutoTextInput2 = (text, width) => {
+            document.getElementById('status2').textContent = `Kerning test: "${text}" | Width: ${width}px`;
+        };
+    </script>
+    
+    <!-- Load the actual components from SaVaGe server -->
+    <script>
+        // Load first input
+        const script1 = document.createElement('script');
+        script1.src = 'http://localhost:5555/auto-text-input.js?containerId=input1&placeholder=Type something amazing...';
+        script1.onload = () => {
+            console.log('Auto text input 1 loaded');
+            // Store reference with numbered suffix to match the callback
+            window.autoTextInput1 = window[Object.keys(window).find(k => k.startsWith('autoTextInput') && k !== 'autoTextInput1')];
+        };
+        document.head.appendChild(script1);
+        
+        // Load second input
+        setTimeout(() => {
+            const script2 = document.createElement('script');
+            script2.src = 'http://localhost:5555/auto-text-input.js?containerId=input2&placeholder=Test character kerning here...&width=300';
+            script2.onload = () => {
+                console.log('Auto text input 2 loaded');
+                // Store reference for the second input
+                const keys = Object.keys(window).filter(k => k.startsWith('autoTextInput'));
+                window.autoTextInput2 = window[keys[keys.length - 1]];
+            };
+            document.head.appendChild(script2);
+        }, 500);
+    </script>
+</body>
+</html>

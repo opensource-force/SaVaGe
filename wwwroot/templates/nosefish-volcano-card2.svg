@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="volcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A4A42;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D2E28;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lavaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF6347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.2" />
+    </radialGradient>
+
+    <!-- Dramatic spotlight effect -->
+    <radialGradient id="spotlightLeft">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </radialGradient>
+
+    <radialGradient id="spotlightRight">
+      <stop offset="0%" style="stop-color:#FF4500;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FF4500;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Water/ground at bottom -->
+  <rect y="320" width="600" height="80" fill="#4A90E2" opacity="0.6"/>
+
+  <!-- Dramatic spotlight on nosefish -->
+  <ellipse cx="150" cy="200" rx="100" ry="120" fill="url(#spotlightLeft)">
+    <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Dramatic spotlight on volcano -->
+  <ellipse cx="480" cy="220" rx="120" ry="140" fill="url(#spotlightRight)">
+    <animate attributeName="opacity" values="0.6;0.8;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- The Nosefish (left side, facing right) - looking menacing -->
+  <g id="nosefish">
+    <!-- Intimidating bubbles -->
+    <circle cx="180" cy="170" r="5" fill="url(#bubbleGradient)" opacity="0.8">
+      <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="190" cy="180" r="4" fill="url(#bubbleGradient)" opacity="0.7">
+      <animate attributeName="r" values="4;6;4" dur="2.3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body - larger and more aggressive -->
+    <ellipse cx="150" cy="200" rx="45" ry="25" fill="#FF8C42" stroke="#E67332" stroke-width="2.5"/>
+
+    <!-- The prominent NOSE (pointing menacingly toward volcano) -->
+    <path d="M 105 200 L 40 198 L 45 200 L 40 202 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="2">
+      <animate attributeName="d"
+               values="M 105 200 L 40 198 L 45 200 L 40 202 Z;
+                       M 105 200 L 35 198 L 40 200 L 35 202 Z;
+                       M 105 200 L 40 198 L 45 200 L 40 202 Z"
+               dur="1.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Eye - looking angry/determined -->
+    <circle cx="135" cy="195" r="5" fill="white"/>
+    <circle cx="137" cy="195" r="3" fill="black"/>
+    <!-- Fierce eyebrow -->
+    <line x1="128" y1="190" x2="140" y2="188" stroke="#D2691E" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Dorsal fin - more aggressive -->
+    <path d="M 150 175 L 142 155 L 158 175 Z" fill="#FF6B35" stroke="#E67332" stroke-width="2"/>
+
+    <!-- Tail fin - swishing aggressively -->
+    <path d="M 195 200 L 215 185 L 220 200 L 215 215 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="2">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 195 200; -10 195 200; 0 195 200; 10 195 200; 0 195 200"
+                        dur="1.2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Pectoral fins -->
+    <ellipse cx="140" cy="215" rx="10" ry="15" fill="#FF6B35" opacity="0.8"/>
+
+    <!-- Scales detail -->
+    <circle cx="145" cy="200" r="4" fill="#FFB07C" opacity="0.5"/>
+    <circle cx="160" cy="202" r="4" fill="#FFB07C" opacity="0.5"/>
+    <circle cx="175" cy="200" r="4" fill="#FFB07C" opacity="0.5"/>
+  </g>
+
+  <!-- The Volcano (right side, facing left) - looking menacing -->
+  <g id="volcano">
+    <!-- Mountain body - more imposing -->
+    <path d="M 400 320 L 480 150 L 560 320 Z" fill="url(#volcanoGradient)" stroke="#2C1E18" stroke-width="3"/>
+
+    <!-- Crater with glow -->
+    <ellipse cx="480" cy="150" rx="20" ry="10" fill="#1A0F0A"/>
+    <ellipse cx="480" cy="150" rx="18" ry="8" fill="#FF4500" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Angry eyes on the volcano -->
+    <g id="volcanoFace">
+      <!-- Left eye -->
+      <ellipse cx="460" cy="210" rx="8" ry="12" fill="#2C1E18"/>
+      <ellipse cx="460" cy="212" rx="4" ry="6" fill="#FF6347">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+
+      <!-- Right eye -->
+      <ellipse cx="500" cy="210" rx="8" ry="12" fill="#2C1E18"/>
+      <ellipse cx="500" cy="212" rx="4" ry="6" fill="#FF6347">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+
+      <!-- Angry eyebrows -->
+      <line x1="452" y1="200" x2="468" y2="205" stroke="#1A0F0A" stroke-width="3" stroke-linecap="round"/>
+      <line x1="492" y1="205" x2="508" y2="200" stroke="#1A0F0A" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Intimidating lava eruption -->
+    <path d="M 470 150 Q 455 120 460 90 Q 465 70 460 50"
+          stroke="url(#lavaGradient)" stroke-width="6" fill="none" opacity="0.95">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 480 150 Q 485 110 480 75 Q 475 55 480 35"
+          stroke="url(#lavaGradient)" stroke-width="8" fill="none" opacity="0.95">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 490 150 Q 505 115 500 85 Q 495 65 500 50"
+          stroke="url(#lavaGradient)" stroke-width="6" fill="none" opacity="0.95">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="1.7s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Lava drops/particles -->
+    <circle cx="460" cy="70" r="4" fill="#FFD700">
+      <animate attributeName="cy" values="70;40;20" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.5;0" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="50" r="5" fill="#FF6347">
+      <animate attributeName="cy" values="50;25;10" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.6;0" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="65" r="3.5" fill="#FFD700">
+      <animate attributeName="cy" values="65;35;15" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.5;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Tension lines between them -->
+  <g id="tensionLines" opacity="0.3">
+    <line x1="220" y1="195" x2="400" y2="205" stroke="#8B0000" stroke-width="2" stroke-dasharray="5,5">
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="220" y1="200" x2="400" y2="210" stroke="#8B0000" stroke-width="2" stroke-dasharray="5,5">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="1.8s" repeatCount="indefinite"/>
+    </line>
+    <line x1="220" y1="205" x2="400" y2="215" stroke="#8B0000" stroke-width="2" stroke-dasharray="5,5">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2.2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Story text at bottom -->
+  <text x="300" y="360" font-family="Georgia, serif" font-size="20"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.3">
+    One day, a nosefish came upon a volcano,
+  </text>
+  <text x="300" y="385" font-family="Georgia, serif" font-size="20"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.3">
+    and they wondered who was scarier.
+  </text>
+</svg>

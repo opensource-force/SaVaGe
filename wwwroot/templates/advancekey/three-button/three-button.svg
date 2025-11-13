@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="100%" height="100">
+  <defs>
+    <!-- Gradients for button backgrounds -->
+    <linearGradient id="buttonGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:{{buttonColor1}};stop-opacity:1" />
+      <stop offset="100%" style="stop-color:{{buttonColor2}};stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="buttonGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:{{buttonColor3}};stop-opacity:1" />
+      <stop offset="100%" style="stop-color:{{buttonColor4}};stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="buttonGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:{{buttonColor5}};stop-opacity:1" />
+      <stop offset="100%" style="stop-color:{{buttonColor6}};stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Glow filters for hover effects -->
+    <filter id="buttonGlow1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="0" result="offsetblur"/>
+      <feFlood flood-color="{{buttonColor1}}" flood-opacity="0.8"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="buttonGlow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="0" result="offsetblur"/>
+      <feFlood flood-color="{{buttonColor3}}" flood-opacity="0.8"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="buttonGlow3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="0" result="offsetblur"/>
+      <feFlood flood-color="{{buttonColor5}}" flood-opacity="0.8"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .button-rect {
+      stroke-width: 2;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .button1 {
+      fill: url(#buttonGradient1);
+      stroke: {{buttonColor1}};
+    }
+    .button1:hover {
+      filter: url(#buttonGlow1);
+    }
+    .button2 {
+      fill: url(#buttonGradient2);
+      stroke: {{buttonColor3}};
+    }
+    .button2:hover {
+      filter: url(#buttonGlow2);
+    }
+    .button3 {
+      fill: url(#buttonGradient3);
+      stroke: {{buttonColor5}};
+    }
+    .button3:hover {
+      filter: url(#buttonGlow3);
+    }
+    .button-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: {{fontSize}};
+      font-weight: bold;
+      fill: white;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+    }
+  </style>
+
+  <!-- Three buttons in a row -->
+  <!-- Button 1 (Left) -->
+  <rect
+    class="button-rect button1"
+    id="button1"
+    x="10"
+    y="20"
+    width="120"
+    height="60"
+    rx="12"
+    data-spell="{{spell1}}"
+    data-spell-component="{{spellComponent1}}"
+  />
+  <text class="button-text" x="70" y="50">{{buttonText1}}</text>
+
+  <!-- Button 2 (Middle) -->
+  <rect
+    class="button-rect button2"
+    id="button2"
+    x="140"
+    y="20"
+    width="120"
+    height="60"
+    rx="12"
+    data-spell="{{spell2}}"
+    data-spell-component="{{spellComponent2}}"
+  />
+  <text class="button-text" x="200" y="50">{{buttonText2}}</text>
+
+  <!-- Button 3 (Right) -->
+  <rect
+    class="button-rect button3"
+    id="button3"
+    x="270"
+    y="20"
+    width="120"
+    height="60"
+    rx="12"
+    data-spell="{{spell3}}"
+    data-spell-component="{{spellComponent3}}"
+  />
+  <text class="button-text" x="330" y="50">{{buttonText3}}</text>
+</svg>

@@ -1,0 +1,185 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- NEON GLOW SHOWCASE: Demonstrates SVG filters and glowing effects -->
+
+  <defs>
+    <!-- Glow Filter for Pink Neon -->
+    <filter id="pinkGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong Glow Filter for Blue Neon -->
+    <filter id="blueGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Multi-layer Glow for Purple -->
+    <filter id="purpleGlow">
+      <feGaussianBlur stdDeviation="6" result="blur1"/>
+      <feGaussianBlur stdDeviation="12" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Intense Glow for Cyan -->
+    <filter id="cyanGlow">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle Glow for Text -->
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Background -->
+  <rect width="1080" height="1920" fill="#0a0a0a"/>
+
+  <!-- Title Section -->
+  <text x="540" y="150" font-family="Arial, sans-serif" font-size="64" font-weight="bold"
+        fill="#ff00ff" text-anchor="middle" filter="url(#pinkGlow)">
+    NEON EFFECTS
+  </text>
+
+  <text x="540" y="220" font-family="Arial, sans-serif" font-size="24"
+        fill="#888" text-anchor="middle">
+    SVG Filter Examples
+  </text>
+
+  <!-- Example 1: Basic Glow Circle -->
+  <g transform="translate(270, 400)">
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#ff1493" stroke-width="4"
+            filter="url(#pinkGlow)"/>
+    <text x="0" y="140" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">
+      Basic Glow
+    </text>
+    <text x="0" y="170" font-family="Arial, sans-serif" font-size="16"
+          fill="#666" text-anchor="middle">
+      stdDeviation="4"
+    </text>
+  </g>
+
+  <!-- Example 2: Strong Glow Circle -->
+  <g transform="translate(810, 400)">
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#00bfff" stroke-width="4"
+            filter="url(#blueGlow)"/>
+    <text x="0" y="140" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">
+      Strong Glow
+    </text>
+    <text x="0" y="170" font-family="Arial, sans-serif" font-size="16"
+          fill="#666" text-anchor="middle">
+      stdDeviation="8"
+    </text>
+  </g>
+
+  <!-- Example 3: Neon Star -->
+  <g transform="translate(270, 700)">
+    <path d="M 0,-70 L 20,-20 L 70,-20 L 30,10 L 50,60 L 0,30 L -50,60 L -30,10 L -70,-20 L -20,-20 Z"
+          fill="none" stroke="#9370db" stroke-width="3" filter="url(#purpleGlow)"/>
+    <text x="0" y="120" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">
+      Multi-layer Glow
+    </text>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="16"
+          fill="#666" text-anchor="middle">
+      2 blur layers
+    </text>
+  </g>
+
+  <!-- Example 4: Neon Square -->
+  <g transform="translate(810, 700)">
+    <rect x="-70" y="-70" width="140" height="140" rx="10"
+          fill="none" stroke="#00ffff" stroke-width="4" filter="url(#cyanGlow)"/>
+    <text x="0" y="120" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">
+      Intense Glow
+    </text>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="16"
+          fill="#666" text-anchor="middle">
+      stdDeviation="10"
+    </text>
+  </g>
+
+  <!-- Neon Sign Example -->
+  <g transform="translate(540, 1100)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="72" font-weight="bold"
+          fill="#ff00ff" text-anchor="middle" filter="url(#pinkGlow)">
+      OPEN
+    </text>
+    <text x="0" y="90" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">
+      Classic Neon Sign
+    </text>
+  </g>
+
+  <!-- Animated Neon Path -->
+  <g transform="translate(540, 1350)">
+    <path d="M -200,0 Q -100,-80 0,0 T 200,0"
+          fill="none" stroke="#00ff00" stroke-width="6"
+          stroke-linecap="round" filter="url(#cyanGlow)">
+      <animate attributeName="stroke-dasharray"
+               from="0,1000" to="1000,0"
+               dur="3s" repeatCount="indefinite"/>
+    </path>
+    <text x="0" y="100" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">
+      Animated Neon Path
+    </text>
+  </g>
+
+  <!-- Code Example Section -->
+  <text x="540" y="1600" font-family="Arial, sans-serif" font-size="28" font-weight="bold"
+        fill="#fff" text-anchor="middle">
+    Filter Code Example:
+  </text>
+
+  <rect x="140" y="1640" width="800" height="200" rx="10"
+        fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+
+  <text x="180" y="1690" font-family="Courier, monospace" font-size="18" fill="#ff00ff">
+    &lt;filter id="neonGlow"&gt;
+  </text>
+  <text x="220" y="1720" font-family="Courier, monospace" font-size="18" fill="#00bfff">
+    &lt;feGaussianBlur stdDeviation="8"/&gt;
+  </text>
+  <text x="220" y="1750" font-family="Courier, monospace" font-size="18" fill="#00ff00">
+    &lt;feMerge&gt;...&lt;/feMerge&gt;
+  </text>
+  <text x="180" y="1780" font-family="Courier, monospace" font-size="18" fill="#ff00ff">
+    &lt;/filter&gt;
+  </text>
+  <text x="180" y="1810" font-family="Courier, monospace" font-size="18" fill="#ffff00">
+    filter="url(#neonGlow)"
+  </text>
+</svg>

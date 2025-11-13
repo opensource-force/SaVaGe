@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaVaGe - SVG Showcase Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .description {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .showcase-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .showcase-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .techniques-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .techniques-list li {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .techniques-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .view-button:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 1080px;
+            width: 100%;
+            max-height: 90vh;
+            background: white;
+            border-radius: 10px;
+            overflow: auto;
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .modal-iframe {
+            width: 100%;
+            height: 90vh;
+            border: none;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SaVaGe</h1>
+            <div class="subtitle">SVG Showcase Gallery</div>
+            <div class="description">
+                Explore beautiful SVG examples demonstrating essential techniques and effects.
+                Each showcase is optimized for mobile viewing (1080x1920) and demonstrates
+                different SVG capabilities you can use in your projects.
+            </div>
+        </header>
+
+        <div class="showcase-grid">
+            <div class="showcase-card" data-showcase="neon-glow">
+                <div class="card-icon">✨</div>
+                <h2 class="card-title">Neon Glow</h2>
+                <p class="card-description">
+                    Learn how to create stunning neon effects using SVG filters and blur techniques.
+                </p>
+                <ul class="techniques-list">
+                    <li>feGaussianBlur filters</li>
+                    <li>Multiple glow layers</li>
+                    <li>Filter merging techniques</li>
+                    <li>Animated neon paths</li>
+                </ul>
+                <a href="#" class="view-button">View Demo</a>
+            </div>
+
+            <div class="showcase-card" data-showcase="metallic-badge">
+                <div class="card-icon">🏆</div>
+                <h2 class="card-title">Metallic Effects</h2>
+                <p class="card-description">
+                    Discover how to create realistic metallic sheens using advanced gradient techniques.
+                </p>
+                <ul class="techniques-list">
+                    <li>Multi-stop gradients</li>
+                    <li>Gold, silver, bronze effects</li>
+                    <li>Emboss filters</li>
+                    <li>Gradient text fills</li>
+                </ul>
+                <a href="#" class="view-button">View Demo</a>
+            </div>
+
+            <div class="showcase-card" data-showcase="glass-morphism">
+                <div class="card-icon">💎</div>
+                <h2 class="card-title">Glass Morphism</h2>
+                <p class="card-description">
+                    Master modern glass effects with transparency, blur, and layering techniques.
+                </p>
+                <ul class="techniques-list">
+                    <li>Backdrop blur effects</li>
+                    <li>Transparency layers</li>
+                    <li>Gradient overlays</li>
+                    <li>Modern UI design</li>
+                </ul>
+                <a href="#" class="view-button">View Demo</a>
+            </div>
+
+            <div class="showcase-card" data-showcase="gradient-sunset">
+                <div class="card-icon">🌅</div>
+                <h2 class="card-title">Gradient Sunset</h2>
+                <p class="card-description">
+                    Build complex scenes with advanced gradients, layering, and composition.
+                </p>
+                <ul class="techniques-list">
+                    <li>Complex radial gradients</li>
+                    <li>Multi-layer composition</li>
+                    <li>Scene building techniques</li>
+                    <li>Color palette design</li>
+                </ul>
+                <a href="#" class="view-button">View Demo</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                Built with <strong>SaVaGe</strong> - Dynamic SVG Service
+            </p>
+            <p style="margin-top: 10px; opacity: 0.8;">
+                Named after Augusta Savage | Learn more about
+                <a href="https://en.wikipedia.org/wiki/Augusta_Savage" target="_blank">Augusta Savage</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Modal for displaying showcases -->
+    <div id="modal" class="modal">
+        <button class="close-modal" onclick="closeModal()">×</button>
+        <div class="modal-content" id="modal-content">
+            <!-- Content will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modal-content');
+        const showcaseCards = document.querySelectorAll('.showcase-card');
+
+        const showcaseUrls = {
+            'neon-glow': '/neon-glow.js',
+            'metallic-badge': '/metallic-badge.js',
+            'glass-morphism': '/glass-morphism.js',
+            'gradient-sunset': '/gradient-sunset.js'
+        };
+
+        showcaseCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const showcaseType = card.dataset.showcase;
+                openModal(showcaseType);
+            });
+        });
+
+        function openModal(showcaseType) {
+            const url = showcaseUrls[showcaseType];
+            if (url) {
+                // Clear previous content
+                modalContent.innerHTML = '';
+
+                // Create a container for the showcase
+                const container = document.createElement('div');
+                container.id = showcaseType + '-showcase';
+                modalContent.appendChild(container);
+
+                // Load the JavaScript file
+                const script = document.createElement('script');
+                script.src = url;
+                script.onload = () => {
+                    modal.classList.add('active');
+                };
+                document.body.appendChild(script);
+
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            // Clean up
+            modalContent.innerHTML = '';
+        }
+
+        // Close modal on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

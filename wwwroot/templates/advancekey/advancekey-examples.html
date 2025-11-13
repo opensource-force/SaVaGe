@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdvanceKey Button Templates - Examples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #000000 100%);
+            color: white;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 36px;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #a78bfa;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .example {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .example h2 {
+            color: #ec4899;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .example .description {
+            color: #a78bfa;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .button-container {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            color: #10b981;
+        }
+
+        .event-log {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .event-log .event {
+            color: #10b981;
+            padding: 4px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .event-log .event:last-child {
+            border-bottom: none;
+        }
+
+        .event-log .event .timestamp {
+            color: #8b5cf6;
+        }
+
+        .event-log .event .spell {
+            color: #ec4899;
+            font-weight: bold;
+        }
+
+        .event-log .event .component {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AdvanceKey Button Templates</h1>
+        <div class="subtitle">Interactive examples with spell casting</div>
+
+        <!-- Example 1: One Button -->
+        <div class="example">
+            <h2>1. One-Button Template</h2>
+            <div class="description">Perfect for primary actions like purchasing, saving, or casting a single spell.</div>
+
+            <div class="button-container">
+                <div id="purchase-button"></div>
+            </div>
+
+            <div class="code-block">GET /templates/advancekey/one-button.js?containerId=purchase-button&buttonText1=Purchase%20Ticket&spell1=arethaUserPurchase&spellComponent1=ticket123&buttonColor1=%238b5cf6&buttonColor2=%236d28d9&fontSize=16</div>
+        </div>
+
+        <!-- Example 2: Two Buttons -->
+        <div class="example">
+            <h2>2. Two-Button Template</h2>
+            <div class="description">Ideal for binary choices: Accept/Decline, Yes/No, Save/Cancel.</div>
+
+            <div class="button-container">
+                <div id="contract-buttons"></div>
+            </div>
+
+            <div class="code-block">GET /templates/advancekey/two-button.js?containerId=contract-buttons&buttonText1=Sign%20Contract&buttonText2=Decline&spell1=signContract&spellComponent1=contract456&spell2=declineContract&spellComponent2=contract456&buttonColor1=%2310b981&buttonColor2=%230d9488&buttonColor3=%23ef4444&buttonColor4=%23dc2626&fontSize=14</div>
+        </div>
+
+        <!-- Example 3: Three Buttons -->
+        <div class="example">
+            <h2>3. Three-Button Template</h2>
+            <div class="description">Great for navigation, multiple options, or grouped actions.</div>
+
+            <div class="button-container">
+                <div id="nav-buttons"></div>
+            </div>
+
+            <div class="code-block">GET /templates/advancekey/three-button.js?containerId=nav-buttons&buttonText1=Previous&buttonText2=Save%20Recipe&buttonText3=Next&spell1=navigate&spellComponent1=prev&spell2=saveRecipe&spellComponent2=recipe789&spell3=navigate&spellComponent3=next&buttonColor1=%238b5cf6&buttonColor2=%236d28d9&buttonColor3=%23ec4899&buttonColor4=%23db2777&buttonColor5=%2310b981&buttonColor6=%230d9488&fontSize=14</div>
+        </div>
+
+        <!-- Example 4: Custom Colors -->
+        <div class="example">
+            <h2>4. Custom Color Scheme</h2>
+            <div class="description">All Planet Nine color combinations work beautifully.</div>
+
+            <div class="button-container">
+                <div id="custom-colors"></div>
+            </div>
+
+            <div class="code-block">GET /templates/advancekey/two-button.js?containerId=custom-colors&buttonText1=Teleport&buttonText2=Cast%20MAGIC&spell1=teleport&spellComponent1=destination&spell2=castSpell&spellComponent2=magicFire&buttonColor1=%23fbbf24&buttonColor2=%23f59e0b&buttonColor3=%233b82f6&buttonColor4=%232563eb&fontSize=16</div>
+        </div>
+
+        <!-- Event Log -->
+        <div class="example">
+            <h2>Event Log</h2>
+            <div class="description">Click any button to see spell cast events.</div>
+            <div id="event-log" class="event-log">
+                <div class="event">Waiting for events...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the templates -->
+    <script src="http://localhost:5000/templates/advancekey/one-button.js?containerId=purchase-button&buttonText1=Purchase%20Ticket&spell1=arethaUserPurchase&spellComponent1=ticket123&buttonColor1=%238b5cf6&buttonColor2=%236d28d9&fontSize=16"></script>
+
+    <script src="http://localhost:5000/templates/advancekey/two-button.js?containerId=contract-buttons&buttonText1=Sign%20Contract&buttonText2=Decline&spell1=signContract&spellComponent1=contract456&spell2=declineContract&spellComponent2=contract456&buttonColor1=%2310b981&buttonColor2=%230d9488&buttonColor3=%23ef4444&buttonColor4=%23dc2626&fontSize=14"></script>
+
+    <script src="http://localhost:5000/templates/advancekey/three-button.js?containerId=nav-buttons&buttonText1=Previous&buttonText2=Save%20Recipe&buttonText3=Next&spell1=navigate&spellComponent1=prev&spell2=saveRecipe&spellComponent2=recipe789&spell3=navigate&spellComponent3=next&buttonColor1=%238b5cf6&buttonColor2=%236d28d9&buttonColor3=%23ec4899&buttonColor4=%23db2777&buttonColor5=%2310b981&buttonColor6=%230d9488&fontSize=14"></script>
+
+    <script src="http://localhost:5000/templates/advancekey/two-button.js?containerId=custom-colors&buttonText1=Teleport&buttonText2=Cast%20MAGIC&spell1=teleport&spellComponent1=destination&spell2=castSpell&spellComponent2=magicFire&buttonColor1=%23fbbf24&buttonColor2=%23f59e0b&buttonColor3=%233b82f6&buttonColor4=%232563eb&fontSize=16"></script>
+
+    <!-- Event listener -->
+    <script>
+        const eventLog = document.getElementById('event-log');
+        let eventCount = 0;
+
+        window.addEventListener('advancekey-spell-cast', (e) => {
+            const { spell, spellComponent } = e.detail;
+            const timestamp = new Date().toLocaleTimeString();
+
+            eventCount++;
+
+            if (eventCount === 1) {
+                eventLog.innerHTML = ''; // Clear "Waiting for events..."
+            }
+
+            const eventDiv = document.createElement('div');
+            eventDiv.className = 'event';
+            eventDiv.innerHTML = `
+                <span class="timestamp">[${timestamp}]</span>
+                Spell: <span class="spell">${spell}</span> |
+                Component: <span class="component">${spellComponent}</span>
+            `;
+
+            eventLog.insertBefore(eventDiv, eventLog.firstChild);
+
+            // Keep only last 10 events
+            while (eventLog.children.length > 10) {
+                eventLog.removeChild(eventLog.lastChild);
+            }
+        });
+
+        console.log('%c🎯 AdvanceKey Templates Loaded', 'color: #8b5cf6; font-size: 16px; font-weight: bold;');
+        console.log('Click any button to see spell cast events in the log below.');
+    </script>
+</body>
+</html>

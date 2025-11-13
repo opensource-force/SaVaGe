@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9370DB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DDA0DD;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Split background gradient - water side -->
+    <linearGradient id="waterSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1E90FF;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#87CEEB;stop-opacity:0.3" />
+    </linearGradient>
+
+    <!-- Split background gradient - fire side -->
+    <linearGradient id="fireSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFB347;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FF6347;stop-opacity:0.7" />
+    </linearGradient>
+
+    <linearGradient id="volcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A4A42;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D2E28;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lavaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF6347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.3" />
+    </radialGradient>
+
+    <radialGradient id="fireGlow">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#FF6347;stop-opacity:0" />
+    </radialGradient>
+
+    <radialGradient id="waterGlow">
+      <stop offset="0%" style="stop-color:#4FC3F7;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#1E90FF;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Split background - left water, right fire -->
+  <rect x="0" y="0" width="300" height="400" fill="url(#waterSide)"/>
+  <rect x="300" y="0" width="300" height="400" fill="url(#fireSide)"/>
+
+  <!-- Dividing line in center -->
+  <line x1="300" y1="0" x2="300" y2="400" stroke="#2C3E50" stroke-width="4" opacity="0.5"/>
+
+  <!-- Water glow on left side -->
+  <ellipse cx="150" cy="250" rx="120" ry="150" fill="url(#waterGlow)">
+    <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Fire glow on right side -->
+  <ellipse cx="450" cy="250" rx="120" ry="150" fill="url(#fireGlow)">
+    <animate attributeName="opacity" values="0.5;0.7;0.5" dur="2.5s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- The Nosefish (LEFT SIDE - looking at viewer) -->
+  <g id="nosefish">
+    <!-- Dramatic water effects -->
+    <rect y="300" width="300" height="100" fill="#1E90FF" opacity="0.5"/>
+
+    <!-- Power bubbles -->
+    <circle cx="120" cy="280" r="6" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="280;250;220" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="6;9;12" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="180" cy="290" r="5" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="290;260;230" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.3;0" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="5;8;10" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body - centered and facing viewer -->
+    <ellipse cx="150" cy="250" rx="50" ry="30" fill="#FF8C42" stroke="#E67332" stroke-width="3"/>
+
+    <!-- The prominent NOSE - pointing at viewer -->
+    <path d="M 100 250 L 35 248 L 40 250 L 35 252 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="2.5">
+      <animate attributeName="d"
+               values="M 100 250 L 35 248 L 40 250 L 35 252 Z;
+                       M 100 250 L 30 247 L 35 250 L 30 253 Z;
+                       M 100 250 L 35 248 L 40 250 L 35 252 Z"
+               dur="1.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Both eyes visible - determined look -->
+    <circle cx="140" cy="242" r="6" fill="white"/>
+    <circle cx="142" cy="242" r="4" fill="black"/>
+
+    <circle cx="160" cy="242" r="6" fill="white"/>
+    <circle cx="162" cy="242" r="4" fill="black"/>
+
+    <!-- Determined eyebrows -->
+    <line x1="134" y1="235" x2="146" y2="233" stroke="#D2691E" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="154" y1="233" x2="166" y2="235" stroke="#D2691E" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 150 220 L 142 195 L 158 220 Z" fill="#FF6B35" stroke="#E67332" stroke-width="2"/>
+
+    <!-- Tail fin - powerful -->
+    <path d="M 200 250 L 225 235 L 230 250 L 225 265 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="2">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 200 250; -10 200 250; 10 200 250; 0 200 250"
+                        dur="1.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Pectoral fins -->
+    <ellipse cx="135" cy="270" rx="12" ry="18" fill="#FF6B35" opacity="0.8"/>
+    <ellipse cx="165" cy="270" rx="12" ry="18" fill="#FF6B35" opacity="0.8"/>
+
+    <!-- Scales detail -->
+    <circle cx="145" cy="250" r="4" fill="#FFB07C" opacity="0.6"/>
+    <circle cx="155" cy="252" r="4" fill="#FFB07C" opacity="0.6"/>
+    <circle cx="165" cy="250" r="4" fill="#FFB07C" opacity="0.6"/>
+    <circle cx="175" cy="252" r="4" fill="#FFB07C" opacity="0.6"/>
+    <circle cx="185" cy="250" r="4" fill="#FFB07C" opacity="0.6"/>
+
+    <!-- Water splashes for drama -->
+    <path d="M 200 230 Q 215 225 225 230" stroke="#4FC3F7" stroke-width="3" fill="none" opacity="0.7">
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 200 270 Q 215 275 225 270" stroke="#4FC3F7" stroke-width="3" fill="none" opacity="0.7">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- The Volcano (RIGHT SIDE - looking at viewer) -->
+  <g id="volcano">
+    <!-- Mountain body - facing viewer -->
+    <path d="M 350 400 L 450 180 L 550 400 Z" fill="url(#volcanoGradient)" stroke="#2C1E18" stroke-width="3"/>
+
+    <!-- Crater - glowing -->
+    <ellipse cx="450" cy="180" rx="22" ry="11" fill="#1A0F0A"/>
+    <ellipse cx="450" cy="180" rx="20" ry="9" fill="#FF4500" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Dramatic lava eruptions -->
+    <path d="M 445 180 Q 440 150 445 125 Q 450 105 445 85"
+          stroke="url(#lavaGradient)" stroke-width="6" fill="none" opacity="0.9">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 450 180 Q 455 145 450 115 Q 445 90 450 70"
+          stroke="url(#lavaGradient)" stroke-width="7" fill="none" opacity="0.95">
+      <animate attributeName="opacity" values="0.85;1;0.85" dur="1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 455 180 Q 460 155 455 130 Q 450 110 455 90"
+          stroke="url(#lavaGradient)" stroke-width="6" fill="none" opacity="0.9">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Lava particles -->
+    <circle cx="445" cy="100" r="5" fill="#FFD700">
+      <animate attributeName="cy" values="100;70;40" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.5;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="85" r="6" fill="#FF6347">
+      <animate attributeName="cy" values="85;55;25" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.6;0" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="455" cy="105" r="4.5" fill="#FFD700">
+      <animate attributeName="cy" values="105;75;45" dur="1.9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.5;0" dur="1.9s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fierce eyes looking at viewer -->
+    <ellipse cx="430" cy="240" rx="10" ry="14" fill="#2C1E18"/>
+    <ellipse cx="430" cy="242" rx="5" ry="8" fill="#FF6347">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <ellipse cx="470" cy="240" rx="10" ry="14" fill="#2C1E18"/>
+    <ellipse cx="470" cy="242" rx="5" ry="8" fill="#FF6347">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Fierce eyebrows -->
+    <line x1="420" y1="228" x2="438" y2="232" stroke="#1A0F0A" stroke-width="3" stroke-linecap="round"/>
+    <line x1="462" y1="232" x2="480" y2="228" stroke="#1A0F0A" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Smoke/steam effects -->
+    <ellipse cx="420" cy="200" rx="15" ry="20" fill="#666666" opacity="0.3">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="20;25;20" dur="2.5s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="480" cy="200" rx="15" ry="20" fill="#666666" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="20;25;20" dur="2.2s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+  <!-- Question mark symbols floating around -->
+  <text x="100" y="150" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#2C3E50" opacity="0.4">?</text>
+  <text x="480" y="140" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#2C3E50" opacity="0.4">?</text>
+
+  <!-- Main question to the viewer -->
+  <g id="questionBox">
+    <!-- Background box -->
+    <rect x="125" y="20" width="350" height="100" fill="#FFFFFF" stroke="#2C3E50" stroke-width="4" rx="10" opacity="0.95"/>
+
+    <!-- Question text -->
+    <text x="300" y="55" font-family="Georgia, serif" font-size="28" font-weight="bold"
+          text-anchor="middle" fill="#2C3E50">
+      What do you think?
+    </text>
+    <text x="300" y="95" font-family="Georgia, serif" font-size="32" font-weight="bold"
+          text-anchor="middle" fill="#6A0DAD">
+      Who's scarier?
+    </text>
+  </g>
+
+  <!-- Labels for each character -->
+  <text x="150" y="360" font-family="Georgia, serif" font-size="18" font-weight="bold"
+        text-anchor="middle" fill="#1E90FF" stroke="#FFFFFF" stroke-width="0.5">
+    THE NOSEFISH
+  </text>
+  <text x="450" y="360" font-family="Georgia, serif" font-size="18" font-weight="bold"
+        text-anchor="middle" fill="#FF6347" stroke="#FFFFFF" stroke-width="0.5">
+    THE VOLCANO
+  </text>
+
+  <!-- Decorative VS in the middle -->
+  <text x="300" y="315" font-family="Georgia, serif" font-size="36" font-weight="bold"
+        text-anchor="middle" fill="#2C3E50" opacity="0.6">
+    VS
+  </text>
+  <circle cx="300" cy="300" r="35" fill="none" stroke="#2C3E50" stroke-width="3" opacity="0.4"/>
+</svg>

@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E90FF;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4169E1;stop-opacity:0.8" />
+    </linearGradient>
+
+    <linearGradient id="volcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A4A42;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D2E28;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lavaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF6347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.2" />
+    </radialGradient>
+
+    <radialGradient id="spotlightOnViewer">
+      <stop offset="0%" style="stop-color:#FFFF00;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#FFD700;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#FF6347;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Spotlight effect pointing at viewer -->
+  <ellipse cx="300" cy="200" rx="250" ry="200" fill="url(#spotlightOnViewer)">
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Water at bottom -->
+  <rect y="320" width="600" height="80" fill="url(#waterGradient)"/>
+
+  <!-- Dramatic pointing arrows toward viewer -->
+  <g id="pointingIndicators" opacity="0.5">
+    <!-- Arrow from left -->
+    <path d="M 50 200 L 100 200 L 90 190 M 100 200 L 90 210"
+          stroke="#2C3E50" stroke-width="4" fill="none" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Arrow from right -->
+    <path d="M 550 200 L 500 200 L 510 190 M 500 200 L 510 210"
+          stroke="#2C3E50" stroke-width="4" fill="none" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Arrow from top -->
+    <path d="M 300 30 L 300 80 L 290 70 M 300 80 L 310 70"
+          stroke="#2C3E50" stroke-width="4" fill="none" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- The Nosefish (left side, looking worried and pointing at viewer) -->
+  <g id="nosefish">
+    <!-- Nervous bubbles -->
+    <circle cx="90" cy="280" r="4" fill="url(#bubbleGradient)" opacity="0.6">
+      <animate attributeName="cy" values="280;260;240" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.2;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="285" r="3" fill="url(#bubbleGradient)" opacity="0.5">
+      <animate attributeName="cy" values="285;265;245" dur="3.3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.2;0" dur="3.3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body - smaller, worried stance -->
+    <ellipse cx="120" cy="300" rx="40" ry="24" fill="#FF8C42" stroke="#E67332" stroke-width="2.5"/>
+
+    <!-- The nose - pointing slightly upward toward viewer -->
+    <path d="M 80 298 L 30 293 L 35 298 L 30 303 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="2"/>
+
+    <!-- Both eyes visible - wide and worried, looking at viewer -->
+    <circle cx="105" cy="292" r="6" fill="white"/>
+    <circle cx="107" cy="291" r="4" fill="black"/>
+
+    <circle cx="122" cy="292" r="6" fill="white"/>
+    <circle cx="124" cy="291" r="4" fill="black"/>
+
+    <!-- Worried eyebrows -->
+    <path d="M 100 286 Q 105 283 110 286" stroke="#D2691E" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M 117 286 Q 122 283 127 286" stroke="#D2691E" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 120 276 L 112 258 L 128 276 Z" fill="#FF6B35" stroke="#E67332" stroke-width="2"/>
+
+    <!-- Tail fin -->
+    <path d="M 160 300 L 180 288 L 185 300 L 180 312 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="2">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 160 300; -4 160 300; 4 160 300; 0 160 300"
+                        dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Pectoral fins -->
+    <ellipse cx="108" cy="315" rx="9" ry="13" fill="#FF6B35" opacity="0.8"/>
+    <ellipse cx="132" cy="315" rx="9" ry="13" fill="#FF6B35" opacity="0.8"/>
+
+    <!-- Scales -->
+    <circle cx="115" cy="300" r="3.5" fill="#FFB07C" opacity="0.5"/>
+    <circle cx="125" cy="302" r="3.5" fill="#FFB07C" opacity="0.5"/>
+    <circle cx="135" cy="300" r="3.5" fill="#FFB07C" opacity="0.5"/>
+    <circle cx="145" cy="302" r="3.5" fill="#FFB07C" opacity="0.5"/>
+  </g>
+
+  <!-- The Volcano (right side, looking worried at viewer) -->
+  <g id="volcano">
+    <!-- Mountain body -->
+    <path d="M 400 400 L 480 200 L 560 400 Z" fill="url(#volcanoGradient)" stroke="#2C1E18" stroke-width="3"/>
+
+    <!-- Crater - nervous/subdued -->
+    <ellipse cx="480" cy="200" rx="18" ry="9" fill="#1A0F0A"/>
+    <ellipse cx="480" cy="200" rx="16" ry="7" fill="#FF4500" opacity="0.4">
+      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Small nervous lava puffs -->
+    <path d="M 475 200 Q 472 185 475 175"
+          stroke="url(#lavaGradient)" stroke-width="3" fill="none" opacity="0.5">
+      <animate attributeName="opacity" values="0.4;0.6;0.4" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 485 200 Q 488 187 485 177"
+          stroke="url(#lavaGradient)" stroke-width="3" fill="none" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.7;0.5" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Wide worried eyes looking at viewer -->
+    <ellipse cx="460" cy="260" rx="11" ry="15" fill="#2C1E18"/>
+    <circle cx="460" cy="262" r="6" fill="white"/>
+    <circle cx="461" cy="262" r="4" fill="black"/>
+
+    <ellipse cx="500" cy="260" rx="11" ry="15" fill="#2C1E18"/>
+    <circle cx="500" cy="262" r="6" fill="white"/>
+    <circle cx="501" cy="262" r="4" fill="black"/>
+
+    <!-- Worried/surprised eyebrows -->
+    <path d="M 450 248 Q 460 244 470 248" stroke="#1A0F0A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 490 248 Q 500 244 510 248" stroke="#1A0F0A" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+    <!-- Small smoke puffs - nervous -->
+    <ellipse cx="455" cy="230" rx="12" ry="15" fill="#666666" opacity="0.2">
+      <animate attributeName="opacity" values="0.1;0.3;0.1" dur="2.5s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="505" cy="230" rx="12" ry="15" fill="#666666" opacity="0.2">
+      <animate attributeName="opacity" values="0.15;0.35;0.15" dur="2.2s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+  <!-- Shared speech bubble - both speaking together -->
+  <g id="sharedSpeechBubble">
+    <!-- Large bubble background -->
+    <ellipse cx="300" cy="125" rx="200" ry="60" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3" opacity="0.95"/>
+
+    <!-- Pointer from nosefish -->
+    <path d="M 150 145 L 125 160 L 140 155" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Pointer from volcano -->
+    <path d="M 450 145 L 475 160 L 460 155" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Text content -->
+    <text x="300" y="120" font-family="Georgia, serif" font-size="26" font-weight="bold"
+          text-anchor="middle" fill="#2C3E50">
+      Or maybe
+    </text>
+    <text x="300" y="155" font-family="Georgia, serif" font-size="32" font-weight="bold"
+          text-anchor="middle" fill="#8B0000">
+      THEY'RE the scariest...
+    </text>
+  </g>
+
+  <!-- Pointing gestures toward viewer -->
+  <g id="pointingAtViewer">
+    <!-- Nosefish's fin pointing outward -->
+    <path d="M 150 300 L 180 200" stroke="#FF6B35" stroke-width="4" opacity="0.6" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Volcano's rock outcrop pointing -->
+    <path d="M 450 300 L 420 200" stroke="#3D2E28" stroke-width="5" opacity="0.6" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- "YOU" text pointing at viewer -->
+  <text x="300" y="50" font-family="Georgia, serif" font-size="48" font-weight="bold"
+        text-anchor="middle" fill="#8B0000" stroke="#FFD700" stroke-width="1">
+    YOU
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- Story text at bottom -->
+  <text x="300" y="375" font-family="Georgia, serif" font-size="17" font-style="italic"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.3">
+    The nosefish and the volcano both looked towards the reader and said,
+  </text>
+  <text x="300" y="395" font-family="Georgia, serif" font-size="17" font-style="italic"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.3">
+    "Or maybe they're the scariest."
+  </text>
+
+  <!-- THE END -->
+  <g id="theEnd" opacity="0.5">
+    <text x="520" y="360" font-family="Georgia, serif" font-size="16" font-style="italic"
+          text-anchor="middle" fill="#2C3E50">
+      The End
+    </text>
+  </g>
+</svg>

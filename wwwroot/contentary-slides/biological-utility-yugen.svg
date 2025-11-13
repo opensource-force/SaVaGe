@@ -1,0 +1,310 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- CONTENTARY SLIDE: Biological Utility and Yugen eCommerce Concept -->
+  <!-- Beautiful marquee-style announcement -->
+
+  <defs>
+    <!-- Elegant background gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2027;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#203a43;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5364;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gold marquee light gradient -->
+    <radialGradient id="goldLight" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#fff9e6;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8860b;stop-opacity:0.3" />
+    </radialGradient>
+
+    <!-- Warm white light -->
+    <radialGradient id="warmLight" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#ffe6cc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#cc9966;stop-opacity:0.2" />
+    </radialGradient>
+
+    <!-- Title gradient - elegant gold to copper -->
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#f4e5c3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#c5a572;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4af37;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Subtitle gradient - soft shimmer -->
+    <linearGradient id="subtitleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e8dcc0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8dcc0;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Main concept gradient - ethereal blue to white -->
+    <linearGradient id="conceptGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0f7ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b3e5fc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#81d4fa;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Elegant glow -->
+    <filter id="elegantGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong glow for lights -->
+    <filter id="lightGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft shadow -->
+    <filter id="softShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Art deco pattern -->
+    <pattern id="artDecoPattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+      <line x1="60" y1="0" x2="60" y2="120" stroke="#ffffff" stroke-width="0.5" opacity="0.1"/>
+      <line x1="0" y1="60" x2="120" y2="60" stroke="#ffffff" stroke-width="0.5" opacity="0.1"/>
+      <circle cx="60" cy="60" r="40" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGradient)"/>
+  <rect width="1080" height="1920" fill="url(#artDecoPattern)"/>
+
+  <!-- Marquee Frame -->
+  <rect x="60" y="180" width="960" height="1560" rx="30"
+        fill="none" stroke="url(#titleGradient)" stroke-width="8"
+        filter="url(#elegantGlow)"/>
+
+  <rect x="80" y="200" width="920" height="1520" rx="20"
+        fill="rgba(0, 0, 0, 0.3)" stroke="url(#titleGradient)" stroke-width="2"/>
+
+  <!-- Marquee Lights - Top -->
+  <g opacity="0.9">
+    <circle cx="150" cy="210" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="210" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="210" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="210" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="540" cy="210" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="630" cy="210" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="730" cy="210" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="0.9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="830" cy="210" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" begin="0.9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="930" cy="210" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Marquee Lights - Bottom -->
+  <g opacity="0.9">
+    <circle cx="150" cy="1710" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="1710" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="1710" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="1710" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="540" cy="1710" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" begin="0.9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="630" cy="1710" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="0.9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="730" cy="1710" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="830" cy="1710" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="930" cy="1710" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Marquee Lights - Left Side -->
+  <g opacity="0.9">
+    <circle cx="90" cy="400" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="600" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="800" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="1000" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="1200" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="1400" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="1600" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" begin="0.9s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Marquee Lights - Right Side -->
+  <g opacity="0.9">
+    <circle cx="990" cy="400" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="990" cy="600" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="990" cy="800" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="990" cy="1000" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="990" cy="1200" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="990" cy="1400" r="12" fill="url(#warmLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" begin="0.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="990" cy="1600" r="12" fill="url(#goldLight)" filter="url(#lightGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="1.1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Decorative art deco corners -->
+  <g opacity="0.6">
+    <path d="M 120,280 L 150,250 L 180,280" fill="none" stroke="url(#titleGradient)" stroke-width="3"/>
+    <path d="M 900,280 L 930,250 L 960,280" fill="none" stroke="url(#titleGradient)" stroke-width="3"/>
+    <path d="M 120,1640 L 150,1670 L 180,1640" fill="none" stroke="url(#titleGradient)" stroke-width="3"/>
+    <path d="M 900,1640 L 930,1670 L 960,1640" fill="none" stroke="url(#titleGradient)" stroke-width="3"/>
+  </g>
+
+  <!-- Top Banner -->
+  <text x="540" y="380" font-family="Georgia, serif" font-size="56" font-style="italic"
+        fill="url(#titleGradient)" text-anchor="middle" filter="url(#elegantGlow)">
+    Introducing
+  </text>
+
+  <!-- Main Title -->
+  <text x="540" y="510" font-family="Georgia, serif" font-size="72" font-weight="bold"
+        fill="url(#titleGradient)" text-anchor="middle" filter="url(#softShadow)">
+    A New eCommerce
+  </text>
+  <text x="540" y="600" font-family="Georgia, serif" font-size="72" font-weight="bold"
+        fill="url(#titleGradient)" text-anchor="middle" filter="url(#softShadow)">
+    Concept!
+  </text>
+
+  <!-- Decorative line -->
+  <line x1="200" y1="680" x2="880" y2="680" stroke="url(#titleGradient)" stroke-width="2" opacity="0.6"/>
+  <line x1="220" y1="690" x2="860" y2="690" stroke="url(#subtitleGradient)" stroke-width="1" opacity="0.4"/>
+
+  <!-- Main Concept Box -->
+  <rect x="140" y="750" width="800" height="700" rx="15"
+        fill="rgba(255, 255, 255, 0.05)" stroke="url(#conceptGradient)" stroke-width="2"
+        filter="url(#elegantGlow)"/>
+
+  <!-- Concept Text - Line 1 -->
+  <text x="540" y="920" font-family="Georgia, serif" font-size="58" font-weight="300"
+        fill="url(#conceptGradient)" text-anchor="middle" filter="url(#elegantGlow)">
+    Value based on
+  </text>
+
+  <!-- Concept Text - Line 2 (Biological Utility) -->
+  <text x="540" y="1050" font-family="Georgia, serif" font-size="68" font-weight="bold"
+        fill="url(#subtitleGradient)" text-anchor="middle" filter="url(#softShadow)">
+    Biological Utility
+  </text>
+
+  <!-- And/Or -->
+  <text x="540" y="1150" font-family="Georgia, serif" font-size="48" font-style="italic"
+        fill="url(#titleGradient)" text-anchor="middle" opacity="0.8">
+    and/or
+  </text>
+
+  <!-- Concept Text - Line 3 (Yugen) -->
+  <text x="540" y="1280" font-family="Georgia, serif" font-size="80" font-weight="bold"
+        fill="url(#subtitleGradient)" text-anchor="middle" filter="url(#softShadow)">
+    Yugen
+  </text>
+
+  <!-- Japanese characters for Yugen (幽玄) -->
+  <text x="540" y="1380" font-family="serif" font-size="56"
+        fill="url(#conceptGradient)" text-anchor="middle" opacity="0.7">
+    幽玄
+  </text>
+
+  <!-- Decorative flourish -->
+  <g transform="translate(540, 1500)" opacity="0.5">
+    <path d="M -100,0 Q -50,-20 0,0 Q 50,20 100,0" fill="none" stroke="url(#titleGradient)" stroke-width="2"/>
+    <circle cx="-100" cy="0" r="4" fill="url(#goldLight)"/>
+    <circle cx="0" cy="0" r="6" fill="url(#goldLight)"/>
+    <circle cx="100" cy="0" r="4" fill="url(#goldLight)"/>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="540" y="1600" font-family="Georgia, serif" font-size="36" font-style="italic"
+        fill="url(#subtitleGradient)" text-anchor="middle" opacity="0.8">
+    The future of meaningful exchange
+  </text>
+
+  <!-- Sparkle accents -->
+  <g opacity="0.7">
+    <path d="M 250,450 l 3,-8 l 3,8 l 8,3 l -8,3 l -3,8 l -3,-8 l -8,-3 Z"
+          fill="url(#goldLight)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 830,550 l 2,-6 l 2,6 l 6,2 l -6,2 l -2,6 l -2,-6 l -6,-2 Z"
+          fill="url(#warmLight)">
+      <animate attributeName="opacity" values="1;0.7;1" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 200,1100 l 2,-6 l 2,6 l 6,2 l -6,2 l -2,6 l -2,-6 l -6,-2 Z"
+          fill="url(#goldLight)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 880,1250 l 3,-8 l 3,8 l 8,3 l -8,3 l -3,8 l -3,-8 l -8,-3 Z"
+          fill="url(#warmLight)">
+      <animate attributeName="opacity" values="1;0.7;1" dur="3.2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>

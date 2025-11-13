@@ -1,0 +1,237 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- METALLIC EFFECTS SHOWCASE: Demonstrates gradient techniques for metallic sheens -->
+
+  <defs>
+    <!-- Gold Gradient -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="15%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b8860b;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="85%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Silver Gradient -->
+    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:1" />
+      <stop offset="15%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#c0c0c0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#808080;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#c0c0c0;stop-opacity:1" />
+      <stop offset="85%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0a0a0;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Bronze Gradient -->
+    <linearGradient id="bronzeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#cd7f32;stop-opacity:1" />
+      <stop offset="15%" style="stop-color:#e6a866;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#cd7f32;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5a2b;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#cd7f32;stop-opacity:1" />
+      <stop offset="85%" style="stop-color:#e6a866;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5a2b;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Chrome/Reflective Gradient -->
+    <radialGradient id="chromeGradient" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#c0c0c0;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#606060;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#909090;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#404040;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Copper Gradient -->
+    <linearGradient id="copperGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4a460;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#da8a67;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b87333;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#da8a67;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b87333;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Rose Gold Gradient -->
+    <linearGradient id="roseGoldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffe4e4;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ffc9c9;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e5b3a5;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#ffc9c9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c9a18c;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Emboss Filter for 3D effect -->
+    <filter id="emboss">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="2" dy="2" result="offsetBlur"/>
+      <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.75"
+                          specularExponent="20" lighting-color="#ffffff" result="specOut">
+        <fePointLight x="-5000" y="-10000" z="20000"/>
+      </feSpecularLighting>
+      <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic"
+                   k1="0" k2="1" k3="1" k4="0"/>
+    </filter>
+
+    <!-- Drop Shadow -->
+    <filter id="dropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="3" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Background -->
+  <rect width="1080" height="1920" fill="#1a1a1a"/>
+
+  <!-- Title Section -->
+  <text x="540" y="120" font-family="Arial, sans-serif" font-size="56" font-weight="bold"
+        fill="url(#goldGradient)" text-anchor="middle" filter="url(#emboss)">
+    METALLIC EFFECTS
+  </text>
+
+  <text x="540" y="180" font-family="Arial, sans-serif" font-size="24"
+        fill="#aaa" text-anchor="middle">
+    Gradient Techniques for Metallic Sheens
+  </text>
+
+  <!-- Gold Badge -->
+  <g transform="translate(270, 350)">
+    <circle cx="0" cy="0" r="100" fill="url(#goldGradient)"
+            filter="url(#dropShadow)"/>
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#b8860b" stroke-width="2"/>
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="32" font-weight="bold"
+          fill="#8b6508" text-anchor="middle">GOLD</text>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">Gold Gradient</text>
+    <text x="0" y="180" font-family="Arial, sans-serif" font-size="14"
+          fill="#666" text-anchor="middle">7 color stops</text>
+  </g>
+
+  <!-- Silver Badge -->
+  <g transform="translate(810, 350)">
+    <circle cx="0" cy="0" r="100" fill="url(#silverGradient)"
+            filter="url(#dropShadow)"/>
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#808080" stroke-width="2"/>
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" font-weight="bold"
+          fill="#505050" text-anchor="middle">SILVER</text>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">Silver Gradient</text>
+    <text x="0" y="180" font-family="Arial, sans-serif" font-size="14"
+          fill="#666" text-anchor="middle">Linear gradient</text>
+  </g>
+
+  <!-- Bronze Shield -->
+  <g transform="translate(270, 650)">
+    <path d="M 0,-90 L 80,-60 L 80,40 L 0,90 L -80,40 L -80,-60 Z"
+          fill="url(#bronzeGradient)" filter="url(#dropShadow)"/>
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" font-weight="bold"
+          fill="#5c3d1f" text-anchor="middle">3rd</text>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">Bronze Shield</text>
+    <text x="0" y="180" font-family="Arial, sans-serif" font-size="14"
+          fill="#666" text-anchor="middle">Path + gradient</text>
+  </g>
+
+  <!-- Chrome Sphere -->
+  <g transform="translate(810, 650)">
+    <circle cx="0" cy="0" r="90" fill="url(#chromeGradient)"
+            filter="url(#dropShadow)"/>
+    <circle cx="-20" cy="-20" r="15" fill="rgba(255,255,255,0.8)"/>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">Chrome Sphere</text>
+    <text x="0" y="180" font-family="Arial, sans-serif" font-size="14"
+          fill="#666" text-anchor="middle">Radial gradient</text>
+  </g>
+
+  <!-- Copper Star -->
+  <g transform="translate(270, 950)">
+    <path d="M 0,-80 L 20,-25 L 75,-25 L 30,10 L 50,65 L 0,30 L -50,65 L -30,10 L -75,-25 L -20,-25 Z"
+          fill="url(#copperGradient)" filter="url(#dropShadow)"/>
+    <text x="0" y="135" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">Copper Star</text>
+    <text x="0" y="165" font-family="Arial, sans-serif" font-size="14"
+          fill="#666" text-anchor="middle">5 color stops</text>
+  </g>
+
+  <!-- Rose Gold Heart -->
+  <g transform="translate(810, 950)">
+    <path d="M 0,20 L -60,-30 Q -90,-60 -60,-90 Q -30,-110 0,-80 Q 30,-110 60,-90 Q 90,-60 60,-30 Z"
+          fill="url(#roseGoldGradient)" filter="url(#dropShadow)"/>
+    <text x="0" y="135" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">Rose Gold Heart</text>
+    <text x="0" y="165" font-family="Arial, sans-serif" font-size="14"
+          fill="#666" text-anchor="middle">Premium finish</text>
+  </g>
+
+  <!-- Large Metallic Text Example -->
+  <g transform="translate(540, 1200)">
+    <text x="0" y="0" font-family="Impact, Arial Black, sans-serif" font-size="96" font-weight="bold"
+          fill="url(#goldGradient)" text-anchor="middle" filter="url(#emboss)">
+      CHAMPION
+    </text>
+    <text x="0" y="70" font-family="Arial, sans-serif" font-size="20"
+          fill="#aaa" text-anchor="middle">
+      Metallic Text with Emboss Filter
+    </text>
+  </g>
+
+  <!-- Code Example Section -->
+  <rect x="90" y="1350" width="900" height="480" rx="15"
+        fill="#0a0a0a" stroke="url(#goldGradient)" stroke-width="3"/>
+
+  <text x="540" y="1410" font-family="Arial, sans-serif" font-size="28" font-weight="bold"
+        fill="url(#silverGradient)" text-anchor="middle">
+    Gradient Code Example:
+  </text>
+
+  <text x="130" y="1460" font-family="Courier, monospace" font-size="16" fill="#ffd700">
+    &lt;linearGradient id="goldGradient"
+  </text>
+  <text x="170" y="1490" font-family="Courier, monospace" font-size="16" fill="#ffd700">
+    x1="0%" y1="0%" x2="0%" y2="100%"&gt;
+  </text>
+  <text x="150" y="1525" font-family="Courier, monospace" font-size="16" fill="#c0c0c0">
+    &lt;stop offset="0%" stop-color="#ffd700"/&gt;
+  </text>
+  <text x="150" y="1555" font-family="Courier, monospace" font-size="16" fill="#c0c0c0">
+    &lt;stop offset="15%" stop-color="#ffed4e"/&gt;
+  </text>
+  <text x="150" y="1585" font-family="Courier, monospace" font-size="16" fill="#c0c0c0">
+    &lt;stop offset="30%" stop-color="#ffd700"/&gt;
+  </text>
+  <text x="150" y="1615" font-family="Courier, monospace" font-size="16" fill="#c0c0c0">
+    &lt;stop offset="50%" stop-color="#b8860b"/&gt;
+  </text>
+  <text x="150" y="1645" font-family="Courier, monospace" font-size="16" fill="#888">
+    ... (more stops for depth)
+  </text>
+  <text x="130" y="1680" font-family="Courier, monospace" font-size="16" fill="#ffd700">
+    &lt;/linearGradient&gt;
+  </text>
+
+  <text x="130" y="1730" font-family="Courier, monospace" font-size="16" fill="#cd7f32">
+    &lt;circle fill="url(#goldGradient)"
+  </text>
+  <text x="170" y="1760" font-family="Courier, monospace" font-size="16" fill="#cd7f32">
+    filter="url(#dropShadow)"/&gt;
+  </text>
+
+  <!-- Tips Section -->
+  <text x="540" y="1850" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+        fill="#aaa" text-anchor="middle">
+    Pro Tips: Use 5-7 stops for realistic metal • Alternate light/dark
+  </text>
+  <text x="540" y="1880" font-family="Arial, sans-serif" font-size="18"
+        fill="#888" text-anchor="middle">
+    Add emboss filter for 3D effect • Drop shadows for depth
+  </text>
+</svg>

@@ -1,0 +1,219 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- GRADIENT SUNSET SHOWCASE: Demonstrates advanced gradients, clipping, and scene composition -->
+
+  <defs>
+    <!-- Sky Gradient -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="20%" style="stop-color:#16213e;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#0f3460;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#533483;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="90%" style="stop-color:#ffa07a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffe66d;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Sun Radial Gradient -->
+    <radialGradient id="sunGradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#fff5e6;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#ffe66d;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#ff9f1c;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0.5" />
+    </radialGradient>
+
+    <!-- Sun Glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffee32;stop-opacity:0.8" />
+      <stop offset="40%" style="stop-color:#ffd700;stop-opacity:0.4" />
+      <stop offset="70%" style="stop-color:#ff6b35;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Ocean Gradient -->
+    <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Wave Gradient -->
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#60a5fa;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Mountain Gradient -->
+    <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a5568;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2d3748;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a202c;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Palm Tree Gradient -->
+    <linearGradient id="palmGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#065f46;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#064e3b;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Cloud Gradient -->
+    <radialGradient id="cloudGradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffd1dc;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#ffb6c1;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ff69b4;stop-opacity:0.1" />
+    </radialGradient>
+
+    <!-- Reflection Gradient -->
+    <linearGradient id="reflectionGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9f1c;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0.1" />
+    </linearGradient>
+
+    <!-- Clipping Path for Sun -->
+    <clipPath id="sunClip">
+      <circle cx="540" cy="800" r="120"/>
+    </clipPath>
+
+    <!-- Clipping Path for Mountains -->
+    <clipPath id="mountainClip">
+      <rect x="0" y="0" width="1080" height="1200"/>
+    </clipPath>
+  </defs>
+
+  <!-- Sky Background -->
+  <rect width="1080" height="1920" fill="url(#skyGradient)"/>
+
+  <!-- Stars (small dots in upper sky) -->
+  <circle cx="150" cy="100" r="2" fill="#ffffff" opacity="0.8"/>
+  <circle cx="250" cy="150" r="1.5" fill="#ffffff" opacity="0.6"/>
+  <circle cx="800" cy="80" r="2" fill="#ffffff" opacity="0.9"/>
+  <circle cx="900" cy="130" r="1" fill="#ffffff" opacity="0.7"/>
+  <circle cx="450" cy="180" r="1.5" fill="#ffffff" opacity="0.8"/>
+  <circle cx="650" cy="120" r="2" fill="#ffffff" opacity="0.7"/>
+  <circle cx="320" cy="90" r="1" fill="#ffffff" opacity="0.9"/>
+
+  <!-- Clouds -->
+  <ellipse cx="200" cy="250" rx="80" ry="40" fill="url(#cloudGradient)"/>
+  <ellipse cx="250" cy="240" rx="60" ry="35" fill="url(#cloudGradient)"/>
+  <ellipse cx="850" cy="300" rx="100" ry="45" fill="url(#cloudGradient)"/>
+  <ellipse cx="920" cy="290" rx="70" ry="40" fill="url(#cloudGradient)"/>
+  <ellipse cx="450" cy="350" rx="90" ry="50" fill="url(#cloudGradient)"/>
+
+  <!-- Sun Glow (outer) -->
+  <circle cx="540" cy="800" r="220" fill="url(#sunGlow)"/>
+
+  <!-- Sun -->
+  <circle cx="540" cy="800" r="120" fill="url(#sunGradient)"/>
+
+  <!-- Sun reflection on water (vertical gradient streak) -->
+  <ellipse cx="540" cy="1100" rx="60" ry="180" fill="url(#reflectionGradient)"/>
+  <ellipse cx="540" cy="1200" rx="40" ry="120" fill="url(#reflectionGradient)" opacity="0.7"/>
+
+  <!-- Ocean -->
+  <rect x="0" y="920" width="1080" height="1000" fill="url(#oceanGradient)"/>
+
+  <!-- Waves (layered paths with wave gradient) -->
+  <path d="M 0,950 Q 270,930 540,950 T 1080,950 L 1080,1000 L 0,1000 Z"
+        fill="url(#waveGradient)" opacity="0.6"/>
+  <path d="M 0,1000 Q 270,980 540,1000 T 1080,1000 L 1080,1050 L 0,1050 Z"
+        fill="url(#waveGradient)" opacity="0.5"/>
+  <path d="M 0,1050 Q 270,1030 540,1050 T 1080,1050 L 1080,1100 L 0,1100 Z"
+        fill="url(#waveGradient)" opacity="0.4"/>
+
+  <!-- Back Mountains (furthest) -->
+  <path d="M 0,900 L 200,700 L 400,850 L 600,650 L 800,800 L 1080,700 L 1080,920 L 0,920 Z"
+        fill="#1a202c" opacity="0.7"/>
+
+  <!-- Mid Mountains -->
+  <path d="M 0,950 L 150,750 L 350,850 L 550,720 L 750,880 L 950,780 L 1080,850 L 1080,950 L 0,950 Z"
+        fill="url(#mountainGradient)" opacity="0.85"/>
+
+  <!-- Front Mountains -->
+  <path d="M 0,1000 L 180,820 L 320,900 L 500,800 L 680,920 L 860,850 L 1080,920 L 1080,1000 L 0,1000 Z"
+        fill="url(#mountainGradient)"/>
+
+  <!-- Palm Trees (silhouettes) -->
+  <!-- Left Palm -->
+  <g transform="translate(150, 950)">
+    <rect x="-8" y="0" width="16" height="200" fill="#064e3b"/>
+    <path d="M 0,-20 Q -60,-80 -80,-100 Q -65,-95 -40,-60 Q -20,-30 0,-20 Z"
+          fill="url(#palmGradient)"/>
+    <path d="M 0,-20 Q 60,-80 80,-100 Q 65,-95 40,-60 Q 20,-30 0,-20 Z"
+          fill="url(#palmGradient)"/>
+    <path d="M 0,-20 Q -20,-100 -25,-130 Q -15,-125 -10,-90 Q -5,-50 0,-20 Z"
+          fill="url(#palmGradient)"/>
+    <path d="M 0,-20 Q 20,-100 25,-130 Q 15,-125 10,-90 Q 5,-50 0,-20 Z"
+          fill="url(#palmGradient)"/>
+  </g>
+
+  <!-- Right Palm -->
+  <g transform="translate(900, 980)">
+    <rect x="-6" y="0" width="12" height="150" fill="#064e3b"/>
+    <path d="M 0,-15 Q -50,-60 -65,-80 Q -52,-76 -32,-50 Q -16,-25 0,-15 Z"
+          fill="url(#palmGradient)"/>
+    <path d="M 0,-15 Q 50,-60 65,-80 Q 52,-76 32,-50 Q 16,-25 0,-15 Z"
+          fill="url(#palmGradient)"/>
+    <path d="M 0,-15 Q -15,-80 -20,-100 Q -12,-96 -8,-70 Q -4,-40 0,-15 Z"
+          fill="url(#palmGradient)"/>
+  </g>
+
+  <!-- Title and Info Section -->
+  <rect x="90" y="1550" width="900" height="350" rx="20"
+        fill="#000000" opacity="0.5"/>
+
+  <text x="540" y="1620" font-family="Arial, sans-serif" font-size="48" font-weight="bold"
+        fill="#ffe66d" text-anchor="middle">
+    GRADIENT SUNSET
+  </text>
+
+  <text x="540" y="1670" font-family="Arial, sans-serif" font-size="20"
+        fill="#ffa07a" text-anchor="middle">
+    Advanced Gradient Composition
+  </text>
+
+  <!-- Technique List -->
+  <text x="140" y="1730" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+        fill="#ffffff">
+    Techniques Demonstrated:
+  </text>
+
+  <text x="160" y="1765" font-family="Arial, sans-serif" font-size="16" fill="#93c5fd">
+    • Multi-stop linear gradients (8+ stops)
+  </text>
+  <text x="160" y="1795" font-family="Arial, sans-serif" font-size="16" fill="#93c5fd">
+    • Radial gradients for sun &amp; glow effects
+  </text>
+  <text x="160" y="1825" font-family="Arial, sans-serif" font-size="16" fill="#93c5fd">
+    • Layered paths for depth perception
+  </text>
+  <text x="160" y="1855" font-family="Arial, sans-serif" font-size="16" fill="#93c5fd">
+    • Opacity variations for atmosphere
+  </text>
+
+  <!-- Color Palette -->
+  <text x="540" y="1730" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+        fill="#ffffff" text-anchor="middle">
+    Color Palette Used:
+  </text>
+
+  <circle cx="440" cy="1770" r="18" fill="#1a1a2e"/>
+  <circle cx="490" cy="1770" r="18" fill="#533483"/>
+  <circle cx="540" cy="1770" r="18" fill="#e94560"/>
+  <circle cx="590" cy="1770" r="18" fill="#ff9f1c"/>
+  <circle cx="640" cy="1770" r="18" fill="#ffe66d"/>
+
+  <circle cx="440" cy="1820" r="18" fill="#1e3a8a"/>
+  <circle cx="490" cy="1820" r="18" fill="#3b82f6"/>
+  <circle cx="540" cy="1820" r="18" fill="#60a5fa"/>
+  <circle cx="590" cy="1820" r="18" fill="#4a5568"/>
+  <circle cx="640" cy="1820" r="18" fill="#065f46"/>
+
+  <text x="540" y="1875" font-family="Arial, sans-serif" font-size="14"
+        fill="#aaa" text-anchor="middle">
+    10+ gradients combined to create a realistic sunset scene
+  </text>
+</svg>

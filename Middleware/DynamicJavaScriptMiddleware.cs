@@ -29,6 +29,11 @@ public class DynamicJavaScriptMiddleware
         var gameScene = new GameScene();
         var svgParticleEmitter = new SVGParticleEmitter();
         var dialogBox = new DialogBox();
+        var neonGlow = new NeonGlowShowcase();
+        var metallicBadge = new MetallicBadgeShowcase();
+        var glassMorphism = new GlassMorphismShowcase();
+        var gradientSunset = new GradientSunsetShowcase();
+        var contentarySlide = new ContentarySlide();
 
         context.Response.ContentType = "application/javascript";
 //        string jsContent = await ReadJavaScriptFileAsync("osf-logo.js");
@@ -39,6 +44,15 @@ public class DynamicJavaScriptMiddleware
         if (context.Request.Path.Value.EndsWith(".js"))
         {
 Console.WriteLine(context.Request.Path.Value);
+            // Handle contentary slides dynamically
+            if (context.Request.Path.Value.StartsWith("/contentary-"))
+            {
+                var slideName = context.Request.Path.Value.Replace("/contentary-", "").Replace(".js", "");
+                svg = await contentarySlide.GetSlide("{{contents}}", _env, slideName);
+                await context.Response.WriteAsync(svg);
+                return;
+            }
+
             if (context.Request.Path.Value.StartsWith("/svg-pes-")) 
             {
 		  var stack = new Stack<string>(context.Request.Path.Value.Split("-"));
@@ -105,6 +119,22 @@ Console.WriteLine($"{queryParams.ToString()}");
                     var borderWidth = queryParams["borderWidth"].ToString() ?? "";
                     var dialog = await dialogBox.SVG("{{contents}}", _env, borderStops, backgroundStops, width, height, borderRadius, borderWidth);
                     await context.Response.WriteAsync(dialog);
+                    return;
+                case "/neon-glow.js":
+                    svg = await neonGlow.SVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/metallic-badge.js":
+                    svg = await metallicBadge.SVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/glass-morphism.js":
+                    svg = await glassMorphism.SVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
+                    return;
+                case "/gradient-sunset.js":
+                    svg = await gradientSunset.SVG("{{contents}}", _env);
+                    await context.Response.WriteAsync(svg);
                     return;
 		default:
     _logger.LogInformation("it's this default thing");

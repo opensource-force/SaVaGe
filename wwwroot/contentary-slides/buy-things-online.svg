@@ -1,0 +1,295 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- CONTENTARY SLIDE: Buy Things Online - Revolutionary Announcement! -->
+  <!-- Over-the-top infomercial style -->
+
+  <defs>
+    <!-- Retro gradient background -->
+    <radialGradient id="retroBg" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fdc830;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Starburst gradient -->
+    <radialGradient id="starburstGradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffff00;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff6600;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff0000;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Title gradient - bold red to yellow -->
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffff00;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff8800;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff0000;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- "NEW" badge gradient -->
+    <linearGradient id="newBadgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#cc0000;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- White text shadow -->
+    <filter id="whiteGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong glow -->
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Drop shadow for badges -->
+    <filter id="badgeShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="4" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.6"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Animated rays pattern -->
+    <pattern id="rays" x="540" y="960" width="100" height="100" patternUnits="userSpaceOnUse">
+      <line x1="50" y1="50" x2="50" y2="0" stroke="#ffffff" stroke-width="2" opacity="0.2"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#retroBg)"/>
+
+  <!-- Animated sunburst rays -->
+  <g transform="translate(540, 960)">
+    <g id="rays-group">
+      <animateTransform attributeName="transform"
+                        type="rotate"
+                        from="0 0 0"
+                        to="360 0 0"
+                        dur="20s"
+                        repeatCount="indefinite"/>
+      <!-- Rays -->
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(30)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(60)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(90)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(120)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(150)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(180)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(210)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(240)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(270)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(300)"/>
+      <path d="M 0,0 L 15,-450 L -15,-450 Z" fill="#ffffff" opacity="0.15" transform="rotate(330)"/>
+    </g>
+  </g>
+
+  <!-- "NEW!" badge - top left -->
+  <g transform="translate(150, 200)">
+    <path d="M 0,-40 L 40,-20 L 40,20 L 0,40 L -40,20 L -40,-20 Z"
+          fill="url(#newBadgeGradient)" stroke="#ffff00" stroke-width="4"
+          filter="url(#badgeShadow)">
+      <animateTransform attributeName="transform"
+                        type="rotate"
+                        from="0 0 0"
+                        to="360 0 0"
+                        dur="4s"
+                        repeatCount="indefinite"/>
+    </path>
+    <text x="0" y="8" font-family="Impact, Arial Black" font-size="28" font-weight="bold"
+          fill="#ffff00" text-anchor="middle" filter="url(#whiteGlow)">
+      NEW!
+    </text>
+  </g>
+
+  <!-- "FIRST TIME!" badge - top right -->
+  <g transform="translate(930, 200)">
+    <circle cx="0" cy="0" r="60" fill="url(#newBadgeGradient)"
+            stroke="#ffff00" stroke-width="4" filter="url(#badgeShadow)"/>
+    <text x="0" y="-15" font-family="Impact, Arial Black" font-size="24" font-weight="bold"
+          fill="#ffff00" text-anchor="middle">
+      FIRST
+    </text>
+    <text x="0" y="15" font-family="Impact, Arial Black" font-size="24" font-weight="bold"
+          fill="#ffff00" text-anchor="middle">
+      TIME!
+    </text>
+    <animateTransform attributeName="transform"
+                      type="scale"
+                      values="1;1.1;1"
+                      dur="1s"
+                      repeatCount="indefinite"/>
+  </g>
+
+  <!-- Main starburst behind text -->
+  <g transform="translate(540, 650)">
+    <path d="M 0,-250 L 30,-50 L 250,0 L 30,50 L 0,250 L -30,50 L -250,0 L -30,-50 Z"
+          fill="url(#starburstGradient)" opacity="0.7" filter="url(#strongGlow)">
+      <animateTransform attributeName="transform"
+                        type="rotate"
+                        from="0 0 0"
+                        to="360 0 0"
+                        dur="15s"
+                        repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- "NOW!" text -->
+  <text x="540" y="400" font-family="Impact, Arial Black" font-size="120" font-weight="bold"
+        fill="#ffffff" stroke="#ff0000" stroke-width="6" text-anchor="middle"
+        filter="url(#strongGlow)">
+    NOW!
+  </text>
+
+  <!-- Decorative exclamation marks -->
+  <text x="280" y="420" font-family="Impact" font-size="80" fill="#ffff00"
+        opacity="0.8" filter="url(#whiteGlow)">
+    !
+  </text>
+  <text x="800" y="420" font-family="Impact" font-size="80" fill="#ffff00"
+        opacity="0.8" filter="url(#whiteGlow)">
+    !
+  </text>
+
+  <!-- Main announcement box -->
+  <rect x="100" y="500" width="880" height="600" rx="30"
+        fill="rgba(255, 255, 255, 0.9)" stroke="#ff0000" stroke-width="8"
+        filter="url(#badgeShadow)"/>
+
+  <!-- "For the first time" -->
+  <text x="540" y="600" font-family="Impact, Arial Black" font-size="56" font-weight="bold"
+        fill="#ff0000" text-anchor="middle">
+    For the first time
+  </text>
+
+  <!-- "ONLINE" - huge and dramatic -->
+  <text x="540" y="730" font-family="Impact, Arial Black" font-size="110" font-weight="bold"
+        fill="url(#titleGradient)" text-anchor="middle" filter="url(#whiteGlow)">
+    ONLINE
+  </text>
+
+  <!-- Underline -->
+  <line x1="200" y1="760" x2="880" y2="760" stroke="#ff0000" stroke-width="6"/>
+
+  <!-- "You can" -->
+  <text x="540" y="850" font-family="Impact, Arial Black" font-size="52" font-weight="bold"
+        fill="#333333" text-anchor="middle">
+    you can
+  </text>
+
+  <!-- "BUY THINGS!!!" -->
+  <text x="540" y="990" font-family="Impact, Arial Black" font-size="130" font-weight="bold"
+        fill="url(#titleGradient)" text-anchor="middle" filter="url(#whiteGlow)">
+    BUY THINGS
+  </text>
+
+  <!-- Triple exclamation marks -->
+  <text x="540" y="1080" font-family="Impact, Arial Black" font-size="100" font-weight="bold"
+        fill="#ff0000" text-anchor="middle">
+    !!!
+  </text>
+
+  <!-- Starburst badges around the box -->
+  <g transform="translate(120, 550)">
+    <path d="M 0,-25 L 8,-8 L 25,0 L 8,8 L 0,25 L -8,8 L -25,0 L -8,-8 Z"
+          fill="#ffff00" stroke="#ff0000" stroke-width="2">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <g transform="translate(960, 550)">
+    <path d="M 0,-25 L 8,-8 L 25,0 L 8,8 L 0,25 L -8,8 L -25,0 L -8,-8 Z"
+          fill="#ffff00" stroke="#ff0000" stroke-width="2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <g transform="translate(120, 1080)">
+    <path d="M 0,-25 L 8,-8 L 25,0 L 8,8 L 0,25 L -8,8 L -25,0 L -8,-8 Z"
+          fill="#ffff00" stroke="#ff0000" stroke-width="2">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1.2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <g transform="translate(960, 1080)">
+    <path d="M 0,-25 L 8,-8 L 25,0 L 8,8 L 0,25 L -8,8 L -25,0 L -8,-8 Z"
+          fill="#ffff00" stroke="#ff0000" stroke-width="2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Shopping cart icon -->
+  <g transform="translate(540, 1300)">
+    <rect x="-80" y="-60" width="160" height="120" rx="15"
+          fill="#ff6600" stroke="#ffffff" stroke-width="4" filter="url(#badgeShadow)"/>
+
+    <!-- Cart body -->
+    <path d="M -40,-20 L -30,-20 L -20,20 L 30,20 L 40,-20 L 50,-20"
+          fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-25" y1="-20" x2="-20" y2="20" stroke="#ffffff" stroke-width="6"/>
+    <line x1="25" y1="-20" x2="30" y2="20" stroke="#ffffff" stroke-width="6"/>
+
+    <!-- Wheels -->
+    <circle cx="-15" cy="35" r="8" fill="#ffffff"/>
+    <circle cx="20" cy="35" r="8" fill="#ffffff"/>
+
+    <!-- Pulsing animation -->
+    <animateTransform attributeName="transform"
+                      type="scale"
+                      values="1;1.05;1"
+                      dur="1.5s"
+                      repeatCount="indefinite"/>
+  </g>
+
+  <!-- "REVOLUTIONARY!" banner -->
+  <rect x="200" y="1450" width="680" height="80" rx="40"
+        fill="#ff0000" stroke="#ffff00" stroke-width="4" filter="url(#badgeShadow)"/>
+  <text x="540" y="1505" font-family="Impact, Arial Black" font-size="48" font-weight="bold"
+        fill="#ffff00" text-anchor="middle" filter="url(#whiteGlow)">
+    REVOLUTIONARY!
+  </text>
+
+  <!-- Bottom features -->
+  <g transform="translate(540, 1600)">
+    <text x="0" y="0" font-family="Impact, Arial Black" font-size="36" font-weight="bold"
+          fill="#ffffff" text-anchor="middle" stroke="#ff0000" stroke-width="2">
+      ★ INSTANT CHECKOUT ★
+    </text>
+    <text x="0" y="60" font-family="Impact, Arial Black" font-size="36" font-weight="bold"
+          fill="#ffffff" text-anchor="middle" stroke="#ff0000" stroke-width="2">
+      ★ CLICK TO BUY ★
+    </text>
+    <text x="0" y="120" font-family="Impact, Arial Black" font-size="36" font-weight="bold"
+          fill="#ffffff" text-anchor="middle" stroke="#ff0000" stroke-width="2">
+      ★ NEVER DONE BEFORE ★
+    </text>
+  </g>
+
+  <!-- Disclaimer style footer -->
+  <text x="540" y="1820" font-family="Arial, sans-serif" font-size="20"
+        fill="#333333" text-anchor="middle" opacity="0.7" font-style="italic">
+    *Terms and conditions apply. Not actually revolutionary.
+  </text>
+
+  <!-- Corner decorations - pulsing circles -->
+  <circle cx="50" cy="1300" r="20" fill="#ffff00" opacity="0.8">
+    <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1030" cy="1300" r="20" fill="#ffff00" opacity="0.8">
+    <animate attributeName="r" values="20;25;20" dur="2s" begin="1s" repeatCount="indefinite"/>
+  </circle>
+</svg>

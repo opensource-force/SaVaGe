@@ -1,0 +1,122 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- CONTENTARY SLIDE TEMPLATE: [SLIDE NAME] -->
+  <!-- TODO: Add description of your slide's commentary here -->
+
+  <defs>
+    <!-- ============ GRADIENTS ============ -->
+
+    <!-- Example: Simple gradient -->
+    <linearGradient id="exampleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- TODO: Add your gradients here -->
+
+    <!-- ============ FILTERS ============ -->
+
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Drop shadow -->
+    <filter id="dropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="3" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- TODO: Add your filters here -->
+
+    <!-- ============ PATTERNS ============ -->
+
+    <!-- Example pattern -->
+    <pattern id="examplePattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <circle cx="50" cy="50" r="40" fill="#ffffff" opacity="0.1"/>
+    </pattern>
+
+    <!-- TODO: Add your patterns here -->
+  </defs>
+
+  <!-- ============ TOP HALF (y: 0-960) ============ -->
+  <!-- This is where you put the first part of your comparison -->
+
+  <rect width="1080" height="960" fill="#1a1a1a"/>
+
+  <!-- Title for top half -->
+  <text x="540" y="250" font-family="Impact, Arial Black" font-size="80" font-weight="bold"
+        fill="#ffffff" text-anchor="middle">
+    TOP HALF TITLE
+  </text>
+
+  <!-- Content for top half -->
+  <g transform="translate(540, 550)">
+    <!-- Add your top half content here -->
+    <circle cx="0" cy="0" r="100" fill="url(#exampleGradient)" opacity="0.5"/>
+  </g>
+
+  <!-- ============ DIVIDER LINE (y: 950-970) ============ -->
+
+  <rect x="0" y="950" width="1080" height="20" fill="#000"/>
+  <line x1="0" y1="960" x2="1080" y2="960" stroke="#333" stroke-width="2"/>
+
+  <!-- ============ BOTTOM HALF (y: 970-1920) ============ -->
+  <!-- This is where you put the second part of your comparison -->
+
+  <rect y="970" width="1080" height="950" fill="#2d2d2d"/>
+
+  <!-- Title for bottom half -->
+  <text x="540" y="1200" font-family="Impact, Arial Black" font-size="80" font-weight="bold"
+        fill="#ffffff" text-anchor="middle">
+    BOTTOM HALF TITLE
+  </text>
+
+  <!-- Content for bottom half -->
+  <g transform="translate(540, 1500)">
+    <!-- Add your bottom half content here -->
+    <rect x="-100" y="-100" width="200" height="200" fill="url(#exampleGradient)"/>
+  </g>
+
+  <!-- ============ TIPS ============ -->
+  <!--
+  Common SVG elements you might use:
+
+  - <rect> : Rectangles
+  - <circle> : Circles
+  - <ellipse> : Ovals
+  - <line> : Lines
+  - <path> : Custom shapes
+  - <text> : Text
+  - <g> : Groups (for organizing and transforming)
+
+  Common attributes:
+
+  - fill : Color or gradient
+  - stroke : Border color
+  - stroke-width : Border thickness
+  - opacity : Transparency (0-1)
+  - transform : Position, rotate, scale
+  - filter : Apply effects
+
+  Animation example:
+
+  <circle cx="100" cy="100" r="50" fill="red">
+    <animate attributeName="opacity"
+             values="1;0.3;1"
+             dur="2s"
+             repeatCount="indefinite"/>
+  </circle>
+  -->
+</svg>

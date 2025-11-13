@@ -1,0 +1,241 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- CONTENTARY SLIDE: rent-a-chair vs spotiscription -->
+
+  <defs>
+    <!-- Decrepit/Worn Gradient for top -->
+    <linearGradient id="decrepitBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c2c2c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Rusty/Worn Text Gradient -->
+    <linearGradient id="rustyText" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b7355;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6b5344;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a3728;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gaudy Gold Gradient -->
+    <linearGradient id="blingGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffaa00;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Diamond Sparkle Radial -->
+    <radialGradient id="diamondSparkle" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#e0e0ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0a0ff;stop-opacity:0.5" />
+    </radialGradient>
+
+    <!-- Gaudy Background -->
+    <linearGradient id="gaudyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b00ff;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ff00ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff1493;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#ff00ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b00ff;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Rainbow Gradient for bling -->
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff0000"/>
+      <stop offset="16%" style="stop-color:#ff8800"/>
+      <stop offset="33%" style="stop-color:#ffff00"/>
+      <stop offset="50%" style="stop-color:#00ff00"/>
+      <stop offset="66%" style="stop-color:#0088ff"/>
+      <stop offset="83%" style="stop-color:#8800ff"/>
+      <stop offset="100%" style="stop-color:#ff00ff"/>
+    </linearGradient>
+
+    <!-- Glow filter for bling -->
+    <filter id="blingGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong sparkle glow -->
+    <filter id="sparkleGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Crack/damage pattern -->
+    <pattern id="cracks" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <line x1="20" y1="0" x2="25" y2="40" stroke="#000" stroke-width="1" opacity="0.3"/>
+      <line x1="60" y1="20" x2="65" y2="80" stroke="#000" stroke-width="1.5" opacity="0.4"/>
+      <line x1="80" y1="50" x2="85" y2="100" stroke="#000" stroke-width="1" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- ============ TOP HALF: DECREPIT RENT-A-CHAIR ============ -->
+  <rect width="1080" height="960" fill="url(#decrepitBg)"/>
+  <rect width="1080" height="960" fill="url(#cracks)"/>
+
+  <!-- Worn, cracked background elements -->
+  <rect x="50" y="100" width="980" height="700" rx="20"
+        fill="none" stroke="#3a3a3a" stroke-width="2" stroke-dasharray="20,10" opacity="0.4"/>
+
+  <!-- Dust/dirt spots -->
+  <circle cx="200" cy="300" r="40" fill="#1a1a1a" opacity="0.3"/>
+  <circle cx="800" cy="400" r="60" fill="#1a1a1a" opacity="0.2"/>
+  <circle cx="400" cy="650" r="50" fill="#1a1a1a" opacity="0.25"/>
+
+  <!-- RENT-A-CHAIR text - decrepit style -->
+  <text x="540" y="280" font-family="Impact, Arial Black" font-size="92" font-weight="bold"
+        fill="url(#rustyText)" text-anchor="middle" opacity="0.8">
+    RENT-A-CHAIR
+  </text>
+
+  <!-- Worn underline -->
+  <line x1="150" y1="320" x2="930" y2="320" stroke="#6b5344" stroke-width="3"
+        stroke-dasharray="30,15" opacity="0.5"/>
+
+  <!-- Sad broken chair icon -->
+  <g transform="translate(540, 550)">
+    <!-- Chair back (broken) -->
+    <rect x="-80" y="-120" width="160" height="20" rx="5" fill="#4a3728" opacity="0.7"/>
+    <line x1="-60" y1="-110" x2="-65" y2="-60" stroke="#3a2718" stroke-width="8"/>
+    <line x1="60" y1="-110" x2="55" y2="-60" stroke="#3a2718" stroke-width="8"/>
+    <!-- Broken piece -->
+    <line x1="-20" y1="-110" x2="-40" y2="-150" stroke="#4a3728" stroke-width="6" opacity="0.6"/>
+
+    <!-- Chair seat (sagging) -->
+    <path d="M -80,-40 Q -70,-20 0,-30 Q 70,-20 80,-40 L 80,-20 Q 70,0 0,10 Q -70,0 -80,-20 Z"
+          fill="#5a4738" opacity="0.7"/>
+
+    <!-- Broken legs -->
+    <line x1="-60" y1="-20" x2="-55" y2="60" stroke="#3a2718" stroke-width="8"/>
+    <line x1="60" y1="-20" x2="50" y2="60" stroke="#3a2718" stroke-width="8"/>
+    <!-- One leg shorter (broken) -->
+    <line x1="-60" y1="40" x2="-70" y2="30" stroke="#4a3728" stroke-width="5" opacity="0.5"/>
+  </g>
+
+  <!-- Price tag hanging sadly -->
+  <g transform="translate(850, 700)">
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+    <rect x="-40" y="40" width="80" height="50" rx="3" fill="#3a3a3a" stroke="#555" stroke-width="1"/>
+    <text x="0" y="72" font-family="Arial" font-size="24" fill="#888" text-anchor="middle">$$$</text>
+  </g>
+
+  <!-- Cobwebs -->
+  <path d="M 100,150 L 200,100 L 180,200" fill="none" stroke="#555" stroke-width="0.5" opacity="0.3"/>
+  <path d="M 950,200 L 900,150 L 920,250" fill="none" stroke="#555" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- ============ DIVIDER LINE ============ -->
+  <rect x="0" y="950" width="1080" height="20" fill="#000"/>
+  <line x1="0" y1="960" x2="1080" y2="960" stroke="#333" stroke-width="2"/>
+
+  <!-- ============ BOTTOM HALF: GAUDY SPOTISCRIPTION ============ -->
+  <rect y="970" width="1080" height="950" fill="url(#gaudyBg)"/>
+
+  <!-- Animated sparkles background -->
+  <circle cx="150" cy="1200" r="8" fill="url(#diamondSparkle)" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="300" cy="1350" r="6" fill="url(#diamondSparkle)" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="750" cy="1250" r="10" fill="url(#diamondSparkle)" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="1;0.5;1" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="900" cy="1400" r="7" fill="url(#diamondSparkle)" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="500" cy="1600" r="9" fill="url(#diamondSparkle)" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="1;0.4;1" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="1700" r="8" fill="url(#diamondSparkle)" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="850" cy="1650" r="11" fill="url(#diamondSparkle)" filter="url(#sparkleGlow)">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Rainbow border -->
+  <rect x="80" y="1050" width="920" height="750" rx="30"
+        fill="none" stroke="url(#rainbow)" stroke-width="8" filter="url(#blingGlow)"/>
+
+  <!-- SPOTISCRIPTION text - BLINGED OUT -->
+  <text x="540" y="1240" font-family="Impact, Arial Black" font-size="110" font-weight="bold"
+        fill="url(#blingGold)" text-anchor="middle" filter="url(#blingGlow)">
+    SPOTISCRIPTION
+  </text>
+
+  <!-- Diamond outlines on letters -->
+  <text x="540" y="1240" font-family="Impact, Arial Black" font-size="110" font-weight="bold"
+        fill="none" stroke="#fff" stroke-width="2" text-anchor="middle" opacity="0.6">
+    SPOTISCRIPTION
+  </text>
+
+  <!-- Fancy underline with diamonds -->
+  <line x1="120" y1="1300" x2="960" y2="1300" stroke="url(#blingGold)"
+        stroke-width="6" filter="url(#blingGlow)"/>
+
+  <!-- Diamond icons -->
+  <g transform="translate(200, 1450)">
+    <path d="M 0,-30 L 20,0 L 0,40 L -20,0 Z" fill="url(#diamondSparkle)"
+          filter="url(#sparkleGlow)"/>
+    <path d="M 0,-30 L 20,0 L 0,40 L -20,0 Z" fill="none" stroke="#fff" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(880, 1450)">
+    <path d="M 0,-30 L 20,0 L 0,40 L -20,0 Z" fill="url(#diamondSparkle)"
+          filter="url(#sparkleGlow)"/>
+    <path d="M 0,-30 L 20,0 L 0,40 L -20,0 Z" fill="none" stroke="#fff" stroke-width="2"/>
+  </g>
+
+  <!-- Crown/VIP icon -->
+  <g transform="translate(540, 1500)">
+    <path d="M -60,0 L -50,-40 L -20,-10 L 0,-50 L 20,-10 L 50,-40 L 60,0
+             L 50,10 L -50,10 Z"
+          fill="url(#blingGold)" filter="url(#blingGlow)"/>
+    <circle cx="-30" cy="-30" r="8" fill="url(#diamondSparkle)"/>
+    <circle cx="0" cy="-40" r="10" fill="url(#diamondSparkle)"/>
+    <circle cx="30" cy="-30" r="8" fill="url(#diamondSparkle)"/>
+  </g>
+
+  <!-- Money signs floating -->
+  <text x="250" y="1620" font-family="Arial Black" font-size="48"
+        fill="url(#blingGold)" filter="url(#blingGlow)">$</text>
+  <text x="800" y="1600" font-family="Arial Black" font-size="56"
+        fill="url(#blingGold)" filter="url(#blingGlow)">$</text>
+
+  <!-- Premium badge -->
+  <g transform="translate(540, 1720)">
+    <circle cx="0" cy="0" r="80" fill="url(#blingGold)" filter="url(#blingGlow)"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="url(#rainbow)" stroke-width="4"/>
+    <text x="0" y="-10" font-family="Impact" font-size="28" fill="#8b00ff"
+          text-anchor="middle" font-weight="bold">PREMIUM</text>
+    <text x="0" y="20" font-family="Impact" font-size="36" fill="#ff00ff"
+          text-anchor="middle" font-weight="bold">VIP</text>
+  </g>
+
+  <!-- Star bursts -->
+  <g opacity="0.8">
+    <path d="M 150,1100 l 5,-15 l 5,15 l 15,5 l -15,5 l -5,15 l -5,-15 l -15,-5 Z"
+          fill="#ffff00" filter="url(#sparkleGlow)">
+      <animateTransform attributeName="transform" type="rotate"
+                        from="0 150 1100" to="360 150 1100"
+                        dur="4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 930,1150 l 5,-15 l 5,15 l 15,5 l -15,5 l -5,15 l -5,-15 l -15,-5 Z"
+          fill="#ffff00" filter="url(#sparkleGlow)">
+      <animateTransform attributeName="transform" type="rotate"
+                        from="0 930 1150" to="360 930 1150"
+                        dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>

@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E90FF;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#4169E1;stop-opacity:0.9" />
+    </linearGradient>
+
+    <linearGradient id="volcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A4A42;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D2E28;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lavaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF6347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.3" />
+    </radialGradient>
+
+    <!-- Water shimmer effect -->
+    <radialGradient id="waterShimmer">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Enhanced WATER - taking up more space to emphasize the nosefish's point -->
+  <rect y="250" width="600" height="150" fill="url(#waterGradient)"/>
+
+  <!-- Water surface ripples -->
+  <ellipse cx="200" cy="250" rx="60" ry="8" fill="#FFFFFF" opacity="0.2">
+    <animate attributeName="rx" values="60;80;60" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="150" cy="255" rx="40" ry="6" fill="#FFFFFF" opacity="0.15">
+    <animate attributeName="rx" values="40;55;40" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.15;0.3;0.15" dur="2.5s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Water shimmer effects around nosefish -->
+  <circle cx="120" cy="290" r="40" fill="url(#waterShimmer)">
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="180" cy="310" r="35" fill="url(#waterShimmer)">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2.3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- The Volcano (right side, looking less confident) -->
+  <g id="volcano">
+    <!-- Mountain body -->
+    <path d="M 400 400 L 480 180 L 560 400 Z" fill="url(#volcanoGradient)" stroke="#2C1E18" stroke-width="3"/>
+
+    <!-- Crater -->
+    <ellipse cx="480" cy="180" rx="18" ry="9" fill="#1A0F0A"/>
+    <ellipse cx="480" cy="180" rx="16" ry="7" fill="#FF4500" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.6;0.4" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Smaller, less confident lava -->
+    <path d="M 475 180 Q 470 160 475 145"
+          stroke="url(#lavaGradient)" stroke-width="3" fill="none" opacity="0.7">
+      <animate attributeName="opacity" values="0.5;0.7;0.5" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 485 180 Q 490 162 485 148"
+          stroke="url(#lavaGradient)" stroke-width="3" fill="none" opacity="0.7">
+      <animate attributeName="opacity" values="0.6;0.8;0.6" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Uncertain eyes -->
+    <ellipse cx="465" cy="240" rx="7" ry="10" fill="#2C1E18"/>
+    <ellipse cx="465" cy="242" rx="3" ry="5" fill="#FF6347" opacity="0.7"/>
+
+    <ellipse cx="495" cy="240" rx="7" ry="10" fill="#2C1E18"/>
+    <ellipse cx="495" cy="242" rx="3" ry="5" fill="#FF6347" opacity="0.7"/>
+
+    <!-- Worried/uncertain eyebrows -->
+    <path d="M 458 232 Q 465 228 472 232" stroke="#1A0F0A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M 488 232 Q 495 228 502 232" stroke="#1A0F0A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- The Nosefish (left side, IN THE WATER, looking proud) -->
+  <g id="nosefish">
+    <!-- Proud, confident bubbles -->
+    <circle cx="110" cy="270" r="6" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="270;240;210" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="6;8;10" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="125" cy="280" r="5" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="280;250;220" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.3;0" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="5;7;9" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="140" cy="275" r="4" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="275;250;225" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="4;6;8" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body - confident pose -->
+    <ellipse cx="150" cy="300" rx="45" ry="25" fill="#FF8C42" stroke="#E67332" stroke-width="2.5"/>
+
+    <!-- The prominent NOSE - pointing upward proudly -->
+    <path d="M 105 300 L 50 295 L 55 300 L 50 305 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="2">
+      <animate attributeName="d"
+               values="M 105 300 L 50 295 L 55 300 L 50 305 Z;
+                       M 105 300 L 45 293 L 50 300 L 45 307 Z;
+                       M 105 300 L 50 295 L 55 300 L 50 305 Z"
+               dur="1s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Eye - looking proud and confident -->
+    <circle cx="135" cy="295" r="5" fill="white"/>
+    <circle cx="137" cy="295" r="3" fill="black"/>
+    <!-- Confident eyebrow -->
+    <line x1="130" y1="288" x2="142" y2="286" stroke="#D2691E" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 150 275 L 142 255 L 158 275 Z" fill="#FF6B35" stroke="#E67332" stroke-width="2"/>
+
+    <!-- Tail fin - swishing proudly -->
+    <path d="M 195 300 L 215 285 L 220 300 L 215 315 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="2">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 195 300; -8 195 300; 8 195 300; 0 195 300"
+                        dur="1.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Pectoral fins -->
+    <ellipse cx="140" cy="315" rx="10" ry="15" fill="#FF6B35" opacity="0.8"/>
+
+    <!-- Scales detail -->
+    <circle cx="145" cy="300" r="4" fill="#FFB07C" opacity="0.5"/>
+    <circle cx="160" cy="302" r="4" fill="#FFB07C" opacity="0.5"/>
+    <circle cx="175" cy="300" r="4" fill="#FFB07C" opacity="0.5"/>
+
+    <!-- Water splashes around fish to emphasize being in water -->
+    <path d="M 195 285 Q 205 280 210 285" stroke="#4FC3F7" stroke-width="2" fill="none" opacity="0.6">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 195 315 Q 205 320 210 315" stroke="#4FC3F7" stroke-width="2" fill="none" opacity="0.6">
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="1.3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Speech bubble from nosefish -->
+  <g id="speechBubble">
+    <!-- Bubble background -->
+    <ellipse cx="300" cy="120" rx="140" ry="45" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2.5"/>
+
+    <!-- Speech bubble pointer -->
+    <path d="M 200 145 L 170 155 L 185 160" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Exclamation marks for emphasis -->
+    <text x="180" y="110" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#FF6347">!</text>
+    <text x="420" y="110" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#FF6347">!</text>
+
+    <!-- Speech text -->
+    <text x="300" y="125" font-family="Georgia, serif" font-size="22" font-weight="bold"
+          text-anchor="middle" fill="#2C3E50">
+      I'm scarier because
+    </text>
+    <text x="300" y="148" font-family="Georgia, serif" font-size="22" font-weight="bold"
+          text-anchor="middle" fill="#1E90FF">
+      I am in WATER!
+    </text>
+  </g>
+
+  <!-- Story text at bottom -->
+  <text x="300" y="385" font-family="Georgia, serif" font-size="18" font-style="italic"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.3">
+    The nosefish said, "I'm scarier because I am in water!"
+  </text>
+</svg>

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <!-- Background gradient sky -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="volcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A4A42;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D2E28;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lavaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF6347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.2" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Water at bottom -->
+  <rect y="280" width="600" height="120" fill="#4A90E2" opacity="0.7"/>
+
+  <!-- Volcano (on right side) -->
+  <g id="volcano">
+    <!-- Mountain body -->
+    <path d="M 450 280 L 520 150 L 590 280 Z" fill="url(#volcanoGradient)" stroke="#2C1E18" stroke-width="2"/>
+
+    <!-- Crater -->
+    <ellipse cx="520" cy="150" rx="15" ry="8" fill="#1A0F0A"/>
+
+    <!-- Lava eruption -->
+    <path d="M 515 150 Q 505 120 510 100 Q 515 80 510 60"
+          stroke="url(#lavaGradient)" stroke-width="4" fill="none" opacity="0.9">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 520 150 Q 525 115 520 85 Q 515 65 520 45"
+          stroke="url(#lavaGradient)" stroke-width="5" fill="none" opacity="0.9">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 525 150 Q 535 125 530 105 Q 525 85 530 70"
+          stroke="url(#lavaGradient)" stroke-width="4" fill="none" opacity="0.9">
+      <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2.2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Lava drops/particles -->
+    <circle cx="510" cy="80" r="3" fill="#FFD700">
+      <animate attributeName="cy" values="80;50;30" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.5;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="530" cy="90" r="2.5" fill="#FF6347">
+      <animate attributeName="cy" values="90;60;40" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.6;0" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- The Nosefish (swimming on left side) -->
+  <g id="nosefish" transform="translate(0, 0)">
+    <!-- Bubbles -->
+    <circle cx="180" cy="200" r="4" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="200;180;160" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="185" cy="210" r="3" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="210;190;170" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.2;0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body -->
+    <ellipse cx="150" cy="220" rx="35" ry="20" fill="#FF8C42" stroke="#E67332" stroke-width="2"/>
+
+    <!-- The prominent NOSE (swordfish-like) -->
+    <path d="M 115 220 L 60 218 L 65 220 L 60 222 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1.5"/>
+
+    <!-- Eye -->
+    <circle cx="135" cy="215" r="4" fill="white"/>
+    <circle cx="136" cy="215" r="2" fill="black"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 150 200 L 145 185 L 155 200 Z" fill="#FF6B35" stroke="#E67332" stroke-width="1.5"/>
+
+    <!-- Tail fin -->
+    <path d="M 185 220 L 200 210 L 205 220 L 200 230 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 185 220; -5 185 220; 0 185 220; 5 185 220; 0 185 220"
+                        dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Pectoral fins -->
+    <ellipse cx="140" cy="230" rx="8" ry="12" fill="#FF6B35" opacity="0.8"/>
+
+    <!-- Scales detail -->
+    <circle cx="145" cy="220" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="155" cy="222" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="165" cy="220" r="3" fill="#FFB07C" opacity="0.4"/>
+
+    <!-- Gentle swimming animation -->
+    <animateTransform attributeName="transform" type="translate"
+                      values="0,0; 10,5; 0,0; -5,-3; 0,0"
+                      dur="4s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- Title Text -->
+  <text x="300" y="60" font-family="Georgia, serif" font-size="36" font-weight="bold"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.5">
+    The Nosefish and the Volcano
+  </text>
+
+  <!-- Decorative underline -->
+  <line x1="100" y1="75" x2="500" y2="75" stroke="#34495E" stroke-width="2" opacity="0.5"/>
+</svg>

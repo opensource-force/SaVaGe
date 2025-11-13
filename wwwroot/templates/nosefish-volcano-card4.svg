@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6347;stop-opacity:0.8" />
+    </linearGradient>
+
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E90FF;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#4169E1;stop-opacity:0.7" />
+    </linearGradient>
+
+    <linearGradient id="volcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A4A42;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D2E28;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lavaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF6347;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="fireGlow">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#FF6347;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#FF4500;stop-opacity:0" />
+    </radialGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.2" />
+    </radialGradient>
+
+    <!-- Intense fire glow -->
+    <radialGradient id="intenseFire">
+      <stop offset="0%" style="stop-color:#FFFF00;stop-opacity:0.9" />
+      <stop offset="30%" style="stop-color:#FFD700;stop-opacity:0.7" />
+      <stop offset="60%" style="stop-color:#FF6347;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background - with fiery glow -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Fire glow radiating from volcano -->
+  <ellipse cx="480" cy="180" rx="200" ry="180" fill="url(#intenseFire)">
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- Water at bottom -->
+  <rect y="320" width="600" height="80" fill="url(#waterGradient)"/>
+
+  <!-- The Nosefish (left side, looking intimidated) -->
+  <g id="nosefish">
+    <!-- Small, nervous bubbles -->
+    <circle cx="130" cy="330" r="3" fill="url(#bubbleGradient)" opacity="0.5">
+      <animate attributeName="cy" values="330;315;300" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.2;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="140" cy="335" r="2.5" fill="url(#bubbleGradient)" opacity="0.4">
+      <animate attributeName="cy" values="335;320;305" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.2;0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body - looking smaller/worried -->
+    <ellipse cx="120" cy="340" rx="35" ry="20" fill="#FF8C42" stroke="#E67332" stroke-width="2"/>
+
+    <!-- The nose - less prominent -->
+    <path d="M 85 340 L 45 339 L 48 340 L 45 341 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1.5"/>
+
+    <!-- Eye - looking worried -->
+    <circle cx="105" cy="336" r="4" fill="white"/>
+    <circle cx="106" cy="336" r="2.5" fill="black"/>
+    <!-- Worried eyebrow -->
+    <path d="M 100 332 Q 105 330 110 332" stroke="#D2691E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 120 320 L 115 308 L 125 320 Z" fill="#FF6B35" stroke="#E67332" stroke-width="1.5"/>
+
+    <!-- Tail fin - not moving as confidently -->
+    <path d="M 155 340 L 170 332 L 174 340 L 170 348 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 155 340; -3 155 340; 3 155 340; 0 155 340"
+                        dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Pectoral fins -->
+    <ellipse cx="112" cy="350" rx="7" ry="10" fill="#FF6B35" opacity="0.8"/>
+
+    <!-- Scales -->
+    <circle cx="115" cy="340" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="125" cy="341" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="135" cy="340" r="3" fill="#FFB07C" opacity="0.4"/>
+  </g>
+
+  <!-- The Volcano (right side, BREATHING FIRE!) -->
+  <g id="volcano">
+    <!-- Mountain body - larger and more imposing -->
+    <path d="M 380 400 L 480 120 L 580 400 Z" fill="url(#volcanoGradient)" stroke="#2C1E18" stroke-width="3"/>
+
+    <!-- Crater - glowing intensely -->
+    <ellipse cx="480" cy="120" rx="25" ry="12" fill="#1A0F0A"/>
+    <ellipse cx="480" cy="120" rx="22" ry="10" fill="#FF4500" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- MASSIVE FIRE BREATH -->
+    <!-- Main fire plume -->
+    <ellipse cx="380" cy="90" rx="60" ry="50" fill="url(#fireGlow)" opacity="0.9">
+      <animate attributeName="rx" values="60;75;60" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="50;60;50" dur="1.5s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="350" cy="80" rx="50" ry="45" fill="url(#fireGlow)" opacity="0.8">
+      <animate attributeName="rx" values="50;65;50" dur="1.3s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="45;55;45" dur="1.3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="320" cy="95" rx="55" ry="40" fill="url(#fireGlow)" opacity="0.85">
+      <animate attributeName="rx" values="55;70;55" dur="1.7s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="40;50;40" dur="1.7s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Fire streams -->
+    <path d="M 455 120 Q 420 100 380 85 Q 340 70 300 80"
+          stroke="url(#lavaGradient)" stroke-width="12" fill="none" opacity="0.95" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.85;1;0.85" dur="1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 460 125 Q 425 105 385 95 Q 350 85 310 95"
+          stroke="#FFD700" stroke-width="8" fill="none" opacity="0.9" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 465 115 Q 430 95 390 80 Q 355 70 320 75"
+          stroke="#FF6347" stroke-width="10" fill="none" opacity="0.9" stroke-linecap="round">
+      <animate attributeName="opacity" values="0.85;1;0.85" dur="0.9s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Flame particles -->
+    <circle cx="380" cy="85" r="6" fill="#FFFF00" opacity="0.9">
+      <animate attributeName="cx" values="380;340;300" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="85;75;85" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="6;8;4" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="80" r="5" fill="#FFD700" opacity="0.9">
+      <animate attributeName="cx" values="350;315;280" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="80;70;75" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="5;7;3" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="390" cy="95" r="5.5" fill="#FF6347" opacity="0.85">
+      <animate attributeName="cx" values="390;355;320" dur="1.6s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="95;90;100" dur="1.6s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="5.5;7.5;3.5" dur="1.6s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Additional lava eruptions from crater going up -->
+    <path d="M 475 120 Q 470 90 465 60 Q 460 40 465 20"
+          stroke="url(#lavaGradient)" stroke-width="5" fill="none" opacity="0.8">
+      <animate attributeName="opacity" values="0.7;0.9;0.7" dur="1.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 485 120 Q 490 88 485 58 Q 480 35 485 15"
+          stroke="url(#lavaGradient)" stroke-width="6" fill="none" opacity="0.85">
+      <animate attributeName="opacity" values="0.75;0.95;0.75" dur="1.1s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Confident, fierce eyes -->
+    <ellipse cx="460" cy="200" rx="9" ry="13" fill="#2C1E18"/>
+    <ellipse cx="460" cy="202" rx="5" ry="7" fill="#FF6347">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <ellipse cx="500" cy="200" rx="9" ry="13" fill="#2C1E18"/>
+    <ellipse cx="500" cy="202" rx="5" ry="7" fill="#FF6347">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Fierce, confident eyebrows -->
+    <line x1="450" y1="190" x2="468" y2="195" stroke="#1A0F0A" stroke-width="3" stroke-linecap="round"/>
+    <line x1="492" y1="195" x2="510" y2="190" stroke="#1A0F0A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Speech bubble from volcano -->
+  <g id="speechBubble">
+    <!-- Bubble background -->
+    <ellipse cx="320" cy="240" rx="150" ry="50" fill="#FFFFFF" stroke="#FF4500" stroke-width="3"/>
+
+    <!-- Speech bubble pointer toward volcano -->
+    <path d="M 420 265 L 455 275 L 435 275" fill="#FFFFFF" stroke="#FF4500" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Fire emojis/symbols for emphasis -->
+    <text x="180" y="235" font-family="Georgia, serif" font-size="32" fill="#FF6347">🔥</text>
+    <text x="450" y="235" font-family="Georgia, serif" font-size="32" fill="#FF6347">🔥</text>
+
+    <!-- Speech text -->
+    <text x="320" y="235" font-family="Georgia, serif" font-size="24" font-weight="bold"
+          text-anchor="middle" fill="#2C3E50">
+      I'm scarier because
+    </text>
+    <text x="320" y="265" font-family="Georgia, serif" font-size="24" font-weight="bold"
+          text-anchor="middle" fill="#FF4500">
+      I BREATHE FIRE!
+    </text>
+  </g>
+
+  <!-- Story text at bottom -->
+  <text x="300" y="385" font-family="Georgia, serif" font-size="18" font-style="italic"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.3">
+    "I'm scarier," said the volcano, "because I breathe fire!"
+  </text>
+</svg>

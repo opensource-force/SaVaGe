@@ -169,6 +169,36 @@ Advanced form generator that:
 
 - Add new components by creating class in `/Middleware/` and templates in `/wwwroot/`
 - Follow IIFE pattern for JavaScript wrappers
-- Use double mustache for server-side, single for client-side replacements
+- Use double mustache for server-side, single for client-side replaceholders
 - Component classes should implement `SVG()` method returning processed string
 - Extension method `ReadFileFromWebRootAsync()` simplifies file reading
+
+## Examples and Demos
+
+### Static SVG Stories
+
+The `/wwwroot/templates/` directory contains standalone SVG files that demonstrate storytelling and visualization capabilities:
+
+**The Nosefish and the Volcano** - A 6-card interactive story:
+- `nosefish-volcano-title.svg` - Title card introducing characters
+- `nosefish-volcano-card2.svg` - The confrontation scene
+- `nosefish-volcano-card3.svg` - Nosefish's argument ("I'm in water!")
+- `nosefish-volcano-card4.svg` - Volcano's rebuttal ("I breathe fire!")
+- `nosefish-volcano-card5.svg` - Interactive question to viewer
+- `nosefish-volcano-card6.svg` - Fourth-wall breaking conclusion
+
+Demo page: `/wwwroot/nosefish-volcano-story.html` displays all 6 cards in a responsive grid.
+
+**Ecosystem Visualization**:
+- `ecosystem-shapes.svg` - Large visualization showing various projects/organizations with unique shapes, gradients, and animations
+
+### BDO Integration
+
+`upload-nosefish-story.js` - Example script for uploading SVGs to BDO (Binding Document Objects) system:
+- Demonstrates reverse-order upload pattern to capture pubKeys
+- Shows how to add interactive navigation buttons to SVGs using `spell="next"` attribute
+- Creates decision-tree structure with branching paths
+- Uses ES6 modules (`import` syntax) with `bdo-js` package
+- Pattern: Upload → Make Public → Capture PubKey → Embed in parent card
+
+Key technique: Navigation buttons are added dynamically to SVGs with `spell-components='{"bdoPubKey": "..."}'` pointing to the next card's public key.

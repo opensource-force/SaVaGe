@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nosefish and the Orange Volcano</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF8C00 0%, #667BC6 100%);
+            font-family: Georgia, serif;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #f0f0f0;
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .card-number {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #FF8C00;
+            margin-bottom: 15px;
+        }
+
+        .svg-container {
+            width: 100%;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .svg-container object {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .navigation {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .nav-button {
+            background: white;
+            color: #FF8C00;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-family: Georgia, serif;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 0 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #FF8C00;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .credits {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐟 The Nosefish and the Orange Volcano 🫐</h1>
+        <p class="subtitle">A Delicious SVG Story Adventure</p>
+
+        <div class="story-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-number">Card 1: Don't Explode!</div>
+                <div class="svg-container">
+                    <object data="templates/nosefish-orange-volcano-card1.svg" type="image/svg+xml"></object>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-number">Card 2: The Hat Offering</div>
+                <div class="svg-container">
+                    <object data="templates/nosefish-orange-volcano-card2.svg" type="image/svg+xml"></object>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-number">Card 3: Blueberry Explosion!</div>
+                <div class="svg-container">
+                    <object data="templates/nosefish-orange-volcano-card3.svg" type="image/svg+xml"></object>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-number">Card 4: The Feast</div>
+                <div class="svg-container">
+                    <object data="templates/nosefish-orange-volcano-card4.svg" type="image/svg+xml"></object>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button" onclick="scrollToTop()">↑ Back to Top</button>
+            <button class="nav-button" onclick="window.location.href='index.html'">← Home</button>
+        </div>
+
+        <div class="credits">
+            <p>✨ A SaVaGe SVG Story ✨</p>
+            <p>All animations are created with pure SVG</p>
+            <p>🫐 Sometimes explosions are delicious! 🫐</p>
+        </div>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Optional: Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Home') {
+                scrollToTop();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- ORANGE Volcano Gradient -->
+    <linearGradient id="orangeVolcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF7F00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6500;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Blueberry gradient -->
+    <radialGradient id="blueberryGradient">
+      <stop offset="0%" style="stop-color:#667BC6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4A5FA8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E4482;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.2" />
+    </radialGradient>
+
+    <!-- Happy glow -->
+    <radialGradient id="happyGlow">
+      <stop offset="0%" style="stop-color:#FFE082;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#FFE082;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Water at bottom -->
+  <rect y="280" width="600" height="120" fill="#4A90E2" opacity="0.7"/>
+
+  <!-- Happy celebration glow -->
+  <ellipse cx="300" cy="220" rx="280" ry="200" fill="url(#happyGlow)">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- The ORANGE Volcano (peaceful and happy now) -->
+  <g id="orangeVolcano">
+    <!-- Mountain body - ORANGE -->
+    <path d="M 460 280 L 520 160 L 580 280 Z" fill="url(#orangeVolcanoGradient)" stroke="#E65100" stroke-width="3"/>
+
+    <!-- Calm crater -->
+    <ellipse cx="520" cy="160" rx="15" ry="8" fill="#D84315"/>
+
+    <!-- Just a little gentle steam -->
+    <circle cx="518" cy="145" r="5" fill="#E0E0E0" opacity="0.4">
+      <animate attributeName="cy" values="145;130;115" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.2;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Happy eyes -->
+    <ellipse cx="505" cy="210" rx="6" ry="8" fill="#2C1E18"/>
+    <ellipse cx="505" cy="211" rx="3" ry="4" fill="#FF6347"/>
+
+    <ellipse cx="535" cy="210" rx="6" ry="8" fill="#2C1E18"/>
+    <ellipse cx="535" cy="211" rx="3" ry="4" fill="#FF6347"/>
+
+    <!-- Happy eyebrows -->
+    <line x1="500" y1="204" x2="510" y2="202" stroke="#2C1E18" stroke-width="2" stroke-linecap="round"/>
+    <line x1="530" y1="202" x2="540" y2="204" stroke="#2C1E18" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Big smile -->
+    <path d="M 505 235 Q 520 242 535 235" stroke="#2C1E18" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Blueberries scattered around (some floating, some in water) -->
+  <g id="scatteredBlueberries">
+    <circle cx="300" cy="240" r="5" fill="url(#blueberryGradient)"/>
+    <circle cx="250" cy="260" r="4" fill="url(#blueberryGradient)"/>
+    <circle cx="180" cy="250" r="5" fill="url(#blueberryGradient)"/>
+    <circle cx="350" cy="255" r="4" fill="url(#blueberryGradient)"/>
+    <circle cx="220" cy="245" r="5" fill="url(#blueberryGradient)"/>
+    <circle cx="380" cy="265" r="4" fill="url(#blueberryGradient)"/>
+    <circle cx="140" cy="270" r="5" fill="url(#blueberryGradient)"/>
+    <circle cx="420" cy="250" r="4" fill="url(#blueberryGradient)"/>
+
+    <!-- Blueberries in the water -->
+    <circle cx="200" cy="290" r="4" fill="url(#blueberryGradient)" opacity="0.8"/>
+    <circle cx="280" cy="295" r="3" fill="url(#blueberryGradient)" opacity="0.8"/>
+    <circle cx="340" cy="288" r="4" fill="url(#blueberryGradient)" opacity="0.8"/>
+    <circle cx="160" cy="300" r="3" fill="url(#blueberryGradient)" opacity="0.8"/>
+  </g>
+
+  <!-- Original Nosefish (left, eating happily) -->
+  <g id="nosefish1">
+    <!-- Happy bubbles -->
+    <circle cx="180" cy="205" r="3" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="205;185;165" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body -->
+    <ellipse cx="150" cy="220" rx="35" ry="20" fill="#FF8C42" stroke="#E67332" stroke-width="2"/>
+
+    <!-- The prominent NOSE -->
+    <path d="M 115 220 L 65 218 L 70 220 L 65 222 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1.5"/>
+
+    <!-- Happy eye -->
+    <circle cx="135" cy="215" r="4" fill="white"/>
+    <circle cx="136" cy="215" r="2" fill="black"/>
+
+    <!-- Happy eyebrow -->
+    <line x1="130" y1="211" x2="140" y2="210" stroke="#D2691E" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Smile -->
+    <path d="M 125 225 Q 130 227 135 225" stroke="#D2691E" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 150 200 L 145 185 L 155 200 Z" fill="#FF6B35" stroke="#E67332" stroke-width="1.5"/>
+
+    <!-- Tail fin -->
+    <path d="M 185 220 L 200 210 L 205 220 L 200 230 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 185 220; -5 185 220; 0 185 220; 5 185 220; 0 185 220"
+                        dur="2.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Scales -->
+    <circle cx="145" cy="220" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="155" cy="222" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="165" cy="220" r="3" fill="#FFB07C" opacity="0.4"/>
+
+    <!-- Blueberry in mouth -->
+    <circle cx="120" cy="222" r="3" fill="url(#blueberryGradient)"/>
+  </g>
+
+  <!-- Second Nosefish (smaller, top center) -->
+  <g id="nosefish2">
+    <circle cx="320" cy="165" r="2" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="165;150;135" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.2;0" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Smaller fish body - different color -->
+    <ellipse cx="300" cy="180" rx="28" ry="16" fill="#FFA07A" stroke="#E67332" stroke-width="1.5"/>
+
+    <!-- Nose -->
+    <path d="M 272 180 L 235 179 L 238 180 L 235 181 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1.2"/>
+
+    <!-- Eye -->
+    <circle cx="288" cy="176" r="3" fill="white"/>
+    <circle cx="289" cy="176" r="1.5" fill="black"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 300 164 L 296 152 L 304 164 Z" fill="#FF8B73" stroke="#E67332" stroke-width="1.2"/>
+
+    <!-- Tail -->
+    <path d="M 328 180 L 340 172 L 343 180 L 340 188 Z"
+          fill="#FF8B73" stroke="#E67332" stroke-width="1.2">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 328 180; -6 328 180; 0 328 180; 6 328 180; 0 328 180"
+                        dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Swimming animation -->
+    <animateTransform attributeName="transform" type="translate"
+                      values="0,0; -15,5; 0,0"
+                      dur="4s" repeatCount="indefinite"/>
+
+    <!-- Blueberry nearby -->
+    <circle cx="280" cy="178" r="2.5" fill="url(#blueberryGradient)"/>
+  </g>
+
+  <!-- Third Nosefish (right side, medium) -->
+  <g id="nosefish3">
+    <circle cx="410" cy="235" r="2.5" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="235;220;205" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Medium fish body - yellowish -->
+    <ellipse cx="390" cy="250" rx="30" ry="18" fill="#FFB347" stroke="#E67332" stroke-width="1.8"/>
+
+    <!-- Nose pointing left -->
+    <path d="M 360 250 L 320 249 L 323 250 L 320 251 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1.3"/>
+
+    <!-- Eye -->
+    <circle cx="378" cy="246" r="3.5" fill="white"/>
+    <circle cx="379" cy="246" r="1.8" fill="black"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 390 232 L 386 218 L 394 232 Z" fill="#FF9F5A" stroke="#E67332" stroke-width="1.3"/>
+
+    <!-- Tail -->
+    <path d="M 420 250 L 435 242 L 438 250 L 435 258 Z"
+          fill="#FF9F5A" stroke="#E67332" stroke-width="1.3">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 420 250; -7 420 250; 0 420 250; 7 420 250; 0 420 250"
+                        dur="2.2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Scales -->
+    <circle cx="385" cy="250" r="2.5" fill="#FFCC99" opacity="0.4"/>
+    <circle cx="395" cy="252" r="2.5" fill="#FFCC99" opacity="0.4"/>
+
+    <!-- Swimming animation -->
+    <animateTransform attributeName="transform" type="translate"
+                      values="0,0; -10,-8; 0,0"
+                      dur="5s" repeatCount="indefinite"/>
+
+    <!-- Blueberry in mouth -->
+    <circle cx="365" cy="251" r="3" fill="url(#blueberryGradient)"/>
+  </g>
+
+  <!-- Fourth Nosefish (tiny, swimming in from top right) -->
+  <g id="nosefish4">
+    <ellipse cx="440" cy="150" rx="20" ry="12" fill="#FF7F50" stroke="#E67332" stroke-width="1.2"/>
+
+    <!-- Tiny nose -->
+    <path d="M 420 150 L 400 149.5 L 402 150 L 400 150.5 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1"/>
+
+    <!-- Eye -->
+    <circle cx="432" cy="148" r="2" fill="white"/>
+    <circle cx="432.5" cy="148" r="1" fill="black"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 440 138 L 437 128 L 443 138 Z" fill="#FF6B50" stroke="#E67332" stroke-width="1"/>
+
+    <!-- Tail -->
+    <path d="M 460 150 L 470 144 L 472 150 L 470 156 Z"
+          fill="#FF6B50" stroke="#E67332" stroke-width="1">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 460 150; -8 460 150; 0 460 150; 8 460 150; 0 460 150"
+                        dur="1.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Swimming in animation -->
+    <animateTransform attributeName="transform" type="translate"
+                      values="100,-50; 0,0; -20,10; 0,0"
+                      dur="6s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- Fifth Nosefish (bottom, partially in water) -->
+  <g id="nosefish5">
+    <ellipse cx="260" cy="275" rx="25" ry="14" fill="#FF6F61" stroke="#E67332" stroke-width="1.5" opacity="0.9"/>
+
+    <!-- Nose -->
+    <path d="M 235 275 L 210 274 L 213 275 L 210 276 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1.2"/>
+
+    <!-- Eye -->
+    <circle cx="250" cy="272" r="2.5" fill="white"/>
+    <circle cx="251" cy="272" r="1.2" fill="black"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 260 261 L 257 250 L 263 261 Z" fill="#FF5F52" stroke="#E67332" stroke-width="1.2"/>
+
+    <!-- Tail -->
+    <path d="M 285 275 L 297 268 L 300 275 L 297 282 Z"
+          fill="#FF5F52" stroke="#E67332" stroke-width="1.2">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 285 275; -5 285 275; 0 285 275; 5 285 275; 0 285 275"
+                        dur="2.3s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Blueberry nearby -->
+    <circle cx="240" cy="277" r="2.5" fill="url(#blueberryGradient)"/>
+  </g>
+
+  <!-- Story text at bottom -->
+  <text x="300" y="345" font-family="Georgia, serif" font-size="22" font-weight="bold"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.5">
+    The nosefish was happy about the blueberries,
+  </text>
+  <text x="300" y="375" font-family="Georgia, serif" font-size="22" font-weight="bold"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.5">
+    and suddenly, all their friends arrived for a feast!
+  </text>
+</svg>

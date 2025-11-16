@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- ORANGE Volcano Gradient -->
+    <linearGradient id="orangeVolcanoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF7F00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6500;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Blueberry gradient -->
+    <radialGradient id="blueberryGradient">
+      <stop offset="0%" style="stop-color:#667BC6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4A5FA8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E4482;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="bubbleGradient">
+      <stop offset="0%" style="stop-color:#B3E5FC;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:0.2" />
+    </radialGradient>
+
+    <!-- Explosion glow -->
+    <radialGradient id="explosionGlow">
+      <stop offset="0%" style="stop-color:#8B7BC4;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#8B7BC4;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Hat gradient -->
+    <linearGradient id="hatGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7B1FA2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+
+  <!-- Water at bottom -->
+  <rect y="280" width="600" height="120" fill="#4A90E2" opacity="0.7"/>
+
+  <!-- Massive explosion glow -->
+  <ellipse cx="500" cy="140" rx="180" ry="160" fill="url(#explosionGlow)">
+    <animate attributeName="rx" values="180;200;180" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="160;180;160" dur="2s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- The ORANGE Volcano (erupting!) -->
+  <g id="orangeVolcano">
+    <!-- Mountain body - ORANGE -->
+    <path d="M 420 280 L 500 140 L 580 280 Z" fill="url(#orangeVolcanoGradient)" stroke="#E65100" stroke-width="3"/>
+
+    <!-- Wide open crater -->
+    <ellipse cx="500" cy="140" rx="22" ry="12" fill="#D84315"/>
+
+    <!-- Eyes - relief/release -->
+    <ellipse cx="480" cy="200" rx="6" ry="9" fill="#2C1E18"/>
+    <ellipse cx="480" cy="201" rx="2" ry="4" fill="#FF6347"/>
+
+    <ellipse cx="520" cy="200" rx="6" ry="9" fill="#2C1E18"/>
+    <ellipse cx="520" cy="201" rx="2" ry="4" fill="#FF6347"/>
+
+    <!-- Relieved eyebrows -->
+    <line x1="475" y1="194" x2="485" y2="193" stroke="#2C1E18" stroke-width="2" stroke-linecap="round"/>
+    <line x1="515" y1="193" x2="525" y2="194" stroke="#2C1E18" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Open mouth (releasing) -->
+    <ellipse cx="500" cy="225" rx="8" ry="6" fill="#2C1E18"/>
+  </g>
+
+  <!-- BLUEBERRY EXPLOSION! -->
+  <g id="blueberries">
+    <!-- Large fountain of blueberries shooting up -->
+    <circle cx="500" cy="80" r="8" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="140;80;40" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="485" cy="60" r="7" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="140;60;30" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="515" cy="70" r="7" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="140;70;35" dur="1.9s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Blueberries arcing to the left -->
+    <circle cx="450" cy="100" r="6" fill="url(#blueberryGradient)">
+      <animate attributeName="cx" values="500;450;400" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="140;100;120" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="430" cy="120" r="5" fill="url(#blueberryGradient)">
+      <animate attributeName="cx" values="500;430;360" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="140;120;160" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="410" cy="140" r="6" fill="url(#blueberryGradient)">
+      <animate attributeName="cx" values="500;410;320" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="140;140;180" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Blueberries arcing to the right -->
+    <circle cx="550" cy="95" r="6" fill="url(#blueberryGradient)">
+      <animate attributeName="cx" values="500;550;580" dur="2.3s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="140;95;140" dur="2.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="535" cy="110" r="5" fill="url(#blueberryGradient)">
+      <animate attributeName="cx" values="500;535;565" dur="2.6s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="140;110;150" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- More blueberries at various angles -->
+    <circle cx="470" cy="85" r="6" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="140;85;50" dur="2.1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="530" cy="75" r="7" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="140;75;45" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Blueberries falling into water -->
+    <circle cx="380" cy="250" r="5" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="180;250;280" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;0.3" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="420" cy="260" r="5" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="170;260;285" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;0.3" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="270" r="4" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="190;270;290" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;0.2" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Tiny blueberries for depth -->
+    <circle cx="495" cy="90" r="4" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="140;90;55" dur="1.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="505" cy="95" r="4" fill="url(#blueberryGradient)">
+      <animate attributeName="cy" values="140;95;60" dur="1.7s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- The hat flying away (unused) -->
+  <g id="flyingHat" transform="translate(0, 0)">
+    <!-- Hat brim -->
+    <ellipse cx="340" cy="120" rx="28" ry="6" fill="#6A1B9A" stroke="#4A148C" stroke-width="1.5"/>
+    <!-- Hat body -->
+    <rect x="315" y="90" width="50" height="30" fill="url(#hatGradient)" stroke="#4A148C" stroke-width="1.5" rx="2"/>
+    <!-- Hat top -->
+    <ellipse cx="340" cy="90" rx="25" ry="5" fill="#8E24AA" stroke="#4A148C" stroke-width="1.5"/>
+    <!-- Hat band -->
+    <rect x="315" y="110" width="50" height="6" fill="#FFD700" stroke="#FFA000" stroke-width="0.8"/>
+
+    <!-- Flying away animation with rotation -->
+    <animateTransform attributeName="transform" type="translate"
+                      values="0,0; -60,-30; -120,-50"
+                      dur="3s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="rotate"
+                      values="0 340 120; -45 340 120; -90 340 120"
+                      dur="3s" repeatCount="indefinite" additive="sum"/>
+    <animate attributeName="opacity" values="1;0.5;0" dur="3s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- The Nosefish (surprised but intrigued) -->
+  <g id="nosefish">
+    <!-- Surprised bubbles -->
+    <circle cx="180" cy="190" r="5" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="190;170;150" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.3;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="190" cy="195" r="4" fill="url(#bubbleGradient)">
+      <animate attributeName="cy" values="195;175;155" dur="2.3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.2;0" dur="2.3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Fish body -->
+    <ellipse cx="150" cy="220" rx="35" ry="20" fill="#FF8C42" stroke="#E67332" stroke-width="2"/>
+
+    <!-- The prominent NOSE -->
+    <path d="M 115 220 L 60 218 L 65 220 L 60 222 Z"
+          fill="#F4A460" stroke="#D2691E" stroke-width="1.5"/>
+
+    <!-- Eye - wide with surprise -->
+    <circle cx="135" cy="215" r="5" fill="white"/>
+    <circle cx="136" cy="215" r="2.5" fill="black"/>
+
+    <!-- Raised eyebrow (surprised) -->
+    <line x1="128" y1="209" x2="140" y2="208" stroke="#D2691E" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Dorsal fin -->
+    <path d="M 150 200 L 145 185 L 155 200 Z" fill="#FF6B35" stroke="#E67332" stroke-width="1.5"/>
+
+    <!-- Tail fin - excited movement -->
+    <path d="M 185 220 L 200 210 L 205 220 L 200 230 Z"
+          fill="#FF6B35" stroke="#E67332" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate"
+                        values="0 185 220; -10 185 220; 0 185 220; 10 185 220; 0 185 220"
+                        dur="1s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Scales detail -->
+    <circle cx="145" cy="220" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="155" cy="222" r="3" fill="#FFB07C" opacity="0.4"/>
+    <circle cx="165" cy="220" r="3" fill="#FFB07C" opacity="0.4"/>
+  </g>
+
+  <!-- Explosion effects -->
+  <text x="520" y="90" font-family="Arial, sans-serif" font-size="40" font-weight="bold"
+        fill="#667BC6" opacity="0.8">
+    *POOF*
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- Story text at bottom -->
+  <text x="300" y="340" font-family="Georgia, serif" font-size="22" font-weight="bold"
+        text-anchor="middle" fill="#2C3E50" stroke="#ECF0F1" stroke-width="0.5">
+    BLUEBERRIES!
+  </text>
+  <text x="300" y="370" font-family="Georgia, serif" font-size="18"
+        text-anchor="middle" fill="#34495E">
+    The volcano exploded before she could put on the hat!
+  </text>
+</svg>

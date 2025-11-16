@@ -1,0 +1,27 @@
+{
+  "name": "savage",
+  "version": "0.0.1",
+  "description": "for node things in savage",
+  "keywords": [
+    "Planet",
+    "Nine"
+  ],
+  "homepage": "https://github.com/opensource-force/SaVaGe#readme",
+  "bugs": {
+    "url": "https://github.com/opensource-force/SaVaGe/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opensource-force/SaVaGe.git"
+  },
+  "license": "MIT",
+  "author": "planetnineisaspaceship",
+  "type": "module",
+  "main": "upload-nosefish-story.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bdo-js": "^0.0.7"
+  }
+}
